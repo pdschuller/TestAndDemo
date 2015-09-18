@@ -5,13 +5,15 @@ module.exports = {
 
     scanBarcode: function (successCallback, errorCallback, strInput) {
 
-        var upperCase = strInput[0].toUpperCase();
-        if(upperCase != "") {
-            successCallback(upperCase);
-        }
-        else {
-            errorCallback(upperCase);
-        }
+        //var upperCase = strInput[0].toUpperCase();
+        //if(upperCase != "") {
+        //    successCallback(upperCase);
+        //}
+        //else {
+        //    errorCallback(upperCase);
+        //}
+
+        successCallback('snot');
     }
 };
 
