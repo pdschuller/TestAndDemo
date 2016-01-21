@@ -13,14 +13,3 @@ controllersModule.controller('myController', ['$scope', function($scope){
     $scope.pdsModel = {
         myTitle: "snot4"
     }}]);
-
-
-
-
-
-//pdsSampleApp.controller("myController", function($scope){
-//    $scope.pdsModel = {
-//        myTitle: "snot3"
-//    };
-//
-//});

@@ -8,7 +8,24 @@
     <script src="scripts/layoutController.js"></script>
 </head>
 <body ng-controller="myController">
-    <div>what is nasty></div>
+    <table>
+        <tr style="border: solid 1px black">
+            <td id="leftTd" style="border: green 1px solid">
+                <ul>
+                    <li>
+                        <a id="clickOne" href="#" >Click One</a>
+                    </li>
+                    <li>
+                        <a id="clickTwo" href="#" >Click Two</a>
+                    </li>
+                </ul>
+            </td>
+            <td id="rightTd" style="width: 300px; height: 300px; border: blue 1px solid">
+                the main body
+            </td>
+        </tr>
+    </table>
+    <div>what is nasty</div>
 <div>{{pdsModel.myTitle}}</div>
 </body>
 </html>
