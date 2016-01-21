@@ -13,19 +13,19 @@
             <td id="leftTd" style="border: green 1px solid">
                 <ul>
                     <li>
-                        <a id="clickOne" href="#" >Click One</a>
+                        <a id="clickOne" href="#viewOne" >Click One</a>
                     </li>
+                    <br /><br />
                     <li>
-                        <a id="clickTwo" href="#" >Click Two</a>
+                        <a type="button" id="clickTwo" href="#viewTwo" >Click Two</a>
                     </li>
                 </ul>
             </td>
             <td id="rightTd" style="width: 300px; height: 300px; border: blue 1px solid">
-                the main body
+                <!-- HERE IT THE TARGET FOR THE ROUTES -->
+                <div style="width: 250px; height: 200px;" ng-view></div>
             </td>
         </tr>
     </table>
-    <div>what is nasty</div>
-<div>{{pdsModel.myTitle}}</div>
 </body>
 </html>
