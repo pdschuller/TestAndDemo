@@ -4,7 +4,8 @@
 
 var pdsSampleApp = angular.module("pdsSampleApp", [
     'ngRoute',
-    'controllersModule'
+    'controllersModule',
+    'ngAnimate'
 ]);
 
 var controllersModule = angular.module('controllersModule', []);

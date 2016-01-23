@@ -5,7 +5,12 @@
     <meta charset="UTF-8">
     <script src="scripts/angular.min.js" ></script>
     <script src="scripts/angular-route.min.js" ></script>
+    <script src="scripts/angular-animate.min.js" ></script>
     <script src="scripts/layoutController.js"></script>
+    <style>
+        .ngFade.ng-enter { transition: 0.5s linear all; opacity: 0; }
+        .ngFade.ng-enter-active { opacity: 1; }
+    </style>
 </head>
 <body ng-controller="myController">
     <table>
@@ -23,7 +28,7 @@
             </td>
             <td id="rightTd" style="width: 300px; height: 300px; border: blue 1px solid">
                 <!-- HERE IT THE TARGET FOR THE ROUTES -->
-                <div style="width: 250px; height: 200px;" ng-view></div>
+                <div style="width: 250px; height: 200px;" class="ngFade" ng-view></div>
             </td>
         </tr>
     </table>
