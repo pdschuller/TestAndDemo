@@ -8,8 +8,14 @@
     <script src="scripts/angular-animate.min.js" ></script>
     <script src="scripts/layoutController.js"></script>
     <style>
-        .ngFade.ng-enter { transition: 0.5s linear all; opacity: 0; }
+        /* opacity = 0 means that view is transparent at start of transition
+               .ng-enter is AngularJs code for start-display        */
+        .ngFade.ng-enter { transition: 1.5s linear all; opacity: 0; }
+
+        /*      .ng-enter-active is AngularJs for end-of-start-display   */
         .ngFade.ng-enter-active { opacity: 1; }
+
+        .viewOne, .viewTwo { height: 200px; }
     </style>
 </head>
 <body ng-controller="myController">
