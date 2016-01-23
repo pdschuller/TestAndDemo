@@ -8,11 +8,15 @@
     <script src="scripts/angular-animate.min.js" ></script>
     <script src="scripts/layoutController.js"></script>
     <style>
+        /* From CSS book
+           ng-enter is the initial class of the enter event and
+           ng-enter-active is the final class of the enter event. */
+
         /* opacity = 0 means that view is transparent at start of transition
-               .ng-enter is AngularJs code for start-display        */
+           AngJs adds .ng-enter class to anywhere .ngFade is
+            on start-display. That is all AngJs blackbox        */
         .ngFade.ng-enter { transition: 1.5s linear all; opacity: 0; }
 
-        /*      .ng-enter-active is AngularJs for end-of-start-display   */
         .ngFade.ng-enter-active { opacity: 1; }
 
         .viewOne, .viewTwo { height: 200px; }
