@@ -1,0 +1,26 @@
+﻿<Window x:Class="UseStubbedData.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UseStubbedData"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="20*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <DockPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" >
+            <Button  x:Name="btnGetData" Click="GetData" Content="Get Data" HorizontalAlignment="Left" VerticalAlignment="Center" Width="75" />
+            <Button x:Name="btnStoreData" Click="StoreData" HorizontalAlignment="Right" VerticalAlignment="Center" Content="StoreData" Margin="0,6,0,5.4"/>
+        </DockPanel>
+        <CheckBox Grid.Row="0" Grid.Column="1" x:Name="chkUseStubData" Content="Use Stubbed Data" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <DataGrid x:Name="employeeGrid" Grid.Row="2" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+
+    </Grid>
+</Window>

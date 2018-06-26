@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{93BC5C8C-C3FD-4C14-A8A7-3A36CAD2558D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>UseStubbedData</RootNamespace>
+    <AssemblyName>UseStubbedData</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="StubData\StubEmployee.cs" />
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Data\AppLog.cs" />
+    <Compile Include="Data\AppSetting.cs" />
+    <Compile Include="Data\ArchiveOrder.cs" />
+    <Compile Include="Data\ArchiveOrderDetail.cs" />
+    <Compile Include="Data\ArchiveRun.cs" />
+    <Compile Include="Data\ArchiveRunOrder.cs" />
+    <Compile Include="Data\ArchiveRunResource.cs" />
+    <Compile Include="Data\ArchiveRunStop.cs" />
+    <Compile Include="Data\chkCheckItem.cs" />
+    <Compile Include="Data\chkCheckItemLog.cs" />
+    <Compile Include="Data\chkPallet.cs" />
+    <Compile Include="Data\chkPalletLog.cs" />
+    <Compile Include="Data\chkStop.cs" />
+    <Compile Include="Data\ClientBarcodeType.cs" />
+    <Compile Include="Data\ClientBarcodeTypeSpec.cs" />
+    <Compile Include="Data\Company.cs" />
+    <Compile Include="Data\CompanyCarrier.cs" />
+    <Compile Include="Data\CompanyContactInfo.cs" />
+    <Compile Include="Data\CompanyLocation.cs" />
+    <Compile Include="Data\CompanyLocationAppointment.cs" />
+    <Compile Include="Data\CompanyLocationGP.cs" />
+    <Compile Include="Data\CompanyMfCode.cs" />
+    <Compile Include="Data\CompanyOpenWindow.cs" />
+    <Compile Include="Data\CompanyShipper.cs" />
+    <Compile Include="Data\CompanyStandard.cs" />
+    <Compile Include="Data\CompletedWork.cs" />
+    <Compile Include="Data\Condition.cs" />
+    <Compile Include="Data\ContactType.cs" />
+    <Compile Include="Data\DataContext.cs" />
+    <Compile Include="Data\DeletedOrder.cs" />
+    <Compile Include="Data\Department.cs" />
+    <Compile Include="Data\dtproperty.cs" />
+    <Compile Include="Data\edi214.cs" />
+    <Compile Include="Data\ediFa.cs" />
+    <Compile Include="Data\ediGroup.cs" />
+    <Compile Include="Data\ediTransaction.cs" />
+    <Compile Include="Data\Employee.cs" />
+    <Compile Include="Data\EmployeeTime.cs" />
+    <Compile Include="Data\Employee_Calendar.cs" />
+    <Compile Include="Data\Employee_Department.cs" />
+    <Compile Include="Data\Employee_InActive_Reason_List.cs" />
+    <Compile Include="Data\Employee_Productivity.cs" />
+    <Compile Include="Data\EquipmentChecklistResponse.cs" />
+    <Compile Include="Data\EquipmentClassHeader.cs" />
+    <Compile Include="Data\EquipmentDetail.cs" />
+    <Compile Include="Data\ExceptionLog.cs" />
+    <Compile Include="Data\Flag.cs" />
+    <Compile Include="Data\GPSLocation.cs" />
+    <Compile Include="Data\IdList.cs" />
+    <Compile Include="Data\ImportedWarehouseWeight.cs" />
+    <Compile Include="Data\InboundCondition.cs" />
+    <Compile Include="Data\InboundException.cs" />
+    <Compile Include="Data\InboundExceptionCondition.cs" />
+    <Compile Include="Data\InboundExceptionCondition_Beta.cs" />
+    <Compile Include="Data\InboundException_Beta.cs" />
+    <Compile Include="Data\InboundLocation.cs" />
+    <Compile Include="Data\InboundLog.cs" />
+    <Compile Include="Data\InboundPallet.cs" />
+    <Compile Include="Data\InboundPalletDetail_Beta.cs" />
+    <Compile Include="Data\InboundPallet_Beta.cs" />
+    <Compile Include="Data\InboundSealDisposition.cs" />
+    <Compile Include="Data\InboundTrailer.cs" />
+    <Compile Include="Data\InboundTrailer_Beta.cs" />
+    <Compile Include="Data\Item.cs" />
+    <Compile Include="Data\JobType.cs" />
+    <Compile Include="Data\License.cs" />
+    <Compile Include="Data\Location_ImageRelationship.cs" />
+    <Compile Include="Data\Location_Images.cs" />
+    <Compile Include="Data\LoggedInfo.cs" />
+    <Compile Include="Data\MobileAppConfig.cs" />
+    <Compile Include="Data\MobileAppEmployeeRequestsOthersRun.cs" />
+    <Compile Include="Data\MobileAppException.cs" />
+    <Compile Include="Data\MobileAppProformaDateReleased.cs" />
+    <Compile Include="Data\MobileUser.cs" />
+    <Compile Include="Data\ModuleInfo.cs" />
+    <Compile Include="Data\NewOrder.cs" />
+    <Compile Include="Data\NewOrderDetail.cs" />
+    <Compile Include="Data\NonDispatchedStop.cs" />
+    <Compile Include="Data\NonDispatchedStopType.cs" />
+    <Compile Include="Data\Order.cs" />
+    <Compile Include="Data\OrderAction.cs" />
+    <Compile Include="Data\OrderActivity.cs" />
+    <Compile Include="Data\OrderAssignment.cs" />
+    <Compile Include="Data\OrderDetail.cs" />
+    <Compile Include="Data\OrderError.cs" />
+    <Compile Include="Data\OrderItem.cs" />
+    <Compile Include="Data\OrderJobCode.cs" />
+    <Compile Include="Data\OrderJobCodeMapping.cs" />
+    <Compile Include="Data\OrderPick.cs" />
+    <Compile Include="Data\PalletTag.cs" />
+    <Compile Include="Data\Proforma.cs" />
+    <Compile Include="Data\ProformaRunMaster.cs" />
+    <Compile Include="Data\ProformaRunResource.cs" />
+    <Compile Include="Data\ProformaRunStop.cs" />
+    <Compile Include="Data\Report.cs" />
+    <Compile Include="Data\ReportJob.cs" />
+    <Compile Include="Data\Results_old.cs" />
+    <Compile Include="Data\Run.cs" />
+    <Compile Include="Data\RunAssignment.cs" />
+    <Compile Include="Data\RunDetail.cs" />
+    <Compile Include="Data\RunOrder.cs" />
+    <Compile Include="Data\RunResource.cs" />
+    <Compile Include="Data\RunStop.cs" />
+    <Compile Include="Data\RunStopDetail.cs" />
+    <Compile Include="Data\RunStopDetailPhoto.cs" />
+    <Compile Include="Data\RunSub.cs" />
+    <Compile Include="Data\ScannedPalletConfirm.cs" />
+    <Compile Include="Data\ScannedPalletLoad.cs" />
+    <Compile Include="Data\Server.cs" />
+    <Compile Include="Data\Service_Level.cs" />
+    <Compile Include="Data\Status_Codes.cs" />
+    <Compile Include="Data\stkBarcode.cs" />
+    <Compile Include="Data\stkBarcode_Archive.cs" />
+    <Compile Include="Data\stkCodeDate.cs" />
+    <Compile Include="Data\stkCust.cs" />
+    <Compile Include="Data\stkFlag.cs" />
+    <Compile Include="Data\stkInfo.cs" />
+    <Compile Include="Data\stkInfoFlag.cs" />
+    <Compile Include="Data\stkLocation.cs" />
+    <Compile Include="Data\stkMobileDevice.cs" />
+    <Compile Include="Data\stkSqlCEIdentityRange.cs" />
+    <Compile Include="Data\stkSqlCEIdentityRangeTable.cs" />
+    <Compile Include="Data\stkStock.cs" />
+    <Compile Include="Data\stkUser.cs" />
+    <Compile Include="Data\StopAssignment.cs" />
+    <Compile Include="Data\StopPallet.cs" />
+    <Compile Include="Data\SurName.cs" />
+    <Compile Include="Data\sysdiagram.cs" />
+    <Compile Include="Data\Tractor.cs" />
+    <Compile Include="Data\Tractor_Calendar.cs" />
+    <Compile Include="Data\Tractor_InActive_Reason_List.cs" />
+    <Compile Include="Data\Tractor_Productivity.cs" />
+    <Compile Include="Data\Trailer.cs" />
+    <Compile Include="Data\Trailer_Calendar.cs" />
+    <Compile Include="Data\Trailer_Inactive_Reason_List.cs" />
+    <Compile Include="Data\Trailer_Productivity.cs" />
+    <Compile Include="Data\WorkAssignment.cs" />
+    <Compile Include="Data\XPObjectType.cs" />
+    <Compile Include="Data\Zip2Zip.cs" />
+    <Compile Include="Data\Zip2ZipHistory.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
