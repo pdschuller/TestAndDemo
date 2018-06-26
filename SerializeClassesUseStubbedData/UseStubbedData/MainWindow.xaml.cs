@@ -24,7 +24,9 @@ namespace UseStubbedData
         {
             if(chkUseStubData.IsChecked.HasValue &&  chkUseStubData.IsChecked.Value)
             {
-                employeeGrid.ItemsSource = new ObservableCollection<StubEmployee>(DeSerializableStubData());
+                var path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+                var PathToTheData = System.IO.Path.Combine(path, "StubData.db");
+                employeeGrid.ItemsSource = new ObservableCollection<StubEmployee>(GetDataFromHdd_DeserializeIt_AndReturnIt(PathToTheData));
             }
             else
             {
@@ -34,8 +36,11 @@ namespace UseStubbedData
         }
         private void StoreData(object sender, RoutedEventArgs e)
         {
-                SerializableObject<List<StubEmployee>>(GetEmployees());          
+            var path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            var stubFilePath = System.IO.Path.Combine(path, "StubData.db");
 
+            List<StubEmployee> emps = GetEmployees();
+            SerializeThisParam_ToThisTee_AndWriteToHdd<List<StubEmployee>>(emps, stubFilePath);          
         }
 
         private List<StubEmployee> GetEmployees()
@@ -48,11 +53,7 @@ namespace UseStubbedData
                 SqlDataAdapter sda = new SqlDataAdapter(query, conn);
                 DataTable dt = new DataTable();
                 conn.Open();
-
-                sda.Fill(dt);
-
-                
-
+                sda.Fill(dt);                
                 if (dt.Rows.Count > 0)
                 {
                     foreach (DataRow row in dt.Rows)
@@ -82,10 +83,8 @@ namespace UseStubbedData
         }
 
 
-        private void SerializableObject<T>(T obj) where T : class
+        private void SerializeThisParam_ToThisTee_AndWriteToHdd<T>(T obj, string stubFilePath) where T : class
         {
-            var path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            var stubFilePath =  System.IO.Path.Combine(path, "StubData.db");   
             using (MemoryStream stream = new MemoryStream())
             {
                 IFormatter formatter = new BinaryFormatter();
@@ -102,14 +101,12 @@ namespace UseStubbedData
             }
         }
 
-        private List<StubEmployee> DeSerializableStubData()
+        private List<StubEmployee> GetDataFromHdd_DeserializeIt_AndReturnIt(string PathToTheData)
         {
-            List<StubEmployee> res;
-            var path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            var stubFilePath = System.IO.Path.Combine(path, "StubData.db");
-            if (File.Exists(stubFilePath))
+            if (File.Exists(PathToTheData))
             {
-                using (FileStream fileStream = new FileStream(stubFilePath, FileMode.Open))
+                List<StubEmployee> res;
+                using (FileStream fileStream = new FileStream(PathToTheData, FileMode.Open))
                 {
                     using (GZipStream zipStream = new GZipStream(fileStream, CompressionMode.Decompress))
                     {
