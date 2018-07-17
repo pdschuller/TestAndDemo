@@ -11,7 +11,7 @@ namespace BarcodeXam
 		{
 			InitializeComponent();
 
-			MainPage = new MainPage();
+			MainPage = new NavigationPage( new Views.Scan());
 		}
 
 		protected override void OnStart ()

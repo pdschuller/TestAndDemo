@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:BarcodeXam"
              x:Class="BarcodeXam.MainPage">
 
-    <StackLayout>
+    <StackLayout VerticalOptions="EndAndExpand" Orientation="Horizontal">
         <!-- Place new controls here -->
     	<Label Text="Welcome to Xamarin.Forms iOS!" 
            HorizontalOptions="Center"
