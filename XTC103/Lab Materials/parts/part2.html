@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+    <title>Demonstration: Uploading to Test Cloud</title>
+    <link rel="stylesheet" type="text/css" href="./res/styles/normalize.css">
+    <link rel="stylesheet" type="text/css" href="./res/styles/prettify.css" />
+    <link rel="stylesheet" type="text/css" href="./res/styles/styles.css">
+</head>
+
+<body>
+    <!-- Use the same title as the StartHere -->
+    <header>Deploying to Test Cloud</header>
+
+    <section id="main">
+
+        <h1 id="page-title"></h1>
+        <h2>Duration</h2>
+        <p>15 minutes</p>
+        
+        <h2>Goals</h2>
+        <p>
+        In this demonstration we will show how to upload your tests to Test Cloud. This will be demonstrated during class and the notes are here for your reference. 
+        </p>
+
+        <h1>Steps</h1>
+        <h2>Uploading Android Xamarin.UITest tests to Xamarin Test Cloud</h2>
+        <p>
+            You can either upload through the Visual Studio for Mac, or from the command line. We will use the command line approach here.
+        </p>
+        <ol>
+            <li>
+                Open a browser and navigate to <a href="https://testcloud.xamarin.com">https://testcloud.xamarin.com</a>
+            </li>
+			
+            <li>
+                Login using your Xamarin credentials. You can use the same account you use for Xamarin University, or for logging into the Xamarin store for managing your licenses. You can create a 30-day trial if you don't have an active subscription to Xamarin Test Cloud.
+            </li>
+            
+			   <li>
+                Once you have logged in, select your name found at the top right of the screen, and from the drop-down list select the <b>Account settings</b> option.
+            </li>
+
+			<li>
+                From the menu on the left side of the screen, select <b>Teams &amp; Apps</b>
+            </li>
+
+			<li>
+                From the Teams &amp; Apps list, select <b>New team</b>
+            </li>
+
+			<li>
+                Once the team is created, click on the gear icon on the right side, next to the show API key link.
+            </li>
+
+			<li>
+                Click on the <b>Untitled Team</b> and rename the team to something more appropriate such as "Tasky Tests", then select Done.
+            </li>
+
+			<li>
+                From the Tasky Tests list, select the <b>new test run</b> link
+            </li>
+
+			<li>
+                Select the platform that you wish to test. In this example, we will select the <b>+ New Android App</b>. Then click the <b>Choose a team</b> button and select your new team from the popup menu to assign the team.
+            </li>
+
+            <li>
+                Click the <b>Next</b> button to move to the next screen.
+            </li>
+
+			<li>
+                You will see a list of devices that you can select. Look through the various options for the devices such as Form Factor, Manufacturer, OS Version, Core and Memory Usage. Select a number of devices that you wish to test against. After you have made your select, click the <b>Select nn device(s)</b> button (where <em>nn</em> is the # of devices you have selected).
+            </li>
+
+			<li>
+                Now you can select a test series, a language and execution priority for your tests to run under. At this point we will be leaving these at their defaults and selecting the <b>Next</b> option.
+            </li>
+
+			<li>
+                We have reached the end of the wizard and are ready to submit our tests. At the top of the dialog window, select the <b>C#</b> option. You should see the command line instructions that you need to upload the tests to Test Cloud.
+            </li>
+
+            <li>
+                Select the operating system you are running on - it displays macOS by default, but you can change it to "Running on Windows" through the link just above the command line text.
+            </li>
+
+			<li>
+                Open a command prompt and navigate to the <b>TaskyPro</b> folder under <b>Exercise 1</b>. Android. You will need the binaries for the Android app as well as the UI Tests to submit (these are in different folders). Check both folders and if you don't see any binaries for one or both of them, then open the project in your IDE and do a rebuild.
+            </li>
+
+			<li>
+                Copy the command to the clipboard and paste it into the Terminal. 
+                <ul class="indent-none">
+                    <li>
+                        You will need to change the <b>yourAppFile.apk</b> to the name of the app, namely <b>com.xamarin.samples.taskyandroid.apk</b>.
+                    </li>    
+                    <li>
+                        You will also need to change the <b>pathToTestDllFolder</b> entry to the <b>bin</b> folder of your NUnit based project where the DLL was created.
+                    </li> 
+                    <li>
+                        You will need to make sure that the <b>test-cloud.exe</b> app has the correct path leading up to the executable based on your current working directory. The executable is located in the <b>Packages</b> folder and was downloaded with the Xamarin.UITest component added to your UI Tests project.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Once you have all the paths set correctly hit return to see the application and its tests get uploaded to Test Cloud. If you get an error, correct it and try again.
+            </li>
+
+			<li>
+                Wait for the upload to finish and the tests to execute on your selected device. Once they have finished you should see a URL with the results of the tests. 
+            </li>
+            <li>
+                Copy the resulting URL and paste it into a browser where you can see the results of the test run. 
+                Alternatively, you can log in with your same userid and look at the dashboard for completed test runs.
+            </li>
+            <li>
+                Explore the test run results using the Test Cloud portal.
+            </li>			
+        </ol>
+
+        <h1>Summary</h1>
+        <p>
+        Congratulations, you have successfully uploaded your app and UI Tests to Test Cloud to and have seen them execute on a number of Android devices. 
+        </p>
+        
+        <div class="align-right">
+            <a href="../Start%20Here.html">Go Back</a>
+        </div>
+    </section>
+
+    <script src="./res/js/jquery.min.js"></script>
+    <script src="./res/js/prettify.js"></script>
+    <script src="./res/js/script.js"></script>
+
+    <footer>Copyright (C) 2017 Xamarin</footer>
+</body>
+</html>
