@@ -22,9 +22,9 @@ namespace BarcodeXam.Views
 
         }
 
-        private void List(object sender, EventArgs e)
+        async void List(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new ListPage());
         }
 
         private void About(object sender, EventArgs e)
