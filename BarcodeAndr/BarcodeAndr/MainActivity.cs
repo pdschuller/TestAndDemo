@@ -5,6 +5,10 @@ using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
 using System;
+using ZXing;
+using ZXing.Mobile;
+using ZXing.Net.Mobile;
+using ZXing.Net.Mobile.Android;
 
 namespace BarcodeAndr
 {
@@ -44,13 +48,20 @@ namespace BarcodeAndr
             
             // grab the button
             Button ScanButton = FindViewById<Button>(Resource.Id.ScanButton);
-            ScanButton.Click += OpenScanner;
+            ScanButton.Click += OpenScannerAsync;
         }
-        void OpenScanner(object sender, EventArgs e)
+        async void OpenScannerAsync(object sender, EventArgs e)
         {
-            var ff = e;
-            // var scanner = new ZXing.BarcodeReader();
-            // var rr = await scanner.Sca
+            // Initialize the scanner first so it can track the current context
+            MobileBarcodeScanner.Initialize(Application);
+
+            var scanner = new ZXing.Mobile.MobileBarcodeScanner();
+
+            var result = await scanner.Scan();
+
+            if (result != null)
+                Console.WriteLine("Scanned Barcode: " + result.Text);
+
         }
     }
 }
