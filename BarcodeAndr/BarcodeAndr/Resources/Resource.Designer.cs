@@ -2342,9 +2342,6 @@ namespace BarcodeAndr
 			// aapt resource value: 0x7f080032
 			public const int ALT = 2131230770;
 			
-			// aapt resource value: 0x7f08008e
-			public const int Blah = 2131230862;
-			
 			// aapt resource value: 0x7f080033
 			public const int CTRL = 2131230771;
 			
@@ -2626,6 +2623,9 @@ namespace BarcodeAndr
 			
 			// aapt resource value: 0x7f080028
 			public const int multiply = 2131230760;
+			
+			// aapt resource value: 0x7f08008e
+			public const int navigation = 2131230862;
 			
 			// aapt resource value: 0x7f0800b3
 			public const int navigation_dashboard = 2131230899;
