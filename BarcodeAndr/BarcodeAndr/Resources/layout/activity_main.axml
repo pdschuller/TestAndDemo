@@ -40,7 +40,7 @@
         an:layout_marginTop="@dimen/activity_vertical_margin"
   />-->
 <!-- the layout for this is in Resources/layout/menu/navigation.xml as show in app:menu below
-          -->
+ 
     <android.support.design.widget.BottomNavigationView
         an:id="@+id/navigation"
         an:layout_width="wrap_content"
@@ -50,4 +50,5 @@
         an:background="?android:attr/windowBackground"
         an:layout_gravity="bottom"
         app:menu="@menu/navigation" />
+           -->
 </LinearLayout>

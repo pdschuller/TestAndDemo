@@ -9,7 +9,8 @@ using System;
 namespace BarcodeAndr
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
-    public class MainActivity : AppCompatActivity, BottomNavigationView.IOnNavigationItemSelectedListener
+    // public class MainActivity : AppCompatActivity, BottomNavigationView.IOnNavigationItemSelectedListener
+    public class MainActivity : AppCompatActivity
     {
         private TextView MyTextView;
 
@@ -38,8 +39,8 @@ namespace BarcodeAndr
             // wire up the Label; we change its text to match the Avtivity/View that is displayed
             MyTextView = FindViewById<TextView>(Resource.Id.MyTextView);
 
-            BottomNavigationView navigation = FindViewById<BottomNavigationView>(Resource.Id.navigation);
-            navigation.SetOnNavigationItemSelectedListener(this);
+            //BottomNavigationView navigation = FindViewById<BottomNavigationView>(Resource.Id.navigation);
+            //navigation.SetOnNavigationItemSelectedListener(this);
             
             // grab the button
             Button ScanButton = FindViewById<Button>(Resource.Id.ScanButton);
@@ -48,7 +49,8 @@ namespace BarcodeAndr
         void OpenScanner(object sender, EventArgs e)
         {
             var ff = e;
-            // var scanner = new ZXing.Client.
+            // var scanner = new ZXing.BarcodeReader();
+            // var rr = await scanner.Sca
         }
     }
 }
