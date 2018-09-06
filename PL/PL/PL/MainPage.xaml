@@ -9,6 +9,15 @@
         <Label Text="Welcome to Xamarin.Forms! pds, SqlClient" 
            HorizontalOptions="Center"
            VerticalOptions="Start" />
+        <Button Text="Display Items" Clicked="DisplayItems"></Button>
+        <ListView x:Name="BcTypesListView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Label Text="{Binding ClientName}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        
     </StackLayout>
 
 </ContentPage>
