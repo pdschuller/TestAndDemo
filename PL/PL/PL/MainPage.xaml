@@ -8,7 +8,7 @@
         <!-- Place new controls here -->
         <Label Text="Welcome to Xamarin.Forms! pds" 
            HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+           VerticalOptions="Start" />
     </StackLayout>
 
 </ContentPage>
