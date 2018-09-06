@@ -6,7 +6,7 @@
 
     <StackLayout>
         <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms! pds" 
+        <Label Text="Welcome to Xamarin.Forms! pds, SqlClient" 
            HorizontalOptions="Center"
            VerticalOptions="Start" />
     </StackLayout>
