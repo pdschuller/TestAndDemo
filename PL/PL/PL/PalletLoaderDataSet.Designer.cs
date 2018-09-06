@@ -24,6 +24,12 @@ namespace PL {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class PalletLoaderDataSet : global::System.Data.DataSet {
         
+        private ClientBarcodeTypeDataTable tableClientBarcodeType;
+        
+        private ClientBarcodeTypeSpecDataTable tableClientBarcodeTypeSpec;
+        
+        private global::System.Data.DataRelation relationFK_ClientBarcodeTypeSpec_ClientBarcodeType;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -52,6 +58,12 @@ namespace PL {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
+                if ((ds.Tables["ClientBarcodeType"] != null)) {
+                    base.Tables.Add(new ClientBarcodeTypeDataTable(ds.Tables["ClientBarcodeType"]));
+                }
+                if ((ds.Tables["ClientBarcodeTypeSpec"] != null)) {
+                    base.Tables.Add(new ClientBarcodeTypeSpecDataTable(ds.Tables["ClientBarcodeTypeSpec"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -68,6 +80,26 @@ namespace PL {
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
             base.Tables.CollectionChanged += schemaChangedHandler;
             this.Relations.CollectionChanged += schemaChangedHandler;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ClientBarcodeTypeDataTable ClientBarcodeType {
+            get {
+                return this.tableClientBarcodeType;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public ClientBarcodeTypeSpecDataTable ClientBarcodeTypeSpec {
+            get {
+                return this.tableClientBarcodeTypeSpec;
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -137,6 +169,12 @@ namespace PL {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
+                if ((ds.Tables["ClientBarcodeType"] != null)) {
+                    base.Tables.Add(new ClientBarcodeTypeDataTable(ds.Tables["ClientBarcodeType"]));
+                }
+                if ((ds.Tables["ClientBarcodeTypeSpec"] != null)) {
+                    base.Tables.Add(new ClientBarcodeTypeSpecDataTable(ds.Tables["ClientBarcodeTypeSpec"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -170,6 +208,19 @@ namespace PL {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         internal void InitVars(bool initTable) {
+            this.tableClientBarcodeType = ((ClientBarcodeTypeDataTable)(base.Tables["ClientBarcodeType"]));
+            if ((initTable == true)) {
+                if ((this.tableClientBarcodeType != null)) {
+                    this.tableClientBarcodeType.InitVars();
+                }
+            }
+            this.tableClientBarcodeTypeSpec = ((ClientBarcodeTypeSpecDataTable)(base.Tables["ClientBarcodeTypeSpec"]));
+            if ((initTable == true)) {
+                if ((this.tableClientBarcodeTypeSpec != null)) {
+                    this.tableClientBarcodeTypeSpec.InitVars();
+                }
+            }
+            this.relationFK_ClientBarcodeTypeSpec_ClientBarcodeType = this.Relations["FK_ClientBarcodeTypeSpec_ClientBarcodeType"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -180,6 +231,26 @@ namespace PL {
             this.Namespace = "http://tempuri.org/PalletLoaderDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
+            this.tableClientBarcodeType = new ClientBarcodeTypeDataTable();
+            base.Tables.Add(this.tableClientBarcodeType);
+            this.tableClientBarcodeTypeSpec = new ClientBarcodeTypeSpecDataTable();
+            base.Tables.Add(this.tableClientBarcodeTypeSpec);
+            this.relationFK_ClientBarcodeTypeSpec_ClientBarcodeType = new global::System.Data.DataRelation("FK_ClientBarcodeTypeSpec_ClientBarcodeType", new global::System.Data.DataColumn[] {
+                        this.tableClientBarcodeType.ClientBarcodeTypeIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableClientBarcodeTypeSpec.ClientBarcodeTypeIDColumn}, false);
+            this.Relations.Add(this.relationFK_ClientBarcodeTypeSpec_ClientBarcodeType);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private bool ShouldSerializeClientBarcodeType() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private bool ShouldSerializeClientBarcodeTypeSpec() {
+            return false;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -235,6 +306,2572 @@ namespace PL {
             }
             xs.Add(dsSchema);
             return type;
+        }
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public delegate void ClientBarcodeTypeRowChangeEventHandler(object sender, ClientBarcodeTypeRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public delegate void ClientBarcodeTypeSpecRowChangeEventHandler(object sender, ClientBarcodeTypeSpecRowChangeEvent e);
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class ClientBarcodeTypeDataTable : global::System.Data.TypedTableBase<ClientBarcodeTypeRow> {
+            
+            private global::System.Data.DataColumn columnClientBarcodeTypeID;
+            
+            private global::System.Data.DataColumn columnClientName;
+            
+            private global::System.Data.DataColumn columnPrefix;
+            
+            private global::System.Data.DataColumn columnReviewed;
+            
+            private global::System.Data.DataColumn columnClientDesc;
+            
+            private global::System.Data.DataColumn columnDeleted;
+            
+            private global::System.Data.DataColumn columnCreatedDatetime;
+            
+            private global::System.Data.DataColumn columnModifiedDatetime;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ClientBarcodeTypeDataTable() {
+                this.TableName = "ClientBarcodeType";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal ClientBarcodeTypeDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected ClientBarcodeTypeDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ClientBarcodeTypeIDColumn {
+                get {
+                    return this.columnClientBarcodeTypeID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ClientNameColumn {
+                get {
+                    return this.columnClientName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn PrefixColumn {
+                get {
+                    return this.columnPrefix;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ReviewedColumn {
+                get {
+                    return this.columnReviewed;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ClientDescColumn {
+                get {
+                    return this.columnClientDesc;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn DeletedColumn {
+                get {
+                    return this.columnDeleted;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn CreatedDatetimeColumn {
+                get {
+                    return this.columnCreatedDatetime;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ModifiedDatetimeColumn {
+                get {
+                    return this.columnModifiedDatetime;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ClientBarcodeTypeRow this[int index] {
+                get {
+                    return ((ClientBarcodeTypeRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event ClientBarcodeTypeRowChangeEventHandler ClientBarcodeTypeRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event ClientBarcodeTypeRowChangeEventHandler ClientBarcodeTypeRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event ClientBarcodeTypeRowChangeEventHandler ClientBarcodeTypeRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event ClientBarcodeTypeRowChangeEventHandler ClientBarcodeTypeRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void AddClientBarcodeTypeRow(ClientBarcodeTypeRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ClientBarcodeTypeRow AddClientBarcodeTypeRow(string ClientName, string Prefix, bool Reviewed, string ClientDesc, bool Deleted, System.DateTime CreatedDatetime, System.DateTime ModifiedDatetime) {
+                ClientBarcodeTypeRow rowClientBarcodeTypeRow = ((ClientBarcodeTypeRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        ClientName,
+                        Prefix,
+                        Reviewed,
+                        ClientDesc,
+                        Deleted,
+                        CreatedDatetime,
+                        ModifiedDatetime};
+                rowClientBarcodeTypeRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowClientBarcodeTypeRow);
+                return rowClientBarcodeTypeRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ClientBarcodeTypeRow FindByClientBarcodeTypeID(int ClientBarcodeTypeID) {
+                return ((ClientBarcodeTypeRow)(this.Rows.Find(new object[] {
+                            ClientBarcodeTypeID})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                ClientBarcodeTypeDataTable cln = ((ClientBarcodeTypeDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new ClientBarcodeTypeDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal void InitVars() {
+                this.columnClientBarcodeTypeID = base.Columns["ClientBarcodeTypeID"];
+                this.columnClientName = base.Columns["ClientName"];
+                this.columnPrefix = base.Columns["Prefix"];
+                this.columnReviewed = base.Columns["Reviewed"];
+                this.columnClientDesc = base.Columns["ClientDesc"];
+                this.columnDeleted = base.Columns["Deleted"];
+                this.columnCreatedDatetime = base.Columns["CreatedDatetime"];
+                this.columnModifiedDatetime = base.Columns["ModifiedDatetime"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            private void InitClass() {
+                this.columnClientBarcodeTypeID = new global::System.Data.DataColumn("ClientBarcodeTypeID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnClientBarcodeTypeID);
+                this.columnClientName = new global::System.Data.DataColumn("ClientName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnClientName);
+                this.columnPrefix = new global::System.Data.DataColumn("Prefix", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPrefix);
+                this.columnReviewed = new global::System.Data.DataColumn("Reviewed", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnReviewed);
+                this.columnClientDesc = new global::System.Data.DataColumn("ClientDesc", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnClientDesc);
+                this.columnDeleted = new global::System.Data.DataColumn("Deleted", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDeleted);
+                this.columnCreatedDatetime = new global::System.Data.DataColumn("CreatedDatetime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCreatedDatetime);
+                this.columnModifiedDatetime = new global::System.Data.DataColumn("ModifiedDatetime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnModifiedDatetime);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnClientBarcodeTypeID}, true));
+                this.columnClientBarcodeTypeID.AutoIncrement = true;
+                this.columnClientBarcodeTypeID.AutoIncrementSeed = -1;
+                this.columnClientBarcodeTypeID.AutoIncrementStep = -1;
+                this.columnClientBarcodeTypeID.AllowDBNull = false;
+                this.columnClientBarcodeTypeID.ReadOnly = true;
+                this.columnClientBarcodeTypeID.Unique = true;
+                this.columnClientName.AllowDBNull = false;
+                this.columnClientName.MaxLength = 50;
+                this.columnPrefix.AllowDBNull = false;
+                this.columnPrefix.MaxLength = 16;
+                this.columnReviewed.AllowDBNull = false;
+                this.columnClientDesc.MaxLength = 128;
+                this.columnDeleted.AllowDBNull = false;
+                this.columnCreatedDatetime.AllowDBNull = false;
+                this.columnModifiedDatetime.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ClientBarcodeTypeRow NewClientBarcodeTypeRow() {
+                return ((ClientBarcodeTypeRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new ClientBarcodeTypeRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(ClientBarcodeTypeRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.ClientBarcodeTypeRowChanged != null)) {
+                    this.ClientBarcodeTypeRowChanged(this, new ClientBarcodeTypeRowChangeEvent(((ClientBarcodeTypeRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.ClientBarcodeTypeRowChanging != null)) {
+                    this.ClientBarcodeTypeRowChanging(this, new ClientBarcodeTypeRowChangeEvent(((ClientBarcodeTypeRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.ClientBarcodeTypeRowDeleted != null)) {
+                    this.ClientBarcodeTypeRowDeleted(this, new ClientBarcodeTypeRowChangeEvent(((ClientBarcodeTypeRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.ClientBarcodeTypeRowDeleting != null)) {
+                    this.ClientBarcodeTypeRowDeleting(this, new ClientBarcodeTypeRowChangeEvent(((ClientBarcodeTypeRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void RemoveClientBarcodeTypeRow(ClientBarcodeTypeRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                PalletLoaderDataSet ds = new PalletLoaderDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "ClientBarcodeTypeDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class ClientBarcodeTypeSpecDataTable : global::System.Data.TypedTableBase<ClientBarcodeTypeSpecRow> {
+            
+            private global::System.Data.DataColumn columnClientBarcodeTypeSpecID;
+            
+            private global::System.Data.DataColumn columnClientBarcodeTypeID;
+            
+            private global::System.Data.DataColumn columnBarcodeTypeName;
+            
+            private global::System.Data.DataColumn columnRequired;
+            
+            private global::System.Data.DataColumn columnContainsStore;
+            
+            private global::System.Data.DataColumn columnRegexIdentExtract;
+            
+            private global::System.Data.DataColumn columnLength;
+            
+            private global::System.Data.DataColumn columnndxStore1Start;
+            
+            private global::System.Data.DataColumn columnndxStore1End;
+            
+            private global::System.Data.DataColumn columnndxStore2Start;
+            
+            private global::System.Data.DataColumn columnndxStore2End;
+            
+            private global::System.Data.DataColumn columnStoreConcatChar;
+            
+            private global::System.Data.DataColumn columnZeroPadLeft;
+            
+            private global::System.Data.DataColumn columnZeroPadRight;
+            
+            private global::System.Data.DataColumn columnReviewed;
+            
+            private global::System.Data.DataColumn columnDeleted;
+            
+            private global::System.Data.DataColumn columnCreatedDatetime;
+            
+            private global::System.Data.DataColumn columnModifiedDatetime;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ClientBarcodeTypeSpecDataTable() {
+                this.TableName = "ClientBarcodeTypeSpec";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal ClientBarcodeTypeSpecDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected ClientBarcodeTypeSpecDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ClientBarcodeTypeSpecIDColumn {
+                get {
+                    return this.columnClientBarcodeTypeSpecID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ClientBarcodeTypeIDColumn {
+                get {
+                    return this.columnClientBarcodeTypeID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn BarcodeTypeNameColumn {
+                get {
+                    return this.columnBarcodeTypeName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn RequiredColumn {
+                get {
+                    return this.columnRequired;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ContainsStoreColumn {
+                get {
+                    return this.columnContainsStore;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn RegexIdentExtractColumn {
+                get {
+                    return this.columnRegexIdentExtract;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn LengthColumn {
+                get {
+                    return this.columnLength;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ndxStore1StartColumn {
+                get {
+                    return this.columnndxStore1Start;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ndxStore1EndColumn {
+                get {
+                    return this.columnndxStore1End;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ndxStore2StartColumn {
+                get {
+                    return this.columnndxStore2Start;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ndxStore2EndColumn {
+                get {
+                    return this.columnndxStore2End;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn StoreConcatCharColumn {
+                get {
+                    return this.columnStoreConcatChar;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ZeroPadLeftColumn {
+                get {
+                    return this.columnZeroPadLeft;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ZeroPadRightColumn {
+                get {
+                    return this.columnZeroPadRight;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ReviewedColumn {
+                get {
+                    return this.columnReviewed;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn DeletedColumn {
+                get {
+                    return this.columnDeleted;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn CreatedDatetimeColumn {
+                get {
+                    return this.columnCreatedDatetime;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ModifiedDatetimeColumn {
+                get {
+                    return this.columnModifiedDatetime;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ClientBarcodeTypeSpecRow this[int index] {
+                get {
+                    return ((ClientBarcodeTypeSpecRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event ClientBarcodeTypeSpecRowChangeEventHandler ClientBarcodeTypeSpecRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event ClientBarcodeTypeSpecRowChangeEventHandler ClientBarcodeTypeSpecRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event ClientBarcodeTypeSpecRowChangeEventHandler ClientBarcodeTypeSpecRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public event ClientBarcodeTypeSpecRowChangeEventHandler ClientBarcodeTypeSpecRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void AddClientBarcodeTypeSpecRow(ClientBarcodeTypeSpecRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ClientBarcodeTypeSpecRow AddClientBarcodeTypeSpecRow(
+                        ClientBarcodeTypeRow parentClientBarcodeTypeRowByFK_ClientBarcodeTypeSpec_ClientBarcodeType, 
+                        string BarcodeTypeName, 
+                        bool Required, 
+                        bool ContainsStore, 
+                        string RegexIdentExtract, 
+                        int Length, 
+                        int ndxStore1Start, 
+                        int ndxStore1End, 
+                        int ndxStore2Start, 
+                        int ndxStore2End, 
+                        string StoreConcatChar, 
+                        int ZeroPadLeft, 
+                        int ZeroPadRight, 
+                        bool Reviewed, 
+                        bool Deleted, 
+                        System.DateTime CreatedDatetime, 
+                        System.DateTime ModifiedDatetime) {
+                ClientBarcodeTypeSpecRow rowClientBarcodeTypeSpecRow = ((ClientBarcodeTypeSpecRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        null,
+                        BarcodeTypeName,
+                        Required,
+                        ContainsStore,
+                        RegexIdentExtract,
+                        Length,
+                        ndxStore1Start,
+                        ndxStore1End,
+                        ndxStore2Start,
+                        ndxStore2End,
+                        StoreConcatChar,
+                        ZeroPadLeft,
+                        ZeroPadRight,
+                        Reviewed,
+                        Deleted,
+                        CreatedDatetime,
+                        ModifiedDatetime};
+                if ((parentClientBarcodeTypeRowByFK_ClientBarcodeTypeSpec_ClientBarcodeType != null)) {
+                    columnValuesArray[1] = parentClientBarcodeTypeRowByFK_ClientBarcodeTypeSpec_ClientBarcodeType[0];
+                }
+                rowClientBarcodeTypeSpecRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowClientBarcodeTypeSpecRow);
+                return rowClientBarcodeTypeSpecRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ClientBarcodeTypeSpecRow FindByClientBarcodeTypeSpecID(int ClientBarcodeTypeSpecID) {
+                return ((ClientBarcodeTypeSpecRow)(this.Rows.Find(new object[] {
+                            ClientBarcodeTypeSpecID})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                ClientBarcodeTypeSpecDataTable cln = ((ClientBarcodeTypeSpecDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new ClientBarcodeTypeSpecDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal void InitVars() {
+                this.columnClientBarcodeTypeSpecID = base.Columns["ClientBarcodeTypeSpecID"];
+                this.columnClientBarcodeTypeID = base.Columns["ClientBarcodeTypeID"];
+                this.columnBarcodeTypeName = base.Columns["BarcodeTypeName"];
+                this.columnRequired = base.Columns["Required"];
+                this.columnContainsStore = base.Columns["ContainsStore"];
+                this.columnRegexIdentExtract = base.Columns["RegexIdentExtract"];
+                this.columnLength = base.Columns["Length"];
+                this.columnndxStore1Start = base.Columns["ndxStore1Start"];
+                this.columnndxStore1End = base.Columns["ndxStore1End"];
+                this.columnndxStore2Start = base.Columns["ndxStore2Start"];
+                this.columnndxStore2End = base.Columns["ndxStore2End"];
+                this.columnStoreConcatChar = base.Columns["StoreConcatChar"];
+                this.columnZeroPadLeft = base.Columns["ZeroPadLeft"];
+                this.columnZeroPadRight = base.Columns["ZeroPadRight"];
+                this.columnReviewed = base.Columns["Reviewed"];
+                this.columnDeleted = base.Columns["Deleted"];
+                this.columnCreatedDatetime = base.Columns["CreatedDatetime"];
+                this.columnModifiedDatetime = base.Columns["ModifiedDatetime"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            private void InitClass() {
+                this.columnClientBarcodeTypeSpecID = new global::System.Data.DataColumn("ClientBarcodeTypeSpecID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnClientBarcodeTypeSpecID);
+                this.columnClientBarcodeTypeID = new global::System.Data.DataColumn("ClientBarcodeTypeID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnClientBarcodeTypeID);
+                this.columnBarcodeTypeName = new global::System.Data.DataColumn("BarcodeTypeName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBarcodeTypeName);
+                this.columnRequired = new global::System.Data.DataColumn("Required", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRequired);
+                this.columnContainsStore = new global::System.Data.DataColumn("ContainsStore", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnContainsStore);
+                this.columnRegexIdentExtract = new global::System.Data.DataColumn("RegexIdentExtract", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRegexIdentExtract);
+                this.columnLength = new global::System.Data.DataColumn("Length", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLength);
+                this.columnndxStore1Start = new global::System.Data.DataColumn("ndxStore1Start", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnndxStore1Start);
+                this.columnndxStore1End = new global::System.Data.DataColumn("ndxStore1End", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnndxStore1End);
+                this.columnndxStore2Start = new global::System.Data.DataColumn("ndxStore2Start", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnndxStore2Start);
+                this.columnndxStore2End = new global::System.Data.DataColumn("ndxStore2End", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnndxStore2End);
+                this.columnStoreConcatChar = new global::System.Data.DataColumn("StoreConcatChar", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStoreConcatChar);
+                this.columnZeroPadLeft = new global::System.Data.DataColumn("ZeroPadLeft", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnZeroPadLeft);
+                this.columnZeroPadRight = new global::System.Data.DataColumn("ZeroPadRight", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnZeroPadRight);
+                this.columnReviewed = new global::System.Data.DataColumn("Reviewed", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnReviewed);
+                this.columnDeleted = new global::System.Data.DataColumn("Deleted", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDeleted);
+                this.columnCreatedDatetime = new global::System.Data.DataColumn("CreatedDatetime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCreatedDatetime);
+                this.columnModifiedDatetime = new global::System.Data.DataColumn("ModifiedDatetime", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnModifiedDatetime);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnClientBarcodeTypeSpecID}, true));
+                this.columnClientBarcodeTypeSpecID.AutoIncrement = true;
+                this.columnClientBarcodeTypeSpecID.AutoIncrementSeed = -1;
+                this.columnClientBarcodeTypeSpecID.AutoIncrementStep = -1;
+                this.columnClientBarcodeTypeSpecID.AllowDBNull = false;
+                this.columnClientBarcodeTypeSpecID.ReadOnly = true;
+                this.columnClientBarcodeTypeSpecID.Unique = true;
+                this.columnClientBarcodeTypeID.AllowDBNull = false;
+                this.columnBarcodeTypeName.AllowDBNull = false;
+                this.columnBarcodeTypeName.MaxLength = 32;
+                this.columnRequired.AllowDBNull = false;
+                this.columnContainsStore.AllowDBNull = false;
+                this.columnRegexIdentExtract.MaxLength = 128;
+                this.columnLength.AllowDBNull = false;
+                this.columnStoreConcatChar.MaxLength = 1;
+                this.columnZeroPadLeft.AllowDBNull = false;
+                this.columnZeroPadRight.AllowDBNull = false;
+                this.columnReviewed.AllowDBNull = false;
+                this.columnDeleted.AllowDBNull = false;
+                this.columnCreatedDatetime.AllowDBNull = false;
+                this.columnModifiedDatetime.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ClientBarcodeTypeSpecRow NewClientBarcodeTypeSpecRow() {
+                return ((ClientBarcodeTypeSpecRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new ClientBarcodeTypeSpecRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(ClientBarcodeTypeSpecRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.ClientBarcodeTypeSpecRowChanged != null)) {
+                    this.ClientBarcodeTypeSpecRowChanged(this, new ClientBarcodeTypeSpecRowChangeEvent(((ClientBarcodeTypeSpecRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.ClientBarcodeTypeSpecRowChanging != null)) {
+                    this.ClientBarcodeTypeSpecRowChanging(this, new ClientBarcodeTypeSpecRowChangeEvent(((ClientBarcodeTypeSpecRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.ClientBarcodeTypeSpecRowDeleted != null)) {
+                    this.ClientBarcodeTypeSpecRowDeleted(this, new ClientBarcodeTypeSpecRowChangeEvent(((ClientBarcodeTypeSpecRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.ClientBarcodeTypeSpecRowDeleting != null)) {
+                    this.ClientBarcodeTypeSpecRowDeleting(this, new ClientBarcodeTypeSpecRowChangeEvent(((ClientBarcodeTypeSpecRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void RemoveClientBarcodeTypeSpecRow(ClientBarcodeTypeSpecRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                PalletLoaderDataSet ds = new PalletLoaderDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "ClientBarcodeTypeSpecDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class ClientBarcodeTypeRow : global::System.Data.DataRow {
+            
+            private ClientBarcodeTypeDataTable tableClientBarcodeType;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal ClientBarcodeTypeRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableClientBarcodeType = ((ClientBarcodeTypeDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int ClientBarcodeTypeID {
+                get {
+                    return ((int)(this[this.tableClientBarcodeType.ClientBarcodeTypeIDColumn]));
+                }
+                set {
+                    this[this.tableClientBarcodeType.ClientBarcodeTypeIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string ClientName {
+                get {
+                    return ((string)(this[this.tableClientBarcodeType.ClientNameColumn]));
+                }
+                set {
+                    this[this.tableClientBarcodeType.ClientNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Prefix {
+                get {
+                    return ((string)(this[this.tableClientBarcodeType.PrefixColumn]));
+                }
+                set {
+                    this[this.tableClientBarcodeType.PrefixColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Reviewed {
+                get {
+                    return ((bool)(this[this.tableClientBarcodeType.ReviewedColumn]));
+                }
+                set {
+                    this[this.tableClientBarcodeType.ReviewedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string ClientDesc {
+                get {
+                    try {
+                        return ((string)(this[this.tableClientBarcodeType.ClientDescColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ClientDesc\' in table \'ClientBarcodeType\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableClientBarcodeType.ClientDescColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Deleted {
+                get {
+                    return ((bool)(this[this.tableClientBarcodeType.DeletedColumn]));
+                }
+                set {
+                    this[this.tableClientBarcodeType.DeletedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public System.DateTime CreatedDatetime {
+                get {
+                    return ((global::System.DateTime)(this[this.tableClientBarcodeType.CreatedDatetimeColumn]));
+                }
+                set {
+                    this[this.tableClientBarcodeType.CreatedDatetimeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public System.DateTime ModifiedDatetime {
+                get {
+                    return ((global::System.DateTime)(this[this.tableClientBarcodeType.ModifiedDatetimeColumn]));
+                }
+                set {
+                    this[this.tableClientBarcodeType.ModifiedDatetimeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsClientDescNull() {
+                return this.IsNull(this.tableClientBarcodeType.ClientDescColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetClientDescNull() {
+                this[this.tableClientBarcodeType.ClientDescColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ClientBarcodeTypeSpecRow[] GetClientBarcodeTypeSpecRows() {
+                if ((this.Table.ChildRelations["FK_ClientBarcodeTypeSpec_ClientBarcodeType"] == null)) {
+                    return new ClientBarcodeTypeSpecRow[0];
+                }
+                else {
+                    return ((ClientBarcodeTypeSpecRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ClientBarcodeTypeSpec_ClientBarcodeType"])));
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class ClientBarcodeTypeSpecRow : global::System.Data.DataRow {
+            
+            private ClientBarcodeTypeSpecDataTable tableClientBarcodeTypeSpec;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            internal ClientBarcodeTypeSpecRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableClientBarcodeTypeSpec = ((ClientBarcodeTypeSpecDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int ClientBarcodeTypeSpecID {
+                get {
+                    return ((int)(this[this.tableClientBarcodeTypeSpec.ClientBarcodeTypeSpecIDColumn]));
+                }
+                set {
+                    this[this.tableClientBarcodeTypeSpec.ClientBarcodeTypeSpecIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int ClientBarcodeTypeID {
+                get {
+                    return ((int)(this[this.tableClientBarcodeTypeSpec.ClientBarcodeTypeIDColumn]));
+                }
+                set {
+                    this[this.tableClientBarcodeTypeSpec.ClientBarcodeTypeIDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string BarcodeTypeName {
+                get {
+                    return ((string)(this[this.tableClientBarcodeTypeSpec.BarcodeTypeNameColumn]));
+                }
+                set {
+                    this[this.tableClientBarcodeTypeSpec.BarcodeTypeNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Required {
+                get {
+                    return ((bool)(this[this.tableClientBarcodeTypeSpec.RequiredColumn]));
+                }
+                set {
+                    this[this.tableClientBarcodeTypeSpec.RequiredColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool ContainsStore {
+                get {
+                    return ((bool)(this[this.tableClientBarcodeTypeSpec.ContainsStoreColumn]));
+                }
+                set {
+                    this[this.tableClientBarcodeTypeSpec.ContainsStoreColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string RegexIdentExtract {
+                get {
+                    try {
+                        return ((string)(this[this.tableClientBarcodeTypeSpec.RegexIdentExtractColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'RegexIdentExtract\' in table \'ClientBarcodeTypeSpec\' is DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tableClientBarcodeTypeSpec.RegexIdentExtractColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int Length {
+                get {
+                    return ((int)(this[this.tableClientBarcodeTypeSpec.LengthColumn]));
+                }
+                set {
+                    this[this.tableClientBarcodeTypeSpec.LengthColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int ndxStore1Start {
+                get {
+                    try {
+                        return ((int)(this[this.tableClientBarcodeTypeSpec.ndxStore1StartColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ndxStore1Start\' in table \'ClientBarcodeTypeSpec\' is DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tableClientBarcodeTypeSpec.ndxStore1StartColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int ndxStore1End {
+                get {
+                    try {
+                        return ((int)(this[this.tableClientBarcodeTypeSpec.ndxStore1EndColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ndxStore1End\' in table \'ClientBarcodeTypeSpec\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableClientBarcodeTypeSpec.ndxStore1EndColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int ndxStore2Start {
+                get {
+                    try {
+                        return ((int)(this[this.tableClientBarcodeTypeSpec.ndxStore2StartColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ndxStore2Start\' in table \'ClientBarcodeTypeSpec\' is DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tableClientBarcodeTypeSpec.ndxStore2StartColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int ndxStore2End {
+                get {
+                    try {
+                        return ((int)(this[this.tableClientBarcodeTypeSpec.ndxStore2EndColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ndxStore2End\' in table \'ClientBarcodeTypeSpec\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableClientBarcodeTypeSpec.ndxStore2EndColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string StoreConcatChar {
+                get {
+                    try {
+                        return ((string)(this[this.tableClientBarcodeTypeSpec.StoreConcatCharColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'StoreConcatChar\' in table \'ClientBarcodeTypeSpec\' is DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tableClientBarcodeTypeSpec.StoreConcatCharColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int ZeroPadLeft {
+                get {
+                    return ((int)(this[this.tableClientBarcodeTypeSpec.ZeroPadLeftColumn]));
+                }
+                set {
+                    this[this.tableClientBarcodeTypeSpec.ZeroPadLeftColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int ZeroPadRight {
+                get {
+                    return ((int)(this[this.tableClientBarcodeTypeSpec.ZeroPadRightColumn]));
+                }
+                set {
+                    this[this.tableClientBarcodeTypeSpec.ZeroPadRightColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Reviewed {
+                get {
+                    return ((bool)(this[this.tableClientBarcodeTypeSpec.ReviewedColumn]));
+                }
+                set {
+                    this[this.tableClientBarcodeTypeSpec.ReviewedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool Deleted {
+                get {
+                    return ((bool)(this[this.tableClientBarcodeTypeSpec.DeletedColumn]));
+                }
+                set {
+                    this[this.tableClientBarcodeTypeSpec.DeletedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public System.DateTime CreatedDatetime {
+                get {
+                    return ((global::System.DateTime)(this[this.tableClientBarcodeTypeSpec.CreatedDatetimeColumn]));
+                }
+                set {
+                    this[this.tableClientBarcodeTypeSpec.CreatedDatetimeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public System.DateTime ModifiedDatetime {
+                get {
+                    return ((global::System.DateTime)(this[this.tableClientBarcodeTypeSpec.ModifiedDatetimeColumn]));
+                }
+                set {
+                    this[this.tableClientBarcodeTypeSpec.ModifiedDatetimeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ClientBarcodeTypeRow ClientBarcodeTypeRow {
+                get {
+                    return ((ClientBarcodeTypeRow)(this.GetParentRow(this.Table.ParentRelations["FK_ClientBarcodeTypeSpec_ClientBarcodeType"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_ClientBarcodeTypeSpec_ClientBarcodeType"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsRegexIdentExtractNull() {
+                return this.IsNull(this.tableClientBarcodeTypeSpec.RegexIdentExtractColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetRegexIdentExtractNull() {
+                this[this.tableClientBarcodeTypeSpec.RegexIdentExtractColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsndxStore1StartNull() {
+                return this.IsNull(this.tableClientBarcodeTypeSpec.ndxStore1StartColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetndxStore1StartNull() {
+                this[this.tableClientBarcodeTypeSpec.ndxStore1StartColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsndxStore1EndNull() {
+                return this.IsNull(this.tableClientBarcodeTypeSpec.ndxStore1EndColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetndxStore1EndNull() {
+                this[this.tableClientBarcodeTypeSpec.ndxStore1EndColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsndxStore2StartNull() {
+                return this.IsNull(this.tableClientBarcodeTypeSpec.ndxStore2StartColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetndxStore2StartNull() {
+                this[this.tableClientBarcodeTypeSpec.ndxStore2StartColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsndxStore2EndNull() {
+                return this.IsNull(this.tableClientBarcodeTypeSpec.ndxStore2EndColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetndxStore2EndNull() {
+                this[this.tableClientBarcodeTypeSpec.ndxStore2EndColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsStoreConcatCharNull() {
+                return this.IsNull(this.tableClientBarcodeTypeSpec.StoreConcatCharColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetStoreConcatCharNull() {
+                this[this.tableClientBarcodeTypeSpec.StoreConcatCharColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public class ClientBarcodeTypeRowChangeEvent : global::System.EventArgs {
+            
+            private ClientBarcodeTypeRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ClientBarcodeTypeRowChangeEvent(ClientBarcodeTypeRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ClientBarcodeTypeRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public class ClientBarcodeTypeSpecRowChangeEvent : global::System.EventArgs {
+            
+            private ClientBarcodeTypeSpecRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ClientBarcodeTypeSpecRowChangeEvent(ClientBarcodeTypeSpecRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ClientBarcodeTypeSpecRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+    }
+}
+namespace PL.PalletLoaderDataSetTableAdapters {
+    
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class ClientBarcodeTypeTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public ClientBarcodeTypeTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "ClientBarcodeType";
+            tableMapping.ColumnMappings.Add("ClientBarcodeTypeID", "ClientBarcodeTypeID");
+            tableMapping.ColumnMappings.Add("ClientName", "ClientName");
+            tableMapping.ColumnMappings.Add("Prefix", "Prefix");
+            tableMapping.ColumnMappings.Add("Reviewed", "Reviewed");
+            tableMapping.ColumnMappings.Add("ClientDesc", "ClientDesc");
+            tableMapping.ColumnMappings.Add("Deleted", "Deleted");
+            tableMapping.ColumnMappings.Add("CreatedDatetime", "CreatedDatetime");
+            tableMapping.ColumnMappings.Add("ModifiedDatetime", "ModifiedDatetime");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[ClientBarcodeType] WHERE (([ClientBarcodeTypeID] = @Original_ClientBarcodeTypeID) AND ([ClientName] = @Original_ClientName) AND ([Prefix] = @Original_Prefix) AND ([Reviewed] = @Original_Reviewed) AND ((@IsNull_ClientDesc = 1 AND [ClientDesc] IS NULL) OR ([ClientDesc] = @Original_ClientDesc)) AND ([Deleted] = @Original_Deleted) AND ([CreatedDatetime] = @Original_CreatedDatetime) AND ([ModifiedDatetime] = @Original_ModifiedDatetime))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ClientBarcodeTypeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientBarcodeTypeID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ClientName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Prefix", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Prefix", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Reviewed", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Reviewed", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ClientDesc", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientDesc", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ClientDesc", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientDesc", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Deleted", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Deleted", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CreatedDatetime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CreatedDatetime", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ModifiedDatetime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ModifiedDatetime", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[ClientBarcodeType] ([ClientName], [Prefix], [Reviewed], [ClientDesc], [Deleted], [CreatedDatetime], [ModifiedDatetime]) VALUES (@ClientName, @Prefix, @Reviewed, @ClientDesc, @Deleted, @CreatedDatetime, @ModifiedDatetime);
+SELECT ClientBarcodeTypeID, ClientName, Prefix, Reviewed, ClientDesc, Deleted, CreatedDatetime, ModifiedDatetime FROM ClientBarcodeType WHERE (ClientBarcodeTypeID = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClientName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Prefix", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Prefix", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Reviewed", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Reviewed", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClientDesc", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientDesc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Deleted", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Deleted", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CreatedDatetime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CreatedDatetime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ModifiedDatetime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ModifiedDatetime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[ClientBarcodeType] SET [ClientName] = @ClientName, [Prefix] = @Prefix, [Reviewed] = @Reviewed, [ClientDesc] = @ClientDesc, [Deleted] = @Deleted, [CreatedDatetime] = @CreatedDatetime, [ModifiedDatetime] = @ModifiedDatetime WHERE (([ClientBarcodeTypeID] = @Original_ClientBarcodeTypeID) AND ([ClientName] = @Original_ClientName) AND ([Prefix] = @Original_Prefix) AND ([Reviewed] = @Original_Reviewed) AND ((@IsNull_ClientDesc = 1 AND [ClientDesc] IS NULL) OR ([ClientDesc] = @Original_ClientDesc)) AND ([Deleted] = @Original_Deleted) AND ([CreatedDatetime] = @Original_CreatedDatetime) AND ([ModifiedDatetime] = @Original_ModifiedDatetime));
+SELECT ClientBarcodeTypeID, ClientName, Prefix, Reviewed, ClientDesc, Deleted, CreatedDatetime, ModifiedDatetime FROM ClientBarcodeType WHERE (ClientBarcodeTypeID = @ClientBarcodeTypeID)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClientName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Prefix", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Prefix", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Reviewed", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Reviewed", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClientDesc", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientDesc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Deleted", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Deleted", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CreatedDatetime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CreatedDatetime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ModifiedDatetime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ModifiedDatetime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ClientBarcodeTypeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientBarcodeTypeID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ClientName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Prefix", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Prefix", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Reviewed", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Reviewed", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ClientDesc", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientDesc", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ClientDesc", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientDesc", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Deleted", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Deleted", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CreatedDatetime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CreatedDatetime", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ModifiedDatetime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ModifiedDatetime", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClientBarcodeTypeID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ClientBarcodeTypeID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = "";
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT ClientBarcodeTypeID, ClientName, Prefix, Reviewed, ClientDesc, Deleted, Cr" +
+                "eatedDatetime, ModifiedDatetime FROM dbo.ClientBarcodeType";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(PalletLoaderDataSet.ClientBarcodeTypeDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual PalletLoaderDataSet.ClientBarcodeTypeDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            PalletLoaderDataSet.ClientBarcodeTypeDataTable dataTable = new PalletLoaderDataSet.ClientBarcodeTypeDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(PalletLoaderDataSet.ClientBarcodeTypeDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(PalletLoaderDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "ClientBarcodeType");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_ClientBarcodeTypeID, string Original_ClientName, string Original_Prefix, bool Original_Reviewed, string Original_ClientDesc, bool Original_Deleted, System.DateTime Original_CreatedDatetime, System.DateTime Original_ModifiedDatetime) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ClientBarcodeTypeID));
+            if ((Original_ClientName == null)) {
+                throw new global::System.ArgumentNullException("Original_ClientName");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_ClientName));
+            }
+            if ((Original_Prefix == null)) {
+                throw new global::System.ArgumentNullException("Original_Prefix");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_Prefix));
+            }
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((bool)(Original_Reviewed));
+            if ((Original_ClientDesc == null)) {
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Original_ClientDesc));
+            }
+            this.Adapter.DeleteCommand.Parameters[6].Value = ((bool)(Original_Deleted));
+            this.Adapter.DeleteCommand.Parameters[7].Value = ((System.DateTime)(Original_CreatedDatetime));
+            this.Adapter.DeleteCommand.Parameters[8].Value = ((System.DateTime)(Original_ModifiedDatetime));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(string ClientName, string Prefix, bool Reviewed, string ClientDesc, bool Deleted, System.DateTime CreatedDatetime, System.DateTime ModifiedDatetime) {
+            if ((ClientName == null)) {
+                throw new global::System.ArgumentNullException("ClientName");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(ClientName));
+            }
+            if ((Prefix == null)) {
+                throw new global::System.ArgumentNullException("Prefix");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Prefix));
+            }
+            this.Adapter.InsertCommand.Parameters[2].Value = ((bool)(Reviewed));
+            if ((ClientDesc == null)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(ClientDesc));
+            }
+            this.Adapter.InsertCommand.Parameters[4].Value = ((bool)(Deleted));
+            this.Adapter.InsertCommand.Parameters[5].Value = ((System.DateTime)(CreatedDatetime));
+            this.Adapter.InsertCommand.Parameters[6].Value = ((System.DateTime)(ModifiedDatetime));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(
+                    string ClientName, 
+                    string Prefix, 
+                    bool Reviewed, 
+                    string ClientDesc, 
+                    bool Deleted, 
+                    System.DateTime CreatedDatetime, 
+                    System.DateTime ModifiedDatetime, 
+                    int Original_ClientBarcodeTypeID, 
+                    string Original_ClientName, 
+                    string Original_Prefix, 
+                    bool Original_Reviewed, 
+                    string Original_ClientDesc, 
+                    bool Original_Deleted, 
+                    System.DateTime Original_CreatedDatetime, 
+                    System.DateTime Original_ModifiedDatetime, 
+                    int ClientBarcodeTypeID) {
+            if ((ClientName == null)) {
+                throw new global::System.ArgumentNullException("ClientName");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(ClientName));
+            }
+            if ((Prefix == null)) {
+                throw new global::System.ArgumentNullException("Prefix");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Prefix));
+            }
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((bool)(Reviewed));
+            if ((ClientDesc == null)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(ClientDesc));
+            }
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((bool)(Deleted));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((System.DateTime)(CreatedDatetime));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((System.DateTime)(ModifiedDatetime));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_ClientBarcodeTypeID));
+            if ((Original_ClientName == null)) {
+                throw new global::System.ArgumentNullException("Original_ClientName");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_ClientName));
+            }
+            if ((Original_Prefix == null)) {
+                throw new global::System.ArgumentNullException("Original_Prefix");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_Prefix));
+            }
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((bool)(Original_Reviewed));
+            if ((Original_ClientDesc == null)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_ClientDesc));
+            }
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((bool)(Original_Deleted));
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((System.DateTime)(Original_CreatedDatetime));
+            this.Adapter.UpdateCommand.Parameters[15].Value = ((System.DateTime)(Original_ModifiedDatetime));
+            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(ClientBarcodeTypeID));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string ClientName, string Prefix, bool Reviewed, string ClientDesc, bool Deleted, System.DateTime CreatedDatetime, System.DateTime ModifiedDatetime, int Original_ClientBarcodeTypeID, string Original_ClientName, string Original_Prefix, bool Original_Reviewed, string Original_ClientDesc, bool Original_Deleted, System.DateTime Original_CreatedDatetime, System.DateTime Original_ModifiedDatetime) {
+            return this.Update(ClientName, Prefix, Reviewed, ClientDesc, Deleted, CreatedDatetime, ModifiedDatetime, Original_ClientBarcodeTypeID, Original_ClientName, Original_Prefix, Original_Reviewed, Original_ClientDesc, Original_Deleted, Original_CreatedDatetime, Original_ModifiedDatetime, Original_ClientBarcodeTypeID);
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class ClientBarcodeTypeSpecTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public ClientBarcodeTypeSpecTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "ClientBarcodeTypeSpec";
+            tableMapping.ColumnMappings.Add("ClientBarcodeTypeSpecID", "ClientBarcodeTypeSpecID");
+            tableMapping.ColumnMappings.Add("ClientBarcodeTypeID", "ClientBarcodeTypeID");
+            tableMapping.ColumnMappings.Add("BarcodeTypeName", "BarcodeTypeName");
+            tableMapping.ColumnMappings.Add("Required", "Required");
+            tableMapping.ColumnMappings.Add("ContainsStore", "ContainsStore");
+            tableMapping.ColumnMappings.Add("RegexIdentExtract", "RegexIdentExtract");
+            tableMapping.ColumnMappings.Add("Length", "Length");
+            tableMapping.ColumnMappings.Add("ndxStore1Start", "ndxStore1Start");
+            tableMapping.ColumnMappings.Add("ndxStore1End", "ndxStore1End");
+            tableMapping.ColumnMappings.Add("ndxStore2Start", "ndxStore2Start");
+            tableMapping.ColumnMappings.Add("ndxStore2End", "ndxStore2End");
+            tableMapping.ColumnMappings.Add("StoreConcatChar", "StoreConcatChar");
+            tableMapping.ColumnMappings.Add("ZeroPadLeft", "ZeroPadLeft");
+            tableMapping.ColumnMappings.Add("ZeroPadRight", "ZeroPadRight");
+            tableMapping.ColumnMappings.Add("Reviewed", "Reviewed");
+            tableMapping.ColumnMappings.Add("Deleted", "Deleted");
+            tableMapping.ColumnMappings.Add("CreatedDatetime", "CreatedDatetime");
+            tableMapping.ColumnMappings.Add("ModifiedDatetime", "ModifiedDatetime");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[ClientBarcodeTypeSpec] WHERE (([ClientBarcodeTypeSpecID] = @Original_ClientBarcodeTypeSpecID) AND ([ClientBarcodeTypeID] = @Original_ClientBarcodeTypeID) AND ([BarcodeTypeName] = @Original_BarcodeTypeName) AND ([Required] = @Original_Required) AND ([ContainsStore] = @Original_ContainsStore) AND ((@IsNull_RegexIdentExtract = 1 AND [RegexIdentExtract] IS NULL) OR ([RegexIdentExtract] = @Original_RegexIdentExtract)) AND ([Length] = @Original_Length) AND ((@IsNull_ndxStore1Start = 1 AND [ndxStore1Start] IS NULL) OR ([ndxStore1Start] = @Original_ndxStore1Start)) AND ((@IsNull_ndxStore1End = 1 AND [ndxStore1End] IS NULL) OR ([ndxStore1End] = @Original_ndxStore1End)) AND ((@IsNull_ndxStore2Start = 1 AND [ndxStore2Start] IS NULL) OR ([ndxStore2Start] = @Original_ndxStore2Start)) AND ((@IsNull_ndxStore2End = 1 AND [ndxStore2End] IS NULL) OR ([ndxStore2End] = @Original_ndxStore2End)) AND ((@IsNull_StoreConcatChar = 1 AND [StoreConcatChar] IS NULL) OR ([StoreConcatChar] = @Original_StoreConcatChar)) AND ([ZeroPadLeft] = @Original_ZeroPadLeft) AND ([ZeroPadRight] = @Original_ZeroPadRight) AND ([Reviewed] = @Original_Reviewed) AND ([Deleted] = @Original_Deleted) AND ([CreatedDatetime] = @Original_CreatedDatetime) AND ([ModifiedDatetime] = @Original_ModifiedDatetime))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ClientBarcodeTypeSpecID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientBarcodeTypeSpecID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ClientBarcodeTypeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientBarcodeTypeID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BarcodeTypeName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BarcodeTypeName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Required", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Required", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ContainsStore", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ContainsStore", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_RegexIdentExtract", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RegexIdentExtract", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RegexIdentExtract", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RegexIdentExtract", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Length", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Length", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ndxStore1Start", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ndxStore1Start", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ndxStore1Start", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ndxStore1Start", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ndxStore1End", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ndxStore1End", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ndxStore1End", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ndxStore1End", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ndxStore2Start", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ndxStore2Start", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ndxStore2Start", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ndxStore2Start", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ndxStore2End", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ndxStore2End", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ndxStore2End", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ndxStore2End", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_StoreConcatChar", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StoreConcatChar", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StoreConcatChar", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StoreConcatChar", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ZeroPadLeft", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ZeroPadLeft", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ZeroPadRight", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ZeroPadRight", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Reviewed", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Reviewed", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Deleted", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Deleted", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CreatedDatetime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CreatedDatetime", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ModifiedDatetime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ModifiedDatetime", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[ClientBarcodeTypeSpec] ([ClientBarcodeTypeID], [BarcodeTypeName], [Required], [ContainsStore], [RegexIdentExtract], [Length], [ndxStore1Start], [ndxStore1End], [ndxStore2Start], [ndxStore2End], [StoreConcatChar], [ZeroPadLeft], [ZeroPadRight], [Reviewed], [Deleted], [CreatedDatetime], [ModifiedDatetime]) VALUES (@ClientBarcodeTypeID, @BarcodeTypeName, @Required, @ContainsStore, @RegexIdentExtract, @Length, @ndxStore1Start, @ndxStore1End, @ndxStore2Start, @ndxStore2End, @StoreConcatChar, @ZeroPadLeft, @ZeroPadRight, @Reviewed, @Deleted, @CreatedDatetime, @ModifiedDatetime);
+SELECT ClientBarcodeTypeSpecID, ClientBarcodeTypeID, BarcodeTypeName, Required, ContainsStore, RegexIdentExtract, Length, ndxStore1Start, ndxStore1End, ndxStore2Start, ndxStore2End, StoreConcatChar, ZeroPadLeft, ZeroPadRight, Reviewed, Deleted, CreatedDatetime, ModifiedDatetime FROM ClientBarcodeTypeSpec WHERE (ClientBarcodeTypeSpecID = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClientBarcodeTypeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientBarcodeTypeID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BarcodeTypeName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BarcodeTypeName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Required", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Required", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ContainsStore", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ContainsStore", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RegexIdentExtract", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RegexIdentExtract", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Length", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Length", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ndxStore1Start", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ndxStore1Start", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ndxStore1End", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ndxStore1End", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ndxStore2Start", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ndxStore2Start", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ndxStore2End", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ndxStore2End", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StoreConcatChar", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StoreConcatChar", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ZeroPadLeft", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ZeroPadLeft", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ZeroPadRight", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ZeroPadRight", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Reviewed", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Reviewed", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Deleted", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Deleted", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CreatedDatetime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CreatedDatetime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ModifiedDatetime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ModifiedDatetime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[ClientBarcodeTypeSpec] SET [ClientBarcodeTypeID] = @ClientBarcodeTy" +
+                "peID, [BarcodeTypeName] = @BarcodeTypeName, [Required] = @Required, [ContainsSto" +
+                "re] = @ContainsStore, [RegexIdentExtract] = @RegexIdentExtract, [Length] = @Leng" +
+                "th, [ndxStore1Start] = @ndxStore1Start, [ndxStore1End] = @ndxStore1End, [ndxStor" +
+                "e2Start] = @ndxStore2Start, [ndxStore2End] = @ndxStore2End, [StoreConcatChar] = " +
+                "@StoreConcatChar, [ZeroPadLeft] = @ZeroPadLeft, [ZeroPadRight] = @ZeroPadRight, " +
+                "[Reviewed] = @Reviewed, [Deleted] = @Deleted, [CreatedDatetime] = @CreatedDateti" +
+                "me, [ModifiedDatetime] = @ModifiedDatetime WHERE (([ClientBarcodeTypeSpecID] = @" +
+                "Original_ClientBarcodeTypeSpecID) AND ([ClientBarcodeTypeID] = @Original_ClientB" +
+                "arcodeTypeID) AND ([BarcodeTypeName] = @Original_BarcodeTypeName) AND ([Required" +
+                "] = @Original_Required) AND ([ContainsStore] = @Original_ContainsStore) AND ((@I" +
+                "sNull_RegexIdentExtract = 1 AND [RegexIdentExtract] IS NULL) OR ([RegexIdentExtr" +
+                "act] = @Original_RegexIdentExtract)) AND ([Length] = @Original_Length) AND ((@Is" +
+                "Null_ndxStore1Start = 1 AND [ndxStore1Start] IS NULL) OR ([ndxStore1Start] = @Or" +
+                "iginal_ndxStore1Start)) AND ((@IsNull_ndxStore1End = 1 AND [ndxStore1End] IS NUL" +
+                "L) OR ([ndxStore1End] = @Original_ndxStore1End)) AND ((@IsNull_ndxStore2Start = " +
+                "1 AND [ndxStore2Start] IS NULL) OR ([ndxStore2Start] = @Original_ndxStore2Start)" +
+                ") AND ((@IsNull_ndxStore2End = 1 AND [ndxStore2End] IS NULL) OR ([ndxStore2End] " +
+                "= @Original_ndxStore2End)) AND ((@IsNull_StoreConcatChar = 1 AND [StoreConcatCha" +
+                "r] IS NULL) OR ([StoreConcatChar] = @Original_StoreConcatChar)) AND ([ZeroPadLef" +
+                "t] = @Original_ZeroPadLeft) AND ([ZeroPadRight] = @Original_ZeroPadRight) AND ([" +
+                "Reviewed] = @Original_Reviewed) AND ([Deleted] = @Original_Deleted) AND ([Create" +
+                "dDatetime] = @Original_CreatedDatetime) AND ([ModifiedDatetime] = @Original_Modi" +
+                "fiedDatetime));\r\nSELECT ClientBarcodeTypeSpecID, ClientBarcodeTypeID, BarcodeTyp" +
+                "eName, Required, ContainsStore, RegexIdentExtract, Length, ndxStore1Start, ndxSt" +
+                "ore1End, ndxStore2Start, ndxStore2End, StoreConcatChar, ZeroPadLeft, ZeroPadRigh" +
+                "t, Reviewed, Deleted, CreatedDatetime, ModifiedDatetime FROM ClientBarcodeTypeSp" +
+                "ec WHERE (ClientBarcodeTypeSpecID = @ClientBarcodeTypeSpecID)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClientBarcodeTypeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientBarcodeTypeID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BarcodeTypeName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BarcodeTypeName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Required", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Required", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ContainsStore", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ContainsStore", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RegexIdentExtract", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RegexIdentExtract", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Length", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Length", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ndxStore1Start", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ndxStore1Start", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ndxStore1End", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ndxStore1End", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ndxStore2Start", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ndxStore2Start", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ndxStore2End", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ndxStore2End", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StoreConcatChar", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StoreConcatChar", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ZeroPadLeft", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ZeroPadLeft", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ZeroPadRight", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ZeroPadRight", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Reviewed", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Reviewed", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Deleted", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Deleted", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CreatedDatetime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CreatedDatetime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ModifiedDatetime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ModifiedDatetime", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ClientBarcodeTypeSpecID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientBarcodeTypeSpecID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ClientBarcodeTypeID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ClientBarcodeTypeID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BarcodeTypeName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BarcodeTypeName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Required", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Required", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ContainsStore", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ContainsStore", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_RegexIdentExtract", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RegexIdentExtract", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RegexIdentExtract", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RegexIdentExtract", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Length", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Length", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ndxStore1Start", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ndxStore1Start", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ndxStore1Start", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ndxStore1Start", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ndxStore1End", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ndxStore1End", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ndxStore1End", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ndxStore1End", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ndxStore2Start", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ndxStore2Start", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ndxStore2Start", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ndxStore2Start", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_ndxStore2End", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ndxStore2End", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ndxStore2End", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ndxStore2End", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_StoreConcatChar", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StoreConcatChar", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StoreConcatChar", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StoreConcatChar", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ZeroPadLeft", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ZeroPadLeft", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ZeroPadRight", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ZeroPadRight", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Reviewed", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Reviewed", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Deleted", global::System.Data.SqlDbType.Bit, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Deleted", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CreatedDatetime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CreatedDatetime", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ModifiedDatetime", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ModifiedDatetime", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ClientBarcodeTypeSpecID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ClientBarcodeTypeSpecID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = "";
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = @"SELECT ClientBarcodeTypeSpecID, ClientBarcodeTypeID, BarcodeTypeName, Required, ContainsStore, RegexIdentExtract, Length, ndxStore1Start, ndxStore1End, ndxStore2Start, ndxStore2End, StoreConcatChar, ZeroPadLeft, ZeroPadRight, Reviewed, Deleted, CreatedDatetime, ModifiedDatetime FROM dbo.ClientBarcodeTypeSpec";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(PalletLoaderDataSet.ClientBarcodeTypeSpecDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual PalletLoaderDataSet.ClientBarcodeTypeSpecDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            PalletLoaderDataSet.ClientBarcodeTypeSpecDataTable dataTable = new PalletLoaderDataSet.ClientBarcodeTypeSpecDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(PalletLoaderDataSet.ClientBarcodeTypeSpecDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(PalletLoaderDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "ClientBarcodeTypeSpec");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(
+                    int Original_ClientBarcodeTypeSpecID, 
+                    int Original_ClientBarcodeTypeID, 
+                    string Original_BarcodeTypeName, 
+                    bool Original_Required, 
+                    bool Original_ContainsStore, 
+                    string Original_RegexIdentExtract, 
+                    int Original_Length, 
+                    global::System.Nullable<int> Original_ndxStore1Start, 
+                    global::System.Nullable<int> Original_ndxStore1End, 
+                    global::System.Nullable<int> Original_ndxStore2Start, 
+                    global::System.Nullable<int> Original_ndxStore2End, 
+                    string Original_StoreConcatChar, 
+                    int Original_ZeroPadLeft, 
+                    int Original_ZeroPadRight, 
+                    bool Original_Reviewed, 
+                    bool Original_Deleted, 
+                    System.DateTime Original_CreatedDatetime, 
+                    System.DateTime Original_ModifiedDatetime) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ClientBarcodeTypeSpecID));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_ClientBarcodeTypeID));
+            if ((Original_BarcodeTypeName == null)) {
+                throw new global::System.ArgumentNullException("Original_BarcodeTypeName");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_BarcodeTypeName));
+            }
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((bool)(Original_Required));
+            this.Adapter.DeleteCommand.Parameters[4].Value = ((bool)(Original_ContainsStore));
+            if ((Original_RegexIdentExtract == null)) {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_RegexIdentExtract));
+            }
+            this.Adapter.DeleteCommand.Parameters[7].Value = ((int)(Original_Length));
+            if ((Original_ndxStore1Start.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((int)(Original_ndxStore1Start.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            if ((Original_ndxStore1End.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((int)(Original_ndxStore1End.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            if ((Original_ndxStore2Start.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((int)(Original_ndxStore2Start.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[13].Value = global::System.DBNull.Value;
+            }
+            if ((Original_ndxStore2End.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((int)(Original_ndxStore2End.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[15].Value = global::System.DBNull.Value;
+            }
+            if ((Original_StoreConcatChar == null)) {
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[17].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((string)(Original_StoreConcatChar));
+            }
+            this.Adapter.DeleteCommand.Parameters[18].Value = ((int)(Original_ZeroPadLeft));
+            this.Adapter.DeleteCommand.Parameters[19].Value = ((int)(Original_ZeroPadRight));
+            this.Adapter.DeleteCommand.Parameters[20].Value = ((bool)(Original_Reviewed));
+            this.Adapter.DeleteCommand.Parameters[21].Value = ((bool)(Original_Deleted));
+            this.Adapter.DeleteCommand.Parameters[22].Value = ((System.DateTime)(Original_CreatedDatetime));
+            this.Adapter.DeleteCommand.Parameters[23].Value = ((System.DateTime)(Original_ModifiedDatetime));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(
+                    int ClientBarcodeTypeID, 
+                    string BarcodeTypeName, 
+                    bool Required, 
+                    bool ContainsStore, 
+                    string RegexIdentExtract, 
+                    int Length, 
+                    global::System.Nullable<int> ndxStore1Start, 
+                    global::System.Nullable<int> ndxStore1End, 
+                    global::System.Nullable<int> ndxStore2Start, 
+                    global::System.Nullable<int> ndxStore2End, 
+                    string StoreConcatChar, 
+                    int ZeroPadLeft, 
+                    int ZeroPadRight, 
+                    bool Reviewed, 
+                    bool Deleted, 
+                    System.DateTime CreatedDatetime, 
+                    System.DateTime ModifiedDatetime) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(ClientBarcodeTypeID));
+            if ((BarcodeTypeName == null)) {
+                throw new global::System.ArgumentNullException("BarcodeTypeName");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(BarcodeTypeName));
+            }
+            this.Adapter.InsertCommand.Parameters[2].Value = ((bool)(Required));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((bool)(ContainsStore));
+            if ((RegexIdentExtract == null)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(RegexIdentExtract));
+            }
+            this.Adapter.InsertCommand.Parameters[5].Value = ((int)(Length));
+            if ((ndxStore1Start.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((int)(ndxStore1Start.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            if ((ndxStore1End.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((int)(ndxStore1End.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            if ((ndxStore2Start.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((int)(ndxStore2Start.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            if ((ndxStore2End.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[9].Value = ((int)(ndxStore2End.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            if ((StoreConcatChar == null)) {
+                this.Adapter.InsertCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[10].Value = ((string)(StoreConcatChar));
+            }
+            this.Adapter.InsertCommand.Parameters[11].Value = ((int)(ZeroPadLeft));
+            this.Adapter.InsertCommand.Parameters[12].Value = ((int)(ZeroPadRight));
+            this.Adapter.InsertCommand.Parameters[13].Value = ((bool)(Reviewed));
+            this.Adapter.InsertCommand.Parameters[14].Value = ((bool)(Deleted));
+            this.Adapter.InsertCommand.Parameters[15].Value = ((System.DateTime)(CreatedDatetime));
+            this.Adapter.InsertCommand.Parameters[16].Value = ((System.DateTime)(ModifiedDatetime));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(
+                    int ClientBarcodeTypeID, 
+                    string BarcodeTypeName, 
+                    bool Required, 
+                    bool ContainsStore, 
+                    string RegexIdentExtract, 
+                    int Length, 
+                    global::System.Nullable<int> ndxStore1Start, 
+                    global::System.Nullable<int> ndxStore1End, 
+                    global::System.Nullable<int> ndxStore2Start, 
+                    global::System.Nullable<int> ndxStore2End, 
+                    string StoreConcatChar, 
+                    int ZeroPadLeft, 
+                    int ZeroPadRight, 
+                    bool Reviewed, 
+                    bool Deleted, 
+                    System.DateTime CreatedDatetime, 
+                    System.DateTime ModifiedDatetime, 
+                    int Original_ClientBarcodeTypeSpecID, 
+                    int Original_ClientBarcodeTypeID, 
+                    string Original_BarcodeTypeName, 
+                    bool Original_Required, 
+                    bool Original_ContainsStore, 
+                    string Original_RegexIdentExtract, 
+                    int Original_Length, 
+                    global::System.Nullable<int> Original_ndxStore1Start, 
+                    global::System.Nullable<int> Original_ndxStore1End, 
+                    global::System.Nullable<int> Original_ndxStore2Start, 
+                    global::System.Nullable<int> Original_ndxStore2End, 
+                    string Original_StoreConcatChar, 
+                    int Original_ZeroPadLeft, 
+                    int Original_ZeroPadRight, 
+                    bool Original_Reviewed, 
+                    bool Original_Deleted, 
+                    System.DateTime Original_CreatedDatetime, 
+                    System.DateTime Original_ModifiedDatetime, 
+                    int ClientBarcodeTypeSpecID) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(ClientBarcodeTypeID));
+            if ((BarcodeTypeName == null)) {
+                throw new global::System.ArgumentNullException("BarcodeTypeName");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(BarcodeTypeName));
+            }
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((bool)(Required));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((bool)(ContainsStore));
+            if ((RegexIdentExtract == null)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(RegexIdentExtract));
+            }
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Length));
+            if ((ndxStore1Start.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(ndxStore1Start.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            if ((ndxStore1End.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(ndxStore1End.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            if ((ndxStore2Start.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(ndxStore2Start.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            if ((ndxStore2End.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(ndxStore2End.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            if ((StoreConcatChar == null)) {
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(StoreConcatChar));
+            }
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(ZeroPadLeft));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(ZeroPadRight));
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((bool)(Reviewed));
+            this.Adapter.UpdateCommand.Parameters[14].Value = ((bool)(Deleted));
+            this.Adapter.UpdateCommand.Parameters[15].Value = ((System.DateTime)(CreatedDatetime));
+            this.Adapter.UpdateCommand.Parameters[16].Value = ((System.DateTime)(ModifiedDatetime));
+            this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(Original_ClientBarcodeTypeSpecID));
+            this.Adapter.UpdateCommand.Parameters[18].Value = ((int)(Original_ClientBarcodeTypeID));
+            if ((Original_BarcodeTypeName == null)) {
+                throw new global::System.ArgumentNullException("Original_BarcodeTypeName");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_BarcodeTypeName));
+            }
+            this.Adapter.UpdateCommand.Parameters[20].Value = ((bool)(Original_Required));
+            this.Adapter.UpdateCommand.Parameters[21].Value = ((bool)(Original_ContainsStore));
+            if ((Original_RegexIdentExtract == null)) {
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((string)(Original_RegexIdentExtract));
+            }
+            this.Adapter.UpdateCommand.Parameters[24].Value = ((int)(Original_Length));
+            if ((Original_ndxStore1Start.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((int)(Original_ndxStore1Start.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
+            }
+            if ((Original_ndxStore1End.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((int)(Original_ndxStore1End.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
+            }
+            if ((Original_ndxStore2Start.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((int)(Original_ndxStore2Start.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
+            }
+            if ((Original_ndxStore2End.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((int)(Original_ndxStore2End.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[32].Value = global::System.DBNull.Value;
+            }
+            if ((Original_StoreConcatChar == null)) {
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((string)(Original_StoreConcatChar));
+            }
+            this.Adapter.UpdateCommand.Parameters[35].Value = ((int)(Original_ZeroPadLeft));
+            this.Adapter.UpdateCommand.Parameters[36].Value = ((int)(Original_ZeroPadRight));
+            this.Adapter.UpdateCommand.Parameters[37].Value = ((bool)(Original_Reviewed));
+            this.Adapter.UpdateCommand.Parameters[38].Value = ((bool)(Original_Deleted));
+            this.Adapter.UpdateCommand.Parameters[39].Value = ((System.DateTime)(Original_CreatedDatetime));
+            this.Adapter.UpdateCommand.Parameters[40].Value = ((System.DateTime)(Original_ModifiedDatetime));
+            this.Adapter.UpdateCommand.Parameters[41].Value = ((int)(ClientBarcodeTypeSpecID));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(
+                    int ClientBarcodeTypeID, 
+                    string BarcodeTypeName, 
+                    bool Required, 
+                    bool ContainsStore, 
+                    string RegexIdentExtract, 
+                    int Length, 
+                    global::System.Nullable<int> ndxStore1Start, 
+                    global::System.Nullable<int> ndxStore1End, 
+                    global::System.Nullable<int> ndxStore2Start, 
+                    global::System.Nullable<int> ndxStore2End, 
+                    string StoreConcatChar, 
+                    int ZeroPadLeft, 
+                    int ZeroPadRight, 
+                    bool Reviewed, 
+                    bool Deleted, 
+                    System.DateTime CreatedDatetime, 
+                    System.DateTime ModifiedDatetime, 
+                    int Original_ClientBarcodeTypeSpecID, 
+                    int Original_ClientBarcodeTypeID, 
+                    string Original_BarcodeTypeName, 
+                    bool Original_Required, 
+                    bool Original_ContainsStore, 
+                    string Original_RegexIdentExtract, 
+                    int Original_Length, 
+                    global::System.Nullable<int> Original_ndxStore1Start, 
+                    global::System.Nullable<int> Original_ndxStore1End, 
+                    global::System.Nullable<int> Original_ndxStore2Start, 
+                    global::System.Nullable<int> Original_ndxStore2End, 
+                    string Original_StoreConcatChar, 
+                    int Original_ZeroPadLeft, 
+                    int Original_ZeroPadRight, 
+                    bool Original_Reviewed, 
+                    bool Original_Deleted, 
+                    System.DateTime Original_CreatedDatetime, 
+                    System.DateTime Original_ModifiedDatetime) {
+            return this.Update(ClientBarcodeTypeID, BarcodeTypeName, Required, ContainsStore, RegexIdentExtract, Length, ndxStore1Start, ndxStore1End, ndxStore2Start, ndxStore2End, StoreConcatChar, ZeroPadLeft, ZeroPadRight, Reviewed, Deleted, CreatedDatetime, ModifiedDatetime, Original_ClientBarcodeTypeSpecID, Original_ClientBarcodeTypeID, Original_BarcodeTypeName, Original_Required, Original_ContainsStore, Original_RegexIdentExtract, Original_Length, Original_ndxStore1Start, Original_ndxStore1End, Original_ndxStore2Start, Original_ndxStore2End, Original_StoreConcatChar, Original_ZeroPadLeft, Original_ZeroPadRight, Original_Reviewed, Original_Deleted, Original_CreatedDatetime, Original_ModifiedDatetime, Original_ClientBarcodeTypeSpecID);
         }
     }
 }
