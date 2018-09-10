@@ -16,19 +16,19 @@ namespace PL_Rest.Controllers
             //write insert logic  
 
         }
-        [Route("api/GetVaj")]
+        // http://localhost:54480/PL/GetVaj
+        [Route("PL/GetVaj")]
         [HttpGet]
         public string GetEmpDetails()
         {
             return "Vithal Wadje";
-
         }
-        [Route("api/GetPhil")]
+        // http://localhost:54480/PL/GetPhil
+        [Route("PL/GetPhil")]
         [HttpGet]
         public string GetPhil()
         {
             return "Phil";
-
         }
         [HttpDelete]
         public string DeleteEmpDetails(string id)
