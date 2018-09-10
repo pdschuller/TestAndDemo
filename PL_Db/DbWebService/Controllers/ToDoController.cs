@@ -22,12 +22,13 @@ namespace DbWebService.Controllers
             {
                 // Create a new TodoItem if collection is empty,
                 // which means you can't delete all TodoItems.
-                _context.TodoItems.Add(new TodoItem { Name = "api controller" });
+                _context.TodoItems.Add(new TodoItem { Name = "get all" });
                 _context.SaveChanges();
             }
         }
 
-        [HttpGet(Name="GetAll")]
+        // [HttpGet(Name="GetAll")]  works with or without this
+        // http://localhost:58361/api/Todo  hits this.  Weird actually
         public ActionResult<List<TodoItem>> GetAll()
         {
             return _context.TodoItems.ToList();

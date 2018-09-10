@@ -40,9 +40,10 @@ namespace DbWebService
             //{
             //    app.UseDeveloperExceptionPage();
             //}
-            app.UseMvc();
+            app.UseMvc();   // [Route("api/[controller]")]    {controller=ToDo}/{action=GetList}/{id?}
+            //  api/[controller]      api/{controller=Todo}     {controller=Todo}
             // app.UseMvc(routes => 
-            //       routes.MapRoute("default", "[controller=Todo]/[action=GetAll]") );
+            //       routes.MapRoute("default", "{controller=Todo}/{action=GetAll}") );
         }
     }
 }
