@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PL_Rest.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -28,6 +29,10 @@ namespace PL_Rest.Controllers
         [HttpGet]
         public string GetPhil()
         {
+            PL_DbContext AppDbContext = new PL_DbContext();
+            DateTime ShipDate = new DateTime(2018, 05, 23);
+            List<Run> TodaysRuns = AppDbContext.Runs.Where(r => r.PlannedShipDate == ShipDate).ToList();
+
             return "Phil";
         }
         [HttpDelete]
