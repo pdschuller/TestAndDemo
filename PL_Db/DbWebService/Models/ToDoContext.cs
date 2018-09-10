@@ -12,7 +12,7 @@ namespace DbWebService.Models
             : base(options)
         {
         }
-        // DbSet creates a query to make a list of ToDoItems
-        public DbSet<ToDoItem> TodoItems { get; set; }
+        // DbSet creates a query to make a list of TodoItems
+        public DbSet<TodoItem> TodoItems { get; set; }
     }
 }
