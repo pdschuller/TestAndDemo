@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>Hit webservice demo.</h2>
+
+  <button ion-button (click)="LoadGroceries()">Load Groceries</button>
+  <button ion-button (click)="LoadGroceriesString()">Load Groceries String3</button>
+  <button ion-button (click)="ClearGroceryList()">Clear Groceries</button>
+  <button ion-button (click)="WriteGroceriesJson()">Write Json to console</button>
+  
+  <p>{{LongString}}</p>
+  
+<ion-list>
+    <label *ngFor="let item of GroceriesJson">
+      {{item.GroceryName}}
+    </label>
+  </ion-list> 
+
+
+
+
+
+
+</ion-content>
