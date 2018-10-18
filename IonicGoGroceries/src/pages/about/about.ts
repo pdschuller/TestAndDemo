@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+// import { Camera } from '@ionic-native/camera';
+// import { Camera } 'cordova-plugin-camera';
+// import { Camera } from 'ionic-native';
 
 @Component({
   selector: 'page-about',

@@ -17,6 +17,7 @@ export class HomePage {
   }  
   ClearGroceryList() {
     this.LongString = "";
+    this.GroceriesJson = "";
   }
   LoadGroceries() {        
     this.myHttpClientProvider.GetGroceries().then(TheResponse => {
