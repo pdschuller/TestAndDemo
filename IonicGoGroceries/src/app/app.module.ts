@@ -13,9 +13,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 // next line was inserted when I did: ionic generate provider from the CLI
 import { MyHttpClientProvider } from '../providers/my-http-client/my-http-client';
 import { HttpClientModule} from '@angular/common/http';
-// import { Camera } from '@ionic-native/camera';
+// import { Camera } from '@ionic-native/';
 // import { Camera } from 'cordova-plugin-camera';
 // import { Camera } from 'ionic-native';
+
+// after next line add it to providers array below
+// seems best    
+// import { Camera } from '@ionic-native/camera';
 
 // pds:  NgModule is new at the end of the Ionic2 release 
 @NgModule({
