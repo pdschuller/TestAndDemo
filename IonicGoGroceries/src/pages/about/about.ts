@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-// best import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 // import { Camera, CameraOptions } from '@ionic-native';
 
 @Component({
@@ -11,14 +11,13 @@ export class AboutPage {
   public imgSrc: any;
   // public ModelProof: any;
 
-  // constructor(public navCtrl: NavController, public camera: Camera) {
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public camera: Camera) {
   }
   TakePicture() {
     console.log("logging is working");
     // this.ModelProof = "ha ha";
 
-/*     let options: CameraOptions = {
+    let options: CameraOptions = {
       quality: 100,
       destinationType: this.camera.DestinationType.FILE_URI,
       sourceType: this.camera.PictureSourceType.CAMERA,
@@ -34,7 +33,7 @@ export class AboutPage {
         this.imgSrc = imageData;
       }, (err) => {
         console.log(err);
-     }); */
+     });
 
   }
 }

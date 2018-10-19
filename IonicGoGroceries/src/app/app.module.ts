@@ -19,7 +19,7 @@ import { HttpClientModule} from '@angular/common/http';
 
 // after next line add it to providers array below
 // seems best    
-// import { Camera } from '@ionic-native/camera';
+import { Camera } from '@ionic-native/camera';
 
 // pds:  NgModule is new at the end of the Ionic2 release 
 @NgModule({
@@ -46,6 +46,7 @@ import { HttpClientModule} from '@angular/common/http';
   providers: [
     StatusBar,
     SplashScreen,
+    Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MyHttpClientProvider
   ]
