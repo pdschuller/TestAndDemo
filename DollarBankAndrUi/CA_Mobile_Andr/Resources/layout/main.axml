@@ -19,11 +19,18 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+		<ImageView
+			android:src="@mipmap/header_image"
+			android:layout_width="match_parent"
+			android:layout_height="60dp"
+			android:id="@+id/header_image"
+		android:layout_alignParentTop="true"/>
     <FrameLayout
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent" 
-        android:layout_above="@+id/bottom_navigation"/>
+        android:layout_above="@+id/bottom_navigation"
+		android:layout_below="@+id/header_image" />
     <android.support.design.widget.BottomNavigationView
       android:id="@+id/bottom_navigation"
       android:layout_width="match_parent"
