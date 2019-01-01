@@ -3201,6 +3201,9 @@ namespace CA_Mobile_Andr
 			// aapt resource value: 0x7f030007
 			public const int Icon = 2130903047;
 			
+			// aapt resource value: 0x7f030008
+			public const int sharp_exit_to_app_black_18dp = 2130903048;
+			
 			static Mipmap()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
