@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+  <item
+      android:id="@+id/menu_home"
+      android:enabled="true"
+      android:icon="@mipmap/ic_action_home"
+      android:title="Home"
+      app:showAsAction="ifRoom" />
+
+  <item
+      android:id="@+id/menu_audio"
+      android:enabled="true"
+      android:icon="@mipmap/ic_action_audiotrack"
+      android:title="Accounts"
+      app:showAsAction="ifRoom" />
+
+  <item
+      android:id="@+id/menu_video"
+      android:enabled="true"
+      android:icon="@mipmap/ic_action_videocam"
+      android:title="Transactions"
+      app:showAsAction="ifRoom" />
+
+  <item
+      android:id="@+id/menu_approvals"
+      android:enabled="true"
+      android:icon="@mipmap/ic_action_videocam"
+      android:title="Approvals"
+      app:showAsAction="ifRoom" />
+      
+
+</menu>
