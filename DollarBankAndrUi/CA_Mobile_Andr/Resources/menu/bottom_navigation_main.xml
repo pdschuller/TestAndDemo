@@ -11,21 +11,21 @@
   <item
       android:id="@+id/menu_audio"
       android:enabled="true"
-      android:icon="@mipmap/ic_action_audiotrack"
+      android:icon="@mipmap/dollar_sign"
       android:title="Accounts"
       app:showAsAction="ifRoom" />
 
   <item
       android:id="@+id/menu_video"
       android:enabled="true"
-      android:icon="@mipmap/ic_action_videocam"
+      android:icon="@mipmap/transactions"
       android:title="Transactions"
       app:showAsAction="ifRoom" />
 
   <item
       android:id="@+id/menu_approvals"
       android:enabled="true"
-      android:icon="@mipmap/ic_action_videocam"
+      android:icon="@mipmap/thumbs_up"
       android:title="Approvals"
       app:showAsAction="ifRoom" />
       

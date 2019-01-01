@@ -21,7 +21,7 @@
 			android:layout_height="60dp"
 			android:id="@+id/header_image"
 			android:layout_alignParentTop="true"
-			android:background="#fff50057" />
+			android:background="#ff303f9f" />
 		<FrameLayout
 			android:id="@+id/content_frame"
 			android:layout_width="match_parent"
