@@ -40,8 +40,12 @@ namespace CA_Mobile_Andr
             LoadFragment(e.Item.ItemId);
         }
 
-        void LoadFragment(int id)
+
+        public void LoadFragment(int id)
         {
+            //var tt = new Helpers.MainHelper();
+            //tt.LoadFragment(id);
+
             Android.Support.V4.App.Fragment fragment = null;
             switch (id)
             {
@@ -65,17 +69,6 @@ namespace CA_Mobile_Andr
                .Replace(Resource.Id.content_frame, fragment)
                .Commit();
         }
-
-        //protected override void OnCreate(Bundle savedInstanceState)
-        //{
-        //    base.OnCreate(savedInstanceState);
-        //    // Set our view from the "main" layout resource
-        //    // SetContentView(Resource.Layout.activity_main);
-        //    SetContentView(Resource.Layout.main);
-        //}
-
-
-
 
     }
 }

@@ -2,6 +2,7 @@
 using Android.OS;
 using Android.Support.V4.App;
 using Android.Views;
+using Android.Widget;
 using CA_Mobile_Andr;
 
 namespace CA_Mobile_Andr.Fragments
@@ -13,6 +14,25 @@ namespace CA_Mobile_Andr.Fragments
             base.OnCreate(savedInstanceState);
 
             // Create your fragment here
+        }
+
+        public override void OnActivityCreated(Bundle savedInstanceState)
+        {
+            base.OnActivityCreated(savedInstanceState);
+            Button GoToAccountsButton = View.FindViewById<Button>(Resource.Id.go_to_accounts_button);
+            GoToAccountsButton.Click += GoToAccountsButton_Click;
+        }
+
+        private void GoToAccountsButton_Click(object sender, System.EventArgs e)
+        {
+            // MainActivity.publicLoadFragment(Resource.Id.menu_audio);
+
+      //      var ff = new FragmentActivity();
+      //      var MyFrag = Fragment2.NewInstance();
+      //     ff.SupportFragmentManager.BeginTransaction()
+      //.Replace(Resource.Id.content_frame, MyFrag)
+      //.Commit();
+
         }
 
         public static Fragment1 NewInstance()
