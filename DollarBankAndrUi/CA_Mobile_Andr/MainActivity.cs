@@ -18,14 +18,14 @@ namespace CA_Mobile_Andr
 
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.main);
-            var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
-            if (toolbar != null)
-            {
-                SetSupportActionBar(toolbar);
-                SupportActionBar.SetDisplayHomeAsUpEnabled(false);
-                SupportActionBar.SetHomeButtonEnabled(false);
+            // var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
+            //if (toolbar != null)
+            //{
+            //    // SetSupportActionBar(toolbar);
+            //    SupportActionBar.SetDisplayHomeAsUpEnabled(false);
+            //    SupportActionBar.SetHomeButtonEnabled(false);
 
-            }
+            //}
 
             bottomNavigation = FindViewById<BottomNavigationView>(Resource.Id.bottom_navigation);
 
