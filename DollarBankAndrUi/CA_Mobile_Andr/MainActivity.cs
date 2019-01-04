@@ -9,7 +9,7 @@ using CA_Mobile_Andr.Fragments;
 
 namespace CA_Mobile_Andr
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
+    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme")]
     public class MainActivity : AppCompatActivity
     {
         BottomNavigationView bottomNavigation;

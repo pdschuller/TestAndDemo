@@ -19,8 +19,8 @@ namespace CA_Mobile_Andr.Fragments
         public override void OnActivityCreated(Bundle savedInstanceState)
         {
             base.OnActivityCreated(savedInstanceState);
-            Button GoToAccountsButton = View.FindViewById<Button>(Resource.Id.go_to_accounts_button);
-            GoToAccountsButton.Click += GoToAccountsButton_Click;
+            // Button GoToAccountsButton = View.FindViewById<Button>(Resource.Id.go_to_accounts_button);
+            // GoToAccountsButton.Click += GoToAccountsButton_Click;
         }
 
         private void GoToAccountsButton_Click(object sender, System.EventArgs e)
