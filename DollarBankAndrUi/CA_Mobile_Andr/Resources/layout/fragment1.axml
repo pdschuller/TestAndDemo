@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+	android:background="@mipmap/main_background"
+	>
+	<TextView
+		android:text="Login 731"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/textView1"
+		android:gravity="center"
+		android:layout_marginTop="100dp"
+		android:background="#ffe0e0e0" 
+	 />
+	<Button
+		android:text="Go To Accounts"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/go_to_accounts_button"
+		android:layout_marginTop="20dp" />
+</LinearLayout>
