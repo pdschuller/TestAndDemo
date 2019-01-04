@@ -3205,25 +3205,34 @@ namespace CA_Mobile_Andr
 			public const int ic_launcher = 2130903046;
 			
 			// aapt resource value: 0x7f030007
-			public const int ic_launcher_foreground = 2130903047;
+			public const int ic_launcher_dollar = 2130903047;
 			
 			// aapt resource value: 0x7f030008
-			public const int ic_launcher_round = 2130903048;
+			public const int ic_launcher_foreground = 2130903048;
 			
 			// aapt resource value: 0x7f030009
-			public const int Icon = 2130903049;
+			public const int ic_launcher_round = 2130903049;
 			
 			// aapt resource value: 0x7f03000a
-			public const int main_background = 2130903050;
+			public const int ic_launcher_round_dollar = 2130903050;
 			
 			// aapt resource value: 0x7f03000b
-			public const int sharp_exit_to_app_black_18dp = 2130903051;
+			public const int Icon = 2130903051;
 			
 			// aapt resource value: 0x7f03000c
-			public const int thumbs_up = 2130903052;
+			public const int main_background = 2130903052;
 			
 			// aapt resource value: 0x7f03000d
-			public const int transactions = 2130903053;
+			public const int main_background_2 = 2130903053;
+			
+			// aapt resource value: 0x7f03000e
+			public const int sharp_exit_to_app_black_18dp = 2130903054;
+			
+			// aapt resource value: 0x7f03000f
+			public const int thumbs_up = 2130903055;
+			
+			// aapt resource value: 0x7f030010
+			public const int transactions = 2130903056;
 			
 			static Mipmap()
 			{

@@ -5,9 +5,9 @@
 	android:layout_width="fill_parent"
 	android:layout_height="wrap_content"
 	android:gravity="center_vertical"
-	android:background="@mipmap/main_background">
+	android:background="@mipmap/main_background_2">
 	<TextView
-		android:text="Accounts 807"
+		android:text="Accounts"
 		android:textAppearance="?android:attr/textAppearanceLarge"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
