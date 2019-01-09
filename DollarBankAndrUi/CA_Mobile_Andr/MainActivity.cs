@@ -33,6 +33,7 @@ namespace CA_Mobile_Andr
             bottomNavigation.NavigationItemSelected += BottomNavigation_NavigationItemSelected;
 
             LoadFragment(Resource.Id.menu_home);
+            // no change   LoadFragment(Resource.Id.menu_audio);
         }
 
         private void BottomNavigation_NavigationItemSelected(object sender, BottomNavigationView.NavigationItemSelectedEventArgs e)
