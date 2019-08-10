@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("DemoSQLite.Resource", IsApplication=true)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("SQLiteDemo.Resource", IsApplication=true)]
 
-namespace DemoSQLite
+namespace SQLiteDemo
 {
 	
 	
