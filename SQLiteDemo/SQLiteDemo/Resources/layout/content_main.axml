@@ -10,6 +10,15 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_centerInParent="true"
-		android:text="pds Hello World!" />
+		android:text="pds Hello World!"
+		android:id="@+id/text_view_1" />
+	<Button
+		android:text="Button"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:id="@+id/button1"
+		android:layout_below="@+id/text_view_1"
+		android:layout_centerHorizontal="true"
+		android:layout_marginTop="32dp" />
 
 </RelativeLayout>
