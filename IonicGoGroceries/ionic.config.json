@@ -1,8 +1,8 @@
 {
   "name": "IonicGoGroceries",
-  "app_id": "ca4f33a7",
-  "type": "ionic-angular",
   "integrations": {
     "cordova": {}
-  }
+  },
+  "type": "ionic-angular",
+  "pro_id": "ca4f33a7"
 }
