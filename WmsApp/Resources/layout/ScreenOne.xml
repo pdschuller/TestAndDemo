@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
-        android:text="This is ScreenOne"
+        android:text="CONSIGNEES"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -12,5 +12,13 @@
         android:minHeight="25px"
         android:id="@+id/textView1"
         android:layout_margin="10dp" />
+    <ListView
+        android:minWidth="400px"
+        android:minHeight="400px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/consignees_listview"
+        android:layout_below="@+id/textView1"
+        android:visibility="visible" />
 
 </RelativeLayout>
