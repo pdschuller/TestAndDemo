@@ -24,6 +24,7 @@ namespace WmsApp.Screens
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            glb = (MainActivity)mListener;
             wsCalls = new WsCalls();
         }
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
