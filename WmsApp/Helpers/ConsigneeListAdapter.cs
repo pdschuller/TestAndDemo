@@ -16,14 +16,16 @@ namespace WmsApp.Helpers
     {
         Context context;
         List<CustomConsignee> Consignees;
+        MainActivity glb;
         public ConsigneeListAdapter(Context context)
         {
             this.context = context;
         }
-        public ConsigneeListAdapter(Context context, List<CustomConsignee> consignees)
+        public ConsigneeListAdapter(Context context, List<CustomConsignee> consignees, MainActivity mainActivity)
         {
             this.context = context;
             this.Consignees = consignees;
+            glb = mainActivity;
         }
         public override Java.Lang.Object GetItem(int position)
         {
@@ -40,30 +42,24 @@ namespace WmsApp.Helpers
 
             if (ConsigneeItem == null)
             {
-                //replace with your item and your holder items
-                //comment back in
                 ConsigneeItem = inflater.Inflate(Resource.Layout.consignee_list_item, parent, false);
             }
-
-            //ConsigneeListAdapterViewHolder holder = null;
-            //if (view != null)
-            //    holder = view.Tag as ConsigneeListAdapterViewHolder;
-            //if (holder == null)
-            //{
-            //    holder = new ConsigneeListAdapterViewHolder();
             TextView ConsigneeNameBox = ConsigneeItem.FindViewById<TextView>(Resource.Id.consignee_name);
             TextView WmscodeBox = ConsigneeItem.FindViewById<TextView>(Resource.Id.wmscode);
             CustomConsignee cc = Consignees[position];
             ConsigneeNameBox.Text = cc.CompanyName;
             WmscodeBox.Text = cc.WmsCode;
-            //holder.Title = view.FindViewById<TextView>(Resource.Id.text);
-            // view.Tag = holder;
-            // }
-            //fill in your items
-            //holder.Title.Text = "new text here";
+            ConsigneeItem.Click -= ConsigneeItem_Click;
+            ConsigneeItem.Click += ConsigneeItem_Click;
             return ConsigneeItem;
         }
-        //Fill in count here, currently 0
+        private void ConsigneeItem_Click(object sender, EventArgs e)
+        {
+            var ll = (LinearLayout)sender;
+            var WmscodeBox = ll.FindViewById<TextView>(Resource.Id.wmscode);
+            string WmsCode = WmscodeBox.Text;
+            glb.screenOne.DaysConsigneesListView.Visibility = ViewStates.Invisible;
+        }
         public override int Count
         {
             get

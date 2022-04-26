@@ -10,7 +10,8 @@ using WmsApp.Screens;
 namespace WmsApp
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = false)]
-    public class MainActivity : AppCompatActivity, BottomNavigationView.IOnNavigationItemSelectedListener
+    public class MainActivity : AppCompatActivity, BottomNavigationView.IOnNavigationItemSelectedListener, 
+        ScreenOne.OnFragmentInteractionListener
     {
         public ScreenOne screenOne;
         public ScreenTwo screenTwo;
@@ -71,6 +72,10 @@ namespace WmsApp
             frag_transaction.Replace(Resource.Id.main_screen_content, fragment);
             frag_transaction.Commit();
             return true;
+        }
+        public void onFragmentInteraction(string llString)
+        {
+            // throw new System.NotImplementedException();
         }
     }
 }
