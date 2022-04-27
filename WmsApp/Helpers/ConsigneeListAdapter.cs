@@ -51,13 +51,39 @@ namespace WmsApp.Helpers
             WmscodeBox.Text = cc.WmsCode;
             ConsigneeItem.Click -= ConsigneeItem_Click;
             ConsigneeItem.Click += ConsigneeItem_Click;
+            // ConsigneeItem.KeyPress -= ConsigneeItem_KeyPress;
+            // ConsigneeItem.KeyPress += ConsigneeItem_KeyPress;
             return ConsigneeItem;
         }
-        private void ConsigneeItem_Click(object sender, EventArgs e)
+
+        //private void ConsigneeItem_KeyPress(object sender, View.KeyEventArgs e)
+        //{
+        //    var ff = e.GetType();
+        //    if (e.KeyCode == Keycode.Enter)
+        //    {
+        //        var dd = ff.ToString();
+
+        //    }
+        //    else
+        //    {
+        //        e.Handled = false;
+        //    }
+        //}
+
+        public void ConsigneeItem_Click(object sender, EventArgs e)
         {
+            if (sender is ListView)
+            {
+                ListView lv = sender as ListView;
+                int SelectedConsigneeIndex = (int)lv.SelectedItem;
+
+                // var WmscodeBox = dd.FindViewById<TextView>(Resource.Id.wmscode);
+            } else
+            {
             var ll = (LinearLayout)sender;
             var WmscodeBox = ll.FindViewById<TextView>(Resource.Id.wmscode);
             string WmsCode = WmscodeBox.Text;
+        }
             glb.screenOne.DaysConsigneesListView.Visibility = ViewStates.Invisible;
         }
         public override int Count

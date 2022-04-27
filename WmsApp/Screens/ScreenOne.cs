@@ -21,6 +21,7 @@ namespace WmsApp.Screens
         MainActivity glb;
         List<CustomConsignee> DaysConsignees;
         public ListView DaysConsigneesListView;
+        ConsigneeListAdapter ad;
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -30,7 +31,7 @@ namespace WmsApp.Screens
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             View ScreenOne = inflater.Inflate(Resource.Layout.ScreenOne, container, false);
-            // we dont await her and let the method return ScreenOne when it wants.
+            // we dont await here and let the method return ScreenOne when it wants.
             // Then the View is ready when the data is available to populate it
             PopulateConsigneesList(ScreenOne);
             return ScreenOne;
@@ -39,9 +40,22 @@ namespace WmsApp.Screens
         {
             DaysConsignees = await wsCalls.GetCustomConsignees(new DateTime(2021, 9, 27));
             DaysConsigneesListView = ScreenOne.FindViewById<ListView>(Resource.Id.consignees_listview);
-            ConsigneeListAdapter ad = new ConsigneeListAdapter(Activity, DaysConsignees, glb);
+            ad = new ConsigneeListAdapter(Activity, DaysConsignees, glb);
             DaysConsigneesListView.Adapter = ad;
+            DaysConsigneesListView.KeyPress += DaysConsigneesListView_KeyPress;
         }
+        private void DaysConsigneesListView_KeyPress(object sender, View.KeyEventArgs e)
+        {
+            if (e.KeyCode == Keycode.Enter)
+            {
+                ad.ConsigneeItem_Click(sender, null);
+            }
+            else
+            {
+                e.Handled = false;
+            }
+        }
+
         private OnFragmentInteractionListener mListener;
 
         public interface OnFragmentInteractionListener
