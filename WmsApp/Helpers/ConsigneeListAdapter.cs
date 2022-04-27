@@ -65,8 +65,7 @@ namespace WmsApp.Helpers
                 int SelectedConsigneeIndex = (int)lv.SelectedItem;
                 CustomConsignee SelectedConsignee = GetConsigneeByIndex(SelectedConsigneeIndex);
                 string WmsCode = SelectedConsignee.WmsCode;
-                List<WmsOrderForUi> WmsOrders = 
-                    await (Task<List<WmsOrderForUi>>)wsCalls.GetWmsOrders(new DateTime(2021,9,27), WmsCode);
+                glb.screenOne.PopulateOrdersList(WmsCode);
 
             } else
             {
@@ -74,7 +73,7 @@ namespace WmsApp.Helpers
             var WmscodeBox = ll.FindViewById<TextView>(Resource.Id.wmscode);
             string WmsCode = WmscodeBox.Text;
         }
-            glb.screenOne.DaysConsigneesListView.Visibility = ViewStates.Invisible;
+            glb.screenOne.DaysConsigneesListView.Visibility = ViewStates.Gone;
         }
         public CustomConsignee GetConsigneeByIndex (int theIndex)
         {

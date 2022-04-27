@@ -22,6 +22,8 @@ namespace WmsApp.Screens
         List<CustomConsignee> DaysConsignees;
         public ListView DaysConsigneesListView;
         ConsigneeListAdapter ad;
+        View ScreenOneUi;
+        ListView lv;
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -30,16 +32,17 @@ namespace WmsApp.Screens
         }
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            View ScreenOne = inflater.Inflate(Resource.Layout.ScreenOne, container, false);
+            ScreenOneUi = inflater.Inflate(Resource.Layout.ScreenOne, container, false);
             // we dont await here and let the method return ScreenOne when it wants.
             // Then the View is ready when the data is available to populate it
-            PopulateConsigneesList(ScreenOne);
-            return ScreenOne;
+            PopulateConsigneesList(ScreenOneUi);
+            lv = ScreenOneUi.FindViewById<ListView>(Resource.Id.orders_listview);
+            return ScreenOneUi;
         }
-        private async Task PopulateConsigneesList(View ScreenOne)
+        private async Task PopulateConsigneesList(View screenOneUi)
         {
             DaysConsignees = await wsCalls.GetCustomConsignees(new DateTime(2021, 9, 27));
-            DaysConsigneesListView = ScreenOne.FindViewById<ListView>(Resource.Id.consignees_listview);
+            DaysConsigneesListView = screenOneUi.FindViewById<ListView>(Resource.Id.consignees_listview);
             ad = new ConsigneeListAdapter(Activity, DaysConsignees, glb);
             DaysConsigneesListView.Adapter = ad;
             DaysConsigneesListView.KeyPress += DaysConsigneesListView_KeyPress;
@@ -55,7 +58,15 @@ namespace WmsApp.Screens
                 e.Handled = false;
             }
         }
-
+        public async void PopulateOrdersList(string wmsCode)
+        {
+            List<WmsOrderForUi> WmsOrders =
+                    await(Task<List<WmsOrderForUi>>)wsCalls.GetWmsOrders(new DateTime(2021, 9, 27), wmsCode);
+            // ListView lv = ScreenOneUi.FindViewById<ListView>(Resource.Id.orders_listview);
+            OrdersListAdapter oad = new OrdersListAdapter(Activity, WmsOrders);
+            lv.Adapter = oad;
+            lv.RefreshDrawableState();
+        }
         private OnFragmentInteractionListener mListener;
 
         public interface OnFragmentInteractionListener
