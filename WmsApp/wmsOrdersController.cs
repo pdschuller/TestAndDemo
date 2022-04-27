@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using tlModels;
 using tlModels.wmsModels;
 
 namespace tlWebApi.ControllersWms
@@ -18,7 +19,7 @@ namespace tlWebApi.ControllersWms
 
         [Route("api/GetWmsOrders/{dispatchdate}/{wmscode}")]
         [HttpGet]
-        public List<Order> GetWmsOrders(string dispatchdate, string wmscode)
+        public List<WmsOrderForUi> GetWmsOrders(string dispatchdate, string wmscode)
         {
             List<Order> TheOrders = new List<Order>();
             CompanyLocation cl = wmsContext.CompanyLocation.Where(c => c.Wmscode == wmscode).FirstOrDefault();
@@ -26,17 +27,19 @@ namespace tlWebApi.ControllersWms
             DateTime dateDd = Convert.ToDateTime(dispatchdate);
             TheOrders = wmsContext.Order.Where(o => o.ConsigneeId == clid && o.PlannedShipTargetDate == dateDd).ToList();
             // if we return that we get StackOverflowException - no really
-            List<Order> BarebonesOrders = new List<Order>();
+            List<WmsOrderForUi> BarebonesWmsOrders = new List<WmsOrderForUi>();
             foreach (Order theOrder in TheOrders)
             {
-                Order bb = new Order();
-                bb.OrderId = theOrder.OrderId; ;
-                bb.ExpectedItems = theOrder.ExpectedItems;
-                bb.ShipperNumber = theOrder.ShipperNumber;
-                bb.ConsigneeShipperId = theOrder.ConsigneeShipperId;
-                BarebonesOrders.Add(bb);
+                WmsOrderForUi o = new WmsOrderForUi();
+                o.OrderId = theOrder.OrderId; ;
+                o.ExpectedCases = (int)theOrder.ExpectedItems;
+                o.ShipperOrderNumber = theOrder.ShipperNumber;
+                o.ShipperId = (int)theOrder.ShipperId;
+                o.ShipperCompanyCode = wmsContext.Shipper.Where(s => s.CompanyId == theOrder.ShipperId)
+                                  .FirstOrDefault().CompanyCode;   
+                BarebonesWmsOrders.Add(o);
             }
-            return BarebonesOrders;
+            return BarebonesWmsOrders;
         }
 
 
