@@ -51,32 +51,17 @@ namespace WmsApp.Helpers
             WmscodeBox.Text = cc.WmsCode;
             ConsigneeItem.Click -= ConsigneeItem_Click;
             ConsigneeItem.Click += ConsigneeItem_Click;
-            // ConsigneeItem.KeyPress -= ConsigneeItem_KeyPress;
-            // ConsigneeItem.KeyPress += ConsigneeItem_KeyPress;
+            // KeyPress event for this list is in ScreenOne
             return ConsigneeItem;
         }
-
-        //private void ConsigneeItem_KeyPress(object sender, View.KeyEventArgs e)
-        //{
-        //    var ff = e.GetType();
-        //    if (e.KeyCode == Keycode.Enter)
-        //    {
-        //        var dd = ff.ToString();
-
-        //    }
-        //    else
-        //    {
-        //        e.Handled = false;
-        //    }
-        //}
-
         public void ConsigneeItem_Click(object sender, EventArgs e)
         {
             if (sender is ListView)
             {
                 ListView lv = sender as ListView;
                 int SelectedConsigneeIndex = (int)lv.SelectedItem;
-
+                CustomConsignee SelectedConsignee = GetConsigneeByIndex(SelectedConsigneeIndex);
+                string WmsCode = SelectedConsignee.WmsCode;
                 // var WmscodeBox = dd.FindViewById<TextView>(Resource.Id.wmscode);
             } else
             {
@@ -85,6 +70,11 @@ namespace WmsApp.Helpers
             string WmsCode = WmscodeBox.Text;
         }
             glb.screenOne.DaysConsigneesListView.Visibility = ViewStates.Invisible;
+        }
+        public CustomConsignee GetConsigneeByIndex (int theIndex)
+        {
+            CustomConsignee TheConsignee = Consignees[theIndex];
+            return TheConsignee;
         }
         public override int Count
         {
