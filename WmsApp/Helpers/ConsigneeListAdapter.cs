@@ -72,8 +72,7 @@ namespace WmsApp.Helpers
             var ll = (LinearLayout)sender;
             var WmscodeBox = ll.FindViewById<TextView>(Resource.Id.wmscode);
             string WmsCode = WmscodeBox.Text;
-        }
-            glb.screenOne.DaysConsigneesListView.Visibility = ViewStates.Gone;
+            }
         }
         public CustomConsignee GetConsigneeByIndex (int theIndex)
         {

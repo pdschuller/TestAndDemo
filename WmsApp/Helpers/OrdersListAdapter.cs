@@ -36,7 +36,6 @@ namespace WmsApp.Helpers
         {
             return position;
         }
-
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
             View OrderItem = convertView;
@@ -57,6 +56,11 @@ namespace WmsApp.Helpers
             ShipperOrderNumberBox.Text = o.ShipperOrderNumber.ToString().Trim();
 
             return OrderItem;
+        }
+        public WmsOrderForUi GetOrderByIndex(int theIndex)
+        {
+            WmsOrderForUi TheOrder = OrdersList[theIndex];
+            return TheOrder;
         }
         public override int Count
         {

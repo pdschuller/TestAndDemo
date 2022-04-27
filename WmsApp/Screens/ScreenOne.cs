@@ -21,9 +21,11 @@ namespace WmsApp.Screens
         MainActivity glb;
         List<CustomConsignee> DaysConsignees;
         public ListView DaysConsigneesListView;
-        ConsigneeListAdapter ad;
+        ConsigneeListAdapter ConListAdapter;
+        OrdersListAdapter OrdersListAdapter;
         View ScreenOneUi;
-        ListView lv;
+        ListView OrdersListView;
+        TextView ScreenOneTitle;
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -36,22 +38,44 @@ namespace WmsApp.Screens
             // we dont await here and let the method return ScreenOne when it wants.
             // Then the View is ready when the data is available to populate it
             PopulateConsigneesList(ScreenOneUi);
-            lv = ScreenOneUi.FindViewById<ListView>(Resource.Id.orders_listview);
+            OrdersListView = ScreenOneUi.FindViewById<ListView>(Resource.Id.orders_listview);
+            View OrdListHeader = inflater.Inflate(Resource.Layout.orders_list_header, null);
+            OrdersListView.AddHeaderView(OrdListHeader);
+            OrdersListView.KeyPress += OrdersListView_KeyPress;
+            ScreenOneTitle = ScreenOneUi.FindViewById<TextView>(Resource.Id.screen_one_title);
             return ScreenOneUi;
         }
         private async Task PopulateConsigneesList(View screenOneUi)
         {
             DaysConsignees = await wsCalls.GetCustomConsignees(new DateTime(2021, 9, 27));
             DaysConsigneesListView = screenOneUi.FindViewById<ListView>(Resource.Id.consignees_listview);
-            ad = new ConsigneeListAdapter(Activity, DaysConsignees, glb);
-            DaysConsigneesListView.Adapter = ad;
+            ConListAdapter = new ConsigneeListAdapter(Activity, DaysConsignees, glb);
+            DaysConsigneesListView.Adapter = ConListAdapter;
             DaysConsigneesListView.KeyPress += DaysConsigneesListView_KeyPress;
+        }
+        private void OrdersListView_KeyPress(object sender, View.KeyEventArgs e)
+        {
+            if (e.KeyCode == Keycode.Enter)
+            {
+                var rr = sender;
+                ListView lv = sender as ListView;
+                View dd = lv.SelectedView;           // lv.Adapter;
+                LinearLayout OrdersRow = (LinearLayout)dd;
+                CheckBox OrdersCheckBox = OrdersRow.FindViewById<CheckBox>(Resource.Id.select_order_checkbox);
+                OrdersCheckBox.Checked = true;
+
+                e.Handled = true;
+            }
+            else
+            {
+                e.Handled = false;
+            }
         }
         private void DaysConsigneesListView_KeyPress(object sender, View.KeyEventArgs e)
         {
             if (e.KeyCode == Keycode.Enter)
             {
-                ad.ConsigneeItem_Click(sender, null);
+                ConListAdapter.ConsigneeItem_Click(sender, null);
             }
             else
             {
@@ -62,10 +86,11 @@ namespace WmsApp.Screens
         {
             List<WmsOrderForUi> WmsOrders =
                     await(Task<List<WmsOrderForUi>>)wsCalls.GetWmsOrders(new DateTime(2021, 9, 27), wmsCode);
-            // ListView lv = ScreenOneUi.FindViewById<ListView>(Resource.Id.orders_listview);
-            OrdersListAdapter oad = new OrdersListAdapter(Activity, WmsOrders);
-            lv.Adapter = oad;
-            lv.RefreshDrawableState();
+            OrdersListAdapter = new OrdersListAdapter(Activity, WmsOrders);
+            OrdersListView.Adapter = OrdersListAdapter;
+            OrdersListView.RefreshDrawableState();
+            ScreenOneTitle.Text = "ORDERS";
+            DaysConsigneesListView.Visibility = ViewStates.Gone;
         }
         private OnFragmentInteractionListener mListener;
 
