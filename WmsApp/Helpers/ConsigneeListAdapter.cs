@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using tlModels;
 
 namespace WmsApp.Helpers
@@ -17,6 +18,7 @@ namespace WmsApp.Helpers
         Context context;
         List<CustomConsignee> Consignees;
         MainActivity glb;
+        WsCalls wsCalls;
         public ConsigneeListAdapter(Context context)
         {
             this.context = context;
@@ -26,6 +28,7 @@ namespace WmsApp.Helpers
             this.context = context;
             this.Consignees = consignees;
             glb = mainActivity;
+            wsCalls = new WsCalls();
         }
         public override Java.Lang.Object GetItem(int position)
         {
@@ -54,7 +57,7 @@ namespace WmsApp.Helpers
             // KeyPress event for this list is in ScreenOne
             return ConsigneeItem;
         }
-        public void ConsigneeItem_Click(object sender, EventArgs e)
+        public async void ConsigneeItem_Click(object sender, EventArgs e)
         {
             if (sender is ListView)
             {
@@ -62,7 +65,9 @@ namespace WmsApp.Helpers
                 int SelectedConsigneeIndex = (int)lv.SelectedItem;
                 CustomConsignee SelectedConsignee = GetConsigneeByIndex(SelectedConsigneeIndex);
                 string WmsCode = SelectedConsignee.WmsCode;
-                // var WmscodeBox = dd.FindViewById<TextView>(Resource.Id.wmscode);
+                List<WmsOrderForUi> WmsOrders = 
+                    await (Task<List<WmsOrderForUi>>)wsCalls.GetWmsOrders(new DateTime(2021,9,27), WmsCode);
+
             } else
             {
             var ll = (LinearLayout)sender;
