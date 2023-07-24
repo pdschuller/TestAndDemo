@@ -6,15 +6,10 @@ public partial class MainPage : ContentPage
 {
 	int count = 0;
 
-    //public MainPage(MainViewModel vm)
-    //{
-    //	InitializeComponent();
-    //	BindingContext = vm;
-    //}
-    public MainPage()
+    public MainPage(MainViewModel vm)
     {
         InitializeComponent();
-        BindingContext = new MainViewModel();
+        BindingContext = vm;
     }
 
 }

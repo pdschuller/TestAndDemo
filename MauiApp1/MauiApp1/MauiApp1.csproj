@@ -15,7 +15,7 @@
 		<ApplicationTitle>MauiApp1</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.mauiapp1</ApplicationId>
+		<ApplicationId>com.pdschuller.mauiapp1</ApplicationId>
 		<ApplicationIdGuid>7da8be8a-da0e-4b29-a8d7-fa3ae894b726</ApplicationIdGuid>
 
 		<!-- Versions -->
