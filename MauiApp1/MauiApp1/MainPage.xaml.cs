@@ -4,13 +4,23 @@ namespace MauiApp1;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
+    MainViewModel vm;
 
-    public MainPage(MainViewModel vm)
+    public MainPage(MainViewModel _vm)
     {
         InitializeComponent();
-        BindingContext = vm;
+        BindingContext = _vm;
+        vm = _vm;
     }
 
+    private void AddButtonClicked(object sender, EventArgs e)
+    {
+        vm.PopulateCollection();
+    }
+
+    private void SwipeItem_Clicked(object sender, EventArgs e)
+    {
+        vm.DeleteItem((sender as SwipeItem).CommandParameter.ToString());   
+    }
 }
 
