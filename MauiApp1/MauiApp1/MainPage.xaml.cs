@@ -23,9 +23,11 @@ public partial class MainPage : ContentPage
         vm.DeleteItem((sender as SwipeItem).CommandParameter.ToString());   
     }
 
-    private void CollectionItem_Tapped(object sender, EventArgs e)
+    private void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        vm.NavToPageTwo();
+        var dd = sender;
+        CollectionView cv = (CollectionView)sender;
+        var tt = cv.SelectedItem;
     }
 }
 
