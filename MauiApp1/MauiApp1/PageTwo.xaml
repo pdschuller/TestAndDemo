@@ -2,6 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp1.PageTwo"
+             xmlns:viewmodels="clr-namespace:MauiApp1.ViewModels;assembly=MauiApp1"
+             x:DataType="viewmodels:MainViewModel"
              Title="Page Two">
     <VerticalStackLayout> 
         <Label 
@@ -9,21 +11,26 @@
             VerticalOptions="Center"
             Padding="20" FontSize="Large"
             HorizontalOptions="Center" />
+
+        <!-- 
+            Text="{Binding Source=SelectedToDo, Path=ToDoName }"
+            Text="{Binding Path=ToDoName }"
+        -->
         
         <Label 
-            Text="{Binding Source=SelectedToDo, Path=ToDoName }"
+            Text="{Binding Path=SelectedToDo.ToDoName }"
             VerticalOptions="Center"
-            Padding="20" FontSize="Large"
+            Padding="10" FontSize="Large"
             HorizontalOptions="Center" />
         <Label 
-            Text="{Binding Source=SelectedToDo, Path=DueDate}"
+            Text="{Binding Path=SelectedToDo.DueDate}"
             VerticalOptions="Center"
-            Padding="20" FontSize="Large"
+            Padding="10" FontSize="Large"
             HorizontalOptions="Center" />
         <Label 
-            Text="{Binding Source=SelectedToDo, Path=ExpectedCost}"
+            Text="{Binding Path=SelectedToDo.ExpectedCost}"
             VerticalOptions="Center"
-            Padding="20" FontSize="Large"
+            Padding="10" FontSize="Large"
             HorizontalOptions="Center" />
         
         <Button Text="Go Back" Clicked="GoBack_Clicked" Margin="20" />
