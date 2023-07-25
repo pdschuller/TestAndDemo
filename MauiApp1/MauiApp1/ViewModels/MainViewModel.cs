@@ -10,15 +10,18 @@ namespace MauiApp1.ViewModels
         //{
         //    AppShell.Current.GoToAsync("..");
         //}
-        public void NavToPageTwo()
+        public void NavToPageTwo(string s)
         {
-            AppShell.Current.GoToAsync(nameof(PageTwo));
+            string qq = "PageTwo?TheItem=" + s;
+            AppShell.Current.GoToAsync("PageTwo?TheItem=" + s);
         }
         public void PopulateCollection()
         {
             myCollection = new ObservableCollection<string>();
             myCollection.Add("snot");
             myCollection.Add("snot2");
+            myCollection.Add("Bella");
+            myCollection.Add("Sta Bene");
         }
         public void DeleteItem(string item)
         {

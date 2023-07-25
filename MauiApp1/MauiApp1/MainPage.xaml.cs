@@ -27,7 +27,8 @@ public partial class MainPage : ContentPage
     {
         var dd = sender;
         CollectionView cv = (CollectionView)sender;
-        var tt = cv.SelectedItem;
+        string tt = (string)cv.SelectedItem;
+        vm.NavToPageTwo(tt);
     }
 }
 
