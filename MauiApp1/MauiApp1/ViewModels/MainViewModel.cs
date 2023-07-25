@@ -6,6 +6,10 @@ namespace MauiApp1.ViewModels
 {
     public class MainViewModel : INotifyPropertyChanged
     {
+        //public void GoBackToMainPage()
+        //{
+        //    AppShell.Current.GoToAsync("..");
+        //}
         public void NavToPageTwo()
         {
             AppShell.Current.GoToAsync(nameof(PageTwo));

@@ -9,5 +9,6 @@
             VerticalOptions="Center"
             Padding="20" FontSize="Large"
             HorizontalOptions="Center" />
+        <Button Text="Go Back" Clicked="GoBack_Clicked" Margin="20" />
     </VerticalStackLayout>
 </ContentPage>
