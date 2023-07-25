@@ -24,10 +24,12 @@
                 Grid.Column="1"
                 Clicked="AddButtonClicked"
                 />
-        <CollectionView SelectionMode="None"
+        <CollectionView SelectionMode="Single"
                         Grid.Row="2"
                         Grid.ColumnSpan="2"
                         ItemsSource="{Binding myCollection}"
+                        x:FieldModifier="public"
+                        x:Name="myCollectionView"
                         >
             <CollectionView.ItemTemplate>
                 <DataTemplate>

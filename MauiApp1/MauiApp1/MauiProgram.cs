@@ -19,7 +19,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<MainPage>();
 		builder.Services.AddSingleton<MainViewModel>();
         builder.Services.AddTransient<PageTwo>();
-        builder.Services.AddTransient<PageTwoViewModel>();
+        // builder.Services.AddTransient<PageTwoViewModel>();
 
         return builder.Build();
 	}
