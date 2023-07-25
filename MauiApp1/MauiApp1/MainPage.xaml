@@ -24,7 +24,7 @@
                 Grid.Column="1"
                 Clicked="AddButtonClicked"
                 />
-        <CollectionView SelectionMode="Single"
+        <CollectionView SelectionMode="None"
                         Grid.Row="2"
                         Grid.ColumnSpan="2"
                         ItemsSource="{Binding myCollection}"
@@ -42,6 +42,10 @@
                         </SwipeView.RightItems>
                         <Grid Padding="10">
                             <Frame>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="CollectionItem_Tapped" CommandParameter="{Binding .}">
+                                    </TapGestureRecognizer>
+                                </Frame.GestureRecognizers>
                                 <Label Text="{Binding .}"
                                    FontSize="Large"
                                    />

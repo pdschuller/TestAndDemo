@@ -22,5 +22,10 @@ public partial class MainPage : ContentPage
     {
         vm.DeleteItem((sender as SwipeItem).CommandParameter.ToString());   
     }
+
+    private void CollectionItem_Tapped(object sender, EventArgs e)
+    {
+        vm.NavToPageTwo();
+    }
 }
 

@@ -6,7 +6,10 @@ namespace MauiApp1.ViewModels
 {
     public class MainViewModel : INotifyPropertyChanged
     {
-
+        public void NavToPageTwo()
+        {
+            AppShell.Current.GoToAsync(nameof(PageTwo));
+        }
         public void PopulateCollection()
         {
             myCollection = new ObservableCollection<string>();
