@@ -1,4 +1,5 @@
-﻿using MauiApp1.ViewModels;
+﻿using MauiApp1.Models;
+using MauiApp1.ViewModels;
 
 namespace MauiApp1;
 
@@ -20,14 +21,15 @@ public partial class MainPage : ContentPage
 
     private void SwipeItem_Clicked(object sender, EventArgs e)
     {
-        vm.DeleteItem((sender as SwipeItem).CommandParameter.ToString());   
+        SwipeItem swipeItem = (SwipeItem)sender;
+        // vm.DeleteItem(swipeItem.CommandParameter);   
     }
 
     private void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         var dd = sender;
         CollectionView cv = (CollectionView)sender;
-        string tt = (string)cv.SelectedItem;
+        ToDoItem tt = (ToDoItem)cv.SelectedItem;
         vm.NavToPageTwo(tt);
     }
 }

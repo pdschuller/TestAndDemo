@@ -1,37 +1,31 @@
+using MauiApp1.Models;
 using MauiApp1.ViewModels;
 
 namespace MauiApp1;
 
-[QueryProperty("ThePageTwoItem", "TheItem")]
+[QueryProperty("PageTwoToDoId", "TheItem")]
 
 public partial class PageTwo : ContentPage
 {
-    string thePageTwoItem = string.Empty;
+    // int thePageTwoItem;
     MainViewModel vm;
-    public string ThePageTwoItem
+    public string PageTwoToDoId
     {
-        get
-        { 
-            return thePageTwoItem;
-        }
         set
         {
-            thePageTwoItem = Uri.UnescapeDataString(value ?? string.Empty);
-            string MatchingStringFromCollection = vm.myCollection
-                            .Where(x => x == ThePageTwoItem).FirstOrDefault();
-            vm.myText = MatchingStringFromCollection;
+            string theId = Uri.UnescapeDataString(value ?? string.Empty);
+            int intId = Convert.ToInt32(theId);
+            ToDoItem MatchingToDoFromCollection = vm.myCollection
+                            .Where(x => x.Id == intId).FirstOrDefault();
+            vm.myText = MatchingToDoFromCollection.ToDoName;
         }
     }
 
 	public PageTwo(MainViewModel _vm)
     { 
         InitializeComponent();
-        string ff = ThePageTwoItem;
-        string ff2 = thePageTwoItem;
         // thePageTwoItem = Uri.UnescapeDataString(value);
         BindingContext = vm = _vm;        
-
-        string tt = ThePageTwoItem;
 	}
     private void GoBack_Clicked(object sender, EventArgs e)
     {
