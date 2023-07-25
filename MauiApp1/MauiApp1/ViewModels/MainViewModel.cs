@@ -29,7 +29,7 @@ namespace MauiApp1.ViewModels
         }
 
         #region === PROPERTIES =====================================
-        // private and public ObservableCollections
+
         private ObservableCollection<ToDoItem> mycollection;
         public ObservableCollection<ToDoItem> myCollection
         {
@@ -40,7 +40,17 @@ namespace MauiApp1.ViewModels
                 OnPropertyChanged(nameof(myCollection));
             }
         }
-
+        // private and public ToDoItem SelectedToDo { get; set; }
+        private ToDoItem selectedToDo;
+        public ToDoItem SelectedToDo
+        {
+            get => selectedToDo;
+            set
+            {
+                selectedToDo = value;
+                OnPropertyChanged(nameof(SelectedToDo));
+            }
+        }
         string mytext;
         public string myText
         {

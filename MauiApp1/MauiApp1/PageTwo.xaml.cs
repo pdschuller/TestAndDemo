@@ -17,15 +17,15 @@ public partial class PageTwo : ContentPage
             int intId = Convert.ToInt32(theId);
             ToDoItem MatchingToDoFromCollection = vm.myCollection
                             .Where(x => x.Id == intId).FirstOrDefault();
-            vm.myText = MatchingToDoFromCollection.ToDoName;
+            vm.SelectedToDo = MatchingToDoFromCollection;
         }
     }
 
 	public PageTwo(MainViewModel _vm)
     { 
         InitializeComponent();
-        // thePageTwoItem = Uri.UnescapeDataString(value);
-        BindingContext = vm = _vm;        
+        vm = _vm;
+        BindingContext = vm;        
 	}
     private void GoBack_Clicked(object sender, EventArgs e)
     {

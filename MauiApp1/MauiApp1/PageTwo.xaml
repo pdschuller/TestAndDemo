@@ -2,20 +2,30 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp1.PageTwo"
-             xmlns:viewmodels="clr-namespace:MauiApp1.ViewModels;assembly=MauiApp1"
-             x:DataType="viewmodels:MainViewModel"
              Title="Page Two">
-    <VerticalStackLayout>
+    <VerticalStackLayout> 
         <Label 
             Text="Welcome to PageTwo!"
             VerticalOptions="Center"
             Padding="20" FontSize="Large"
             HorizontalOptions="Center" />
+        
         <Label 
-            Text="{Binding myText}"
+            Text="{Binding Source=SelectedToDo, Path=ToDoName }"
             VerticalOptions="Center"
             Padding="20" FontSize="Large"
             HorizontalOptions="Center" />
+        <Label 
+            Text="{Binding Source=SelectedToDo, Path=DueDate}"
+            VerticalOptions="Center"
+            Padding="20" FontSize="Large"
+            HorizontalOptions="Center" />
+        <Label 
+            Text="{Binding Source=SelectedToDo, Path=ExpectedCost}"
+            VerticalOptions="Center"
+            Padding="20" FontSize="Large"
+            HorizontalOptions="Center" />
+        
         <Button Text="Go Back" Clicked="GoBack_Clicked" Margin="20" />
     </VerticalStackLayout>
 </ContentPage>
