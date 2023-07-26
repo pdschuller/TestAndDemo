@@ -49,6 +49,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="HomeMenu.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="PageTwo.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

@@ -20,7 +20,6 @@ public partial class PageTwo : ContentPage
             vm.SelectedToDo = MatchingToDoFromCollection;
         }
     }
-
 	public PageTwo(MainViewModel _vm)
     { 
         InitializeComponent();
