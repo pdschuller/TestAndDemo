@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.But3Page"
+             Title="Button 3 Page">
+    <VerticalStackLayout>
+        <Label 
+            Text="Welcome to Button 3 Page!"
+            VerticalOptions="Center"  Margin="10, 30, 0, 0" FontSize="Large"
+            HorizontalOptions="Center" />
+    </VerticalStackLayout>
+</ContentPage>

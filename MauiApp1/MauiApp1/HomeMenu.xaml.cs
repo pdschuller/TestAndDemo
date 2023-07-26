@@ -9,6 +9,18 @@ public partial class HomeMenu : ContentPage
 
     private void MainPageButtonClicked(object sender, EventArgs e)
     {
-		AppShell.Current.GoToAsync("MainPage");
+		AppShell.Current.GoToAsync("ToDosPage");
+    }
+    private void Button2Clicked(object sender, EventArgs e)
+    {
+        AppShell.Current.GoToAsync("But2Page");
+    }
+    private void Button3Clicked(object sender, EventArgs e)
+    {
+        AppShell.Current.GoToAsync("But3Page");
+    }
+    private void Button4Clicked(object sender, EventArgs e)
+    {
+        AppShell.Current.GoToAsync("But4Page");
     }
 }

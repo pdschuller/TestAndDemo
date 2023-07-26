@@ -15,9 +15,9 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
         // next we register our viewmodel and page with the dependency service
-        // so that we can inject them into our page like public MainPage(MainViewModel _vm)
+        // so that we can inject them into our page like public ToDosPage(MainViewModel _vm)
 		// and PageTwo(MainViewModel _vm)
-        builder.Services.AddSingleton<MainPage>();
+        builder.Services.AddSingleton<ToDosPage>();
 		builder.Services.AddSingleton<MainViewModel>();
         builder.Services.AddTransient<PageTwo>();
         // builder.Services.AddTransient<PageTwoViewModel>();

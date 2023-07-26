@@ -14,9 +14,12 @@
         >
             <Button Grid.Row="0" Grid.Column="0" Text="MainPage"
                     Clicked="MainPageButtonClicked" />
-            <Button Grid.Row="0" Grid.Column="1" Text="Button 2" />
-            <Button Grid.Row="1" Grid.Column="0" Text="Button 3" />
-            <Button Grid.Row="1" Grid.Column="1" Text="Button 4" />
+            <Button Grid.Row="0" Grid.Column="1" Text="Button2"
+                    Clicked="Button2Clicked" />
+            <Button Grid.Row="1" Grid.Column="0" Text="Button3"
+                    Clicked="Button3Clicked" />
+            <Button Grid.Row="1" Grid.Column="1" Text="Button4" 
+                    Clicked="Button4Clicked" />
         </Grid>
     </VerticalStackLayout>
 </ContentPage>

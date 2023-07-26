@@ -3,11 +3,11 @@ using MauiApp1.ViewModels;
 
 namespace MauiApp1;
 
-public partial class MainPage : ContentPage
+public partial class ToDosPage : ContentPage
 {
     MainViewModel vm;
 
-    public MainPage(MainViewModel _vm)
+    public ToDosPage(MainViewModel _vm)
     {
         InitializeComponent();
         BindingContext = _vm;
