@@ -9,8 +9,9 @@ public partial class But2Page : ContentPage
 	// THIS IS BUT 2 PAGE =====================================
     private void GoBackButton_Clicked(object sender, EventArgs e)
     {
-		// AppShell.Current.GoToAsync("..");
-        AppShell.Current.GoToAsync("//HomeMenu");
+        // AppShell.Current.GoToAsync("..");   SomeUniqueName
+        // AppShell.Current.GoToAsync("//HomeMenu");
+        AppShell.Current.GoToAsync("GoToHomeMenu");
     }
     private void GoBut2Sub_Clicked(object sender, EventArgs e)
     {

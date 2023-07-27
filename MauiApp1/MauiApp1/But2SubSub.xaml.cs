@@ -16,7 +16,7 @@ public partial class But2SubSub : ContentPage
     {
         // AppShell.Current.GoToAsync("../..");
         // AppShell.Current.GoToAsync("HomeMenu");
-        // AppShell.Current.GoToAsync("//HomeMenu");
-        AppShell.Current.GoToAsync("snot");
+        // AppShell.Current.GoToAsync("//HomeMenu/But2Sub");
+        AppShell.Current.GoToAsync("GoToHomeMenu");
     }
 }

@@ -8,8 +8,8 @@ public partial class AppShell : Shell
 		Routing.RegisterRoute(nameof(PageTwo), typeof(PageTwo));
         Routing.RegisterRoute(nameof(ToDosPage), typeof(ToDosPage));
         // Routing.RegisterRoute(nameof(HomeMenu), typeof(HomeMenu));
-        // Routing.RegisterRoute(nameof(HomeMenu), typeof(HomeMenu));
-        Routing.RegisterRoute("snot", typeof(HomeMenu));
+        // Routing.RegisterRoute("HomeMenu/But2Sub", typeof(But2Sub));
+        Routing.RegisterRoute("GoToHomeMenu", typeof(HomeMenu));
         Routing.RegisterRoute(nameof(But2Page), typeof(But2Page));
         Routing.RegisterRoute(nameof(But3Page), typeof(But3Page));
         Routing.RegisterRoute(nameof(But4Page), typeof(But4Page));
