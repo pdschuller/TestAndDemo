@@ -15,6 +15,8 @@ public partial class But2SubSub : ContentPage
     private void GoHomeButton_Clicked(object sender, EventArgs e)
     {
         // AppShell.Current.GoToAsync("../..");
-        AppShell.Current.GoToAsync("//HomeMenu");
+        // AppShell.Current.GoToAsync("HomeMenu");
+        // AppShell.Current.GoToAsync("//HomeMenu");
+        AppShell.Current.GoToAsync("snot");
     }
 }
