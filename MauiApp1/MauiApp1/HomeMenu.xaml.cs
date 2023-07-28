@@ -1,3 +1,11 @@
+using Microsoft.Maui.Platform;
+#if ANDROID
+using Android.Views;
+#endif
+
+
+// using Microsoft.Maui.Controls.PlatformConfiguration.Android;
+
 namespace MauiApp1;
 
 public partial class HomeMenu : ContentPage
@@ -5,7 +13,19 @@ public partial class HomeMenu : ContentPage
 	public HomeMenu()
 	{
 		InitializeComponent();
-	}
+
+
+//#if ANDROID        
+//Microsoft.Maui.Handlers.ViewHandler.ViewMapper.AppendToMapping(nameof(IView.Background), (h, v) =>
+//{
+//(h.PlatformView as Microsoft.Maui.Controls.PlatformConfiguration.Android.Views.View)
+//    .SetBackgroundColor(Microsoft.Maui.Graphics.Colors.Red.ToPlatform());
+//});
+//#endif
+
+
+
+    }
 
     private void MainPageButtonClicked(object sender, EventArgs e)
     {

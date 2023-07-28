@@ -20,18 +20,12 @@ public static class MauiProgram
 //				handlers.AddCompatibilityRenderer(typeof(HomeMenu), typeof(MauiApp1.Platforms.Android.HomeMenuPageRenderer));
 //			});
 //#endif
-
-
         //			collection =>
         //            {
         //// #if __ANDROID__
         //            handlers.AddHandler(typeof(HomeMenu), typeof(HomeMenuPageRenderer));
         //// #endif
         //            });
-
-
-        // handlers.AddHandler(typeof(HomeMenu), typeof(HomeMenuPageRenderer)));
-
 
         // next we register our viewmodel and page with the dependency service
         // so that we can inject them into our page like public ToDosPage(MainViewModel _vm)
