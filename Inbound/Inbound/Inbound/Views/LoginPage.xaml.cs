@@ -9,18 +9,30 @@ using Xamarin.Forms.Xaml;
 
 namespace Inbound.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
         public LoginPage()
         {
+            // [XamlCompilation(XamlCompilationOptions.Compile)]
             InitializeComponent();
             this.BindingContext = new LoginViewModel();
         }
-        private void DoLogin(object sender, EventArgs e)
+        private async void DoLogin(object sender, EventArgs e)
         {
-            AppShell.Current.GoToAsync("TrailerSealPage");
-            // Shell.Current.GoToAsync("TrailerSealPage");
+            // Shell.Current.GoToAsync(nameof(TrailerSealPage));
+            await Shell.Current.GoToAsync(nameof(TrailerSealPage));
+            // NO  Shell.Current.GoToAsync(nameof(AboutPage));
+            // next line works
+            // Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}");
+        }
+
+        private async void DoLogin2(object sender, EventArgs e)
+        {
+            // AppShell.Current.GoToAsync(nameof(TrailerSealPage))
+            // AppShell.Current.GoToAsync(nameof(TrailerSealPage)); ;
+            // NO  AppShell.Current.GoToAsync(nameof(AboutPage));
+            // next line works
+            await Shell.Current.GoToAsync(nameof(ItemDetailPage));
         }
     }
 }

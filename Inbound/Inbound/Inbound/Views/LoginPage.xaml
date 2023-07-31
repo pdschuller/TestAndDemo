@@ -7,14 +7,16 @@
              x:Class="Inbound.Views.LoginPage"
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
-        <Grid RowDefinitions="40, 40, 60" ColumnDefinitions="5*, 5*" 
+        <Grid RowDefinitions="40, 40, 60, 60" ColumnDefinitions="5*, 5*" 
                 Margin="50,50,50,0">
             <Label Grid.Row="0" Grid.Column="0" Text="Initials"></Label>
-            <Entry Grid.Row="0" Grid.Column="1" Text="{Binding Initials}"></Entry>
+            <Entry Grid.Row="0" Grid.Column="1" Text="Binding Initials"></Entry>
             <Label Grid.Row="1" Grid.Column="0" Text="PIN"></Label>
-            <Entry Grid.Row="1" Grid.Column="1" Text="{Binding PIN}"></Entry>
+            <Entry Grid.Row="1" Grid.Column="1" Text="Binding PIN"></Entry>
             <Button Text="Login" Grid.Row="2" Grid.Column="0" Margin="0,20,0,0" 
                     Clicked="DoLogin"/>
+            <Button Text="Login2" Grid.Row="3" Grid.Column="0" Margin="0,20,0,0" 
+                    Clicked="DoLogin2"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

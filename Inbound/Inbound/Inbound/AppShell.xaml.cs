@@ -15,6 +15,11 @@ namespace Inbound
             Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
 
             Routing.RegisterRoute(nameof(TrailerSealPage), typeof(TrailerSealPage));
+            Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
+
+            ShellContent sc = new ShellContent();
+            // Shell.Current.GoToAsync(nameof(LoginPage));
+            sc.Content = new LoginPage();
         }
 
     }
