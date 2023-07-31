@@ -17,5 +17,10 @@ namespace Inbound.Views
             InitializeComponent();
             this.BindingContext = new LoginViewModel();
         }
+        private void DoLogin(object sender, EventArgs e)
+        {
+            AppShell.Current.GoToAsync("TrailerSealPage");
+            // Shell.Current.GoToAsync("TrailerSealPage");
+        }
     }
 }

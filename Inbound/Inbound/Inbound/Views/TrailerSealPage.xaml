@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Inbound.Views.TrailerSealPage"
+             Title="Trailer Seal Screen" >
+    <ContentPage.Content>
+        <Grid 
+            RowDefinitions="40, 40, 40, 40, 40, 40, 40, 40, "
+            ColumnDefinitions="Auto" Margin="50,50,50,0" >
+            <Label Text="UR Status"          Grid.Row="0" Grid.Column="0"></Label>
+            <Entry Text="{Binding URStatus}" Grid.Row="1" Grid.Column="0"></Entry>
+            <Label Text="Seal Number"        Grid.Row="2" Grid.Column="0"></Label>
+            <Entry Text="{Binding URStatus}" Grid.Row="3" Grid.Column="0"></Entry>
+            <Label Text="Seal Disposition"   Grid.Row="4" Grid.Column="0"></Label>
+            <Label Text="Radio Buttons Here" Grid.Row="5" Grid.Column="0"></Label>
+            <Label Text="Dunnage Here"       Grid.Row="6" Grid.Column="0"></Label>
+            <StackLayout Orientation="Horizontal" Grid.Row="7" Grid.Column="0"
+                   Margin="0,0,0,0">
+                <Button Text="OK [F5}" />
+                <Button Text="Cancel [Esc}" />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

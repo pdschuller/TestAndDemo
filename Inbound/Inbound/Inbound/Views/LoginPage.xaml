@@ -7,8 +7,14 @@
              x:Class="Inbound.Views.LoginPage"
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
-        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-            <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
-        </StackLayout>
+        <Grid RowDefinitions="40, 40, 60" ColumnDefinitions="5*, 5*" 
+                Margin="50,50,50,0">
+            <Label Grid.Row="0" Grid.Column="0" Text="Initials"></Label>
+            <Entry Grid.Row="0" Grid.Column="1" Text="{Binding Initials}"></Entry>
+            <Label Grid.Row="1" Grid.Column="0" Text="PIN"></Label>
+            <Entry Grid.Row="1" Grid.Column="1" Text="{Binding PIN}"></Entry>
+            <Button Text="Login" Grid.Row="2" Grid.Column="0" Margin="0,20,0,0" 
+                    Clicked="DoLogin"/>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
