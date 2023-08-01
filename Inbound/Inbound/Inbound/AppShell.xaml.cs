@@ -15,11 +15,12 @@ namespace Inbound
             Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
 
             Routing.RegisterRoute(nameof(TrailerSealPage), typeof(TrailerSealPage));
-            Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
+            Routing.RegisterRoute(nameof(ScanPage), typeof(ScanPage));
 
-            ShellContent sc = new ShellContent();
-            // Shell.Current.GoToAsync(nameof(LoginPage));
-            sc.Content = new LoginPage();
+            // LoginPage is made the initial page in AppShell.xaml. Not needed here.
+                // this does not solve Relative Routing exception Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
+                //ShellContent sc = new ShellContent();
+                //sc.Content = new LoginPage();
         }
 
     }

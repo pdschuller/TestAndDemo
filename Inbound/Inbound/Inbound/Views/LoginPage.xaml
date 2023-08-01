@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="Inbound.Views.LoginPage"
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="False"
+             Title="Inbound App Login Page" >
     <ContentPage.Content>
         <Grid RowDefinitions="40, 40, 60, 60" ColumnDefinitions="5*, 5*" 
                 Margin="50,50,50,0">
@@ -15,8 +16,8 @@
             <Entry Grid.Row="1" Grid.Column="1" Text="Binding PIN"></Entry>
             <Button Text="Login" Grid.Row="2" Grid.Column="0" Margin="0,20,0,0" 
                     Clicked="DoLogin"/>
-            <Button Text="Login2" Grid.Row="3" Grid.Column="0" Margin="0,20,0,0" 
-                    Clicked="DoLogin2"/>
+            <!--<Button Text="Login2" Grid.Row="3" Grid.Column="0" Margin="0,20,0,0" 
+                    Clicked="DoLogin2"/>-->
         </Grid>
     </ContentPage.Content>
 </ContentPage>
