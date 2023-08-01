@@ -29,7 +29,7 @@
                    Margin="0,0,0,0">
                 <Button Text="OK [F5]" Clicked="SealPage_Ok" />
                 <Button Text="Back" Clicked="SealPage_Esc" />
-                <Button Text="Route Nav" Clicked="SealPage_ViaRoute" />
+                <!--<Button Text="Route Nav" Clicked="SealPage_ViaRoute" />-->
             </StackLayout>
         </Grid>
     </ContentPage.Content>

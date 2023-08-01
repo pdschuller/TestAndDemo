@@ -17,18 +17,19 @@ namespace Inbound.Views
         {
             InitializeComponent();
         }
-        private async void SealPage_Esc(object sender, EventArgs e)
+        private void SealPage_Esc(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync("../");
+            // await Shell.Current.GoToAsync("../");
+            Shell.Current.GoToAsync("//LoginPage");
         }
         private void SealPage_Ok(object sender, EventArgs e)
         {
             Shell.Current.GoToAsync(nameof(ScanPage));
         }
-        private void SealPage_ViaRoute(object sender, EventArgs e)
-        {
-            Shell.Current.GoToAsync("//LoginPage");
-            // await Shell.Current.GoToAsync(nameof(LoginPage));
-        }
+        //private void SealPage_ViaRoute(object sender, EventArgs e)
+        //{
+        //    Shell.Current.GoToAsync("//LoginPage");
+        //    // throws relative route excep await Shell.Current.GoToAsync(nameof(LoginPage));
+        //}
     }
 }

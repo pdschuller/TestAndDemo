@@ -4,10 +4,9 @@
              x:Class="Inbound.Views.ScanPage"
              Title="Inbound Scan" >
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="This is the Scan Page"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Orientation="Vertical">
+            <Label Text="This is the Scan Page" />
+            <Button Text="Login" Clicked="GoToLogin" Margin="20,20,20,0" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

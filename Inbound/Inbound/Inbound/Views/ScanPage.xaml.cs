@@ -16,5 +16,9 @@ namespace Inbound.Views
         {
             InitializeComponent();
         }
+        private void GoToLogin(object sender, EventArgs e)
+        {
+            Shell.Current.GoToAsync("//LoginPage");
+        }
     }
 }

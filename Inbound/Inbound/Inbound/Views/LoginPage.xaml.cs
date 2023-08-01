@@ -17,22 +17,21 @@ namespace Inbound.Views
             InitializeComponent();
             this.BindingContext = new LoginViewModel();
         }
-        private async void DoLogin(object sender, EventArgs e)
+        private void DoLogin(object sender, EventArgs e)
         {
             // Shell.Current.GoToAsync(nameof(TrailerSealPage));
-            await Shell.Current.GoToAsync(nameof(TrailerSealPage));
+            Shell.Current.GoToAsync(nameof(TrailerSealPage));
             // NO  Shell.Current.GoToAsync(nameof(AboutPage));
             // next line works
             // Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}");
         }
-
-        private async void DoLogin2(object sender, EventArgs e)
-        {
-            // AppShell.Current.GoToAsync(nameof(TrailerSealPage))
-            // AppShell.Current.GoToAsync(nameof(TrailerSealPage)); ;
-            // NO  AppShell.Current.GoToAsync(nameof(AboutPage));
-            // next line works
-            await Shell.Current.GoToAsync(nameof(ItemDetailPage));
-        }
+        //private async void DoLogin2(object sender, EventArgs e)
+        //{
+        //    // AppShell.Current.GoToAsync(nameof(TrailerSealPage))
+        //    // AppShell.Current.GoToAsync(nameof(TrailerSealPage)); ;
+        //    // NO  AppShell.Current.GoToAsync(nameof(AboutPage));
+        //    // next line works
+        //    await Shell.Current.GoToAsync(nameof(ItemDetailPage));
+        //}
     }
 }
