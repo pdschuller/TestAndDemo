@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Inbound.ModalViews;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,10 @@ namespace Inbound.Views
         private void GoToLogin(object sender, EventArgs e)
         {
             Shell.Current.GoToAsync("//LoginPage");
+        }
+        private void CloseUrClick(object sender, EventArgs e)
+        {
+            Shell.Current.GoToAsync(nameof(CloseUrModal));
         }
     }
 }

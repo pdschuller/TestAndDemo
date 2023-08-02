@@ -6,7 +6,9 @@
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
             <Label Text="This is the Scan Page" />
-            <Button Text="Login" Clicked="GoToLogin" Margin="20,20,20,0" />
+            <!-- this was for testing Nav back to Login screen from here
+                <Button Text="Login" Clicked="GoToLogin" Margin="20,20,20,0" />-->
+            <Button Text="Close UR" Clicked="CloseUrClick" Margin="20,20,20,0" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -5,8 +5,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="Inbound.Views.LoginPage"
-             Shell.NavBarIsVisible="False"
              Title="Inbound App Login Page" >
+    <!-- this, in above element, displays the Title bar Shell.NavBarIsVisible="False" 
+        does nothing:   Shell.FlyoutItemIsVisible="False"  -->
+    
     <ContentPage.Content>
         <Grid RowDefinitions="40, 40, 60, 60" ColumnDefinitions="5*, 5*" 
                 Margin="50,50,50,0">

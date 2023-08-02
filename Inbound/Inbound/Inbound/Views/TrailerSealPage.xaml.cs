@@ -16,6 +16,23 @@ namespace Inbound.Views
         public TrailerSealPage()
         {
             InitializeComponent();
+            // Shell.SetBackButtonBehavior(this, BackButtonBehavior.)
+                // = BackButtonBehavior.IsEnabledProperty = false;
+            
+        }
+        protected override bool OnBackButtonPressed()
+        {
+            // this works for Android back button that is off the screen at the bottom
+            // but NOT for the back button in the top left corner of the screen
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                if (await DisplayAlert("Exit?", "Are you sure you want to exit from this page?", "Yes", "No"))
+                {
+                    base.OnBackButtonPressed();
+                    // await App.Navigation.PopAsync();
+                }
+            });
+            return true;
         }
         private void SealPage_Esc(object sender, EventArgs e)
         {
