@@ -19,6 +19,7 @@ namespace Inbound.Views
             // turn off back button at top left of screen
             Shell.SetBackButtonBehavior(this, new BackButtonBehavior
             {
+                // IconOverride = "transparent.png",
                 IsEnabled = false
             });
         }

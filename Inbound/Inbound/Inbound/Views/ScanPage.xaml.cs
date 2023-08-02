@@ -16,6 +16,19 @@ namespace Inbound.Views
         public ScanPage()
         {
             InitializeComponent();
+            // turn off back button at top left of screen
+            Shell.SetBackButtonBehavior(this, new BackButtonBehavior
+            {
+                IsEnabled = false
+            });
+        }
+        protected override bool OnBackButtonPressed()
+        {
+            // this works for Android back button that is off the screen at the bottom
+            // but NOT for the back button in the top left corner of the screen
+            Device.BeginInvokeOnMainThread(async () =>
+            { });
+            return true;
         }
         private void GoToLogin(object sender, EventArgs e)
         {
