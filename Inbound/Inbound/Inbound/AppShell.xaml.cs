@@ -19,6 +19,13 @@ namespace Inbound
             Routing.RegisterRoute(nameof(ScanPage), typeof(ScanPage));
             Routing.RegisterRoute(nameof(CloseUrModal), typeof(CloseUrModal));
 
+            // does nothing here
+            //Shell.SetBackButtonBehavior(this, new BackButtonBehavior
+            //{
+            //    // IconOverride = "transparent.png",
+            //    IsEnabled = false
+            //});
+
             // LoginPage is made the initial page in AppShell.xaml. Not needed here.
             // this does not solve Relative Routing exception Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
             //ShellContent sc = new ShellContent();

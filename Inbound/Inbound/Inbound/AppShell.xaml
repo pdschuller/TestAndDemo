@@ -29,7 +29,12 @@
             -->
         </ResourceDictionary>
     </Shell.Resources>
-
+    
+    <!--  this seems to nothing
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsEnabled="False" />
+    </Shell.BackButtonBehavior>-->
+    
     <ShellContent
         Title="Login Page"
         ContentTemplate="{DataTemplate local:LoginPage}"
