@@ -39,7 +39,6 @@ namespace Inbound.Views
         public bool ReceiveKeyPress(KeyEvent e)
         {   // this method is called from my TrailerSealRenderer.DispatchKeyEvent method in the Android platform code
             // if (e.Action == KeyEventActions.Down)  so down arrow fires once
-            // Android.Views.Keycode.ButtonL1
             if (e.KeyCode == Keycode.ButtonL1)
             {
                 return false;
