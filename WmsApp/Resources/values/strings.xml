@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">WMS App</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Scan Cases</string>
-    <string name="title_notifications">Notifications</string>
-</resources>
