@@ -136,16 +136,6 @@ namespace MauiZebraScan
             barcodeProps.PutString("decoder_qrcode", "true");
             barcodeProps.PutString("decoder_datamatrix", config.IsDataMatrix ? "true" : "false");
 
-            //barcodeProps.PutString("decoder_ean8", config.IsEAN8 ? "true" : "false");
-            //barcodeProps.PutString("decoder_ean13", config.IsEAN13 ? "true" : "false");
-            //barcodeProps.PutString("decoder_upca", config.IsUPCA ? "true" : "false");
-            //barcodeProps.PutString("decoder_upce0", config.IsUPCE0 ? "true" : "false");
-            //barcodeProps.PutString("decoder_upce1", config.IsUPCE1 ? "true" : "false");
-            //barcodeProps.PutString("decoder_d2of5", config.IsD2of5 ? "true" : "false");
-            //barcodeProps.PutString("decoder_aztec", config.IsAztec ? "true" : "false");
-            //barcodeProps.PutString("decoder_pdf417", config.IsPDF417 ? "true" : "false");
-            //barcodeProps.PutString("decoder_qrcode", config.IsQRCode ? "true" : "false");
-
             // pds: put barcodeProps into barcodeConfig.  barcodeConfig is a Bundle object
             barcodeConfig.PutBundle("PARAM_LIST", barcodeProps);
             // pds: put barcodeConfig into profileConfig
@@ -157,77 +147,61 @@ namespace MauiZebraScan
             // pds: pass profileConfig to SendDataWedgeIntentWithExtras.  profileConfig is a Bundle object
             SendDataWedgeIntentWithExtra(ACTION_DATAWEDGE_FROM_6_2, EXTRA_SET_CONFIG, profileConfig);
         }
-        //public void SetConfigFromIScannerConfig(IScannerConfig a_config)
-        //{   //   All the properties set here are from the ^ config that is passed in
-        //    //   THIS IS CALLED FROM THE MAIN PAGE VIEW MODEL =========================
-        //    //
-        //    // ulong uid = MobileApp.Logger.MethodEntry();
 
-        //    // for this method to work with all config classes this next cast will have to be changed
-        //    ZebraScanModeConfig config = (ZebraScanModeConfig)a_config;
+        public void SetConfigFromIScannerConfig(IScannerConfig a_config)
+        {   //   All the properties set here are from the ^ config that is passed in
 
-        //    //MobileApp.Logger.Verbose(
-        //    //    uid,
-        //    //    "ZebraScanModeConfig (a_config):\r\n" + 
-        //    //    MobileApp.Build(config)
-        //    //);
+            ZebraScannerConfig config = (ZebraScannerConfig)a_config;
 
-        //    Bundle profileConfig = new Bundle();
-        //    profileConfig.PutString("PROFILE_NAME", EXTRA_PROFILE_NAME);
-        //    profileConfig.PutString("PROFILE_ENABLED", _bRegistered ? "true" : "false"); //  Seems these are all strings
-        //    profileConfig.PutString("CONFIG_MODE", "UPDATE");
-        //    Bundle barcodeConfig = new Bundle();
-        //    barcodeConfig.PutString("PLUGIN_NAME", "BARCODE"); // pds: NAME can have many values including VOICE and KEYSTROKE
-        //    barcodeConfig.PutString("RESET_CONFIG", "false"); //  This is the default but never hurts to specify
-        //    Bundle barcodeProps = new Bundle();
-        //    barcodeProps.PutString("scanner_input_enabled", "true");
-        //    barcodeProps.PutString("scanner_selection", "auto"); //  Could also specify a number here, the id returned from ENUMERATE_SCANNERS.
-        //                                                         //  Do NOT use "Auto" here (with a capital 'A'), it must be lower case.
-        //    // **********************************************************************************************
-        //    //
-        //    // pds: even though we use strings here, these are properties in the built in Zebra object
-        //    //      the have to exist in file: ZebraScannerConfig.  The values set there are the defaults FOR THIS APP
-        //    //  
-        //    //    This method sets all the properties based on the Config file that is passed in
-        //    //
-        //    //      NOTE: a min length (length1) of 4 will include BCs with 4 digits
-        //    //      The Zebra documentation on these properties is at https://techdocs.zebra.com/datawedge/11-0/guide/decoders/
-        //    //
-        //    // **********************************************************************************************
+            Bundle profileConfig = new Bundle();
+            profileConfig.PutString("PROFILE_NAME", EXTRA_PROFILE_NAME);
+            profileConfig.PutString("PROFILE_ENABLED", _bRegistered ? "true" : "false"); //  Seems these are all strings
+            profileConfig.PutString("CONFIG_MODE", "UPDATE");
+            Bundle barcodeConfig = new Bundle();
+            // barcodeConfig.PutString("PLUGIN_NAME", "BARCODE"); // pds: NAME can have many values including VOICE and KEYSTROKE
+            barcodeConfig.PutString("PLUGIN_NAME", "CAMERA");
+            barcodeConfig.PutString("RESET_CONFIG", "false"); //  This is the default but never hurts to specify
+            Bundle barcodeProps = new Bundle();
+            barcodeProps.PutString("scanner_input_enabled", "true");
+            barcodeProps.PutString("scanner_selection", "auto"); //  Could also specify a number here, the id returned from ENUMERATE_SCANNERS.
+                                                                 //  Do NOT use "Auto" here (with a capital 'A'), it must be lower case.
+            // **********************************************************************************************
+            //
+            // pds: even though we use strings here, these are properties in the built in Zebra object
+            //      the have to exist in file: ZebraScannerConfig.  The values set there are the defaults FOR THIS APP
+            //  
+            //    This method sets all the properties based on the Config file that is passed in
+            //
+            //      NOTE: a min length (length1) of 4 will include BCs with 4 digits
+            //      The Zebra documentation on these properties is at https://techdocs.zebra.com/datawedge/11-0/guide/decoders/
+            //
+            // **********************************************************************************************
 
-        //    barcodeProps.PutString("decoder_ean8", config.IsEAN8 ? "true" : "false");
-        //    barcodeProps.PutString("decoder_ean13", config.IsEAN13 ? "true" : "false");
-        //    barcodeProps.PutString("decoder_code39", config.IsCode39.ToString());
-        //    barcodeProps.PutString("decoder_code128", config.IsCode128 ? "true" : "false");
-        //    barcodeProps.PutString("decoder_code128_length1", config.decoder_code128_length1.ToString());
-        //    barcodeProps.PutString("decoder_code128_length2", config.decoder_code128_length2.ToString());
-        //    barcodeProps.PutString("decoder_upca", config.IsUPCA ? "true" : "false");
-        //    barcodeProps.PutString("decoder_upce0", config.IsUPCE0 ? "true" : "false");
-        //    barcodeProps.PutString("decoder_upce1", config.IsUPCE1 ? "true" : "false");
-        //    barcodeProps.PutString("decoder_d2of5", config.IsD2of5 ? "true" : "false");
-            
-        //    barcodeProps.PutString("decoder_i2of5", config.IsI2of5.ToString());
-        //    barcodeProps.PutString("decoder_i2of5_length1", config.decoder_i2of5_length1.ToString());
-        //    barcodeProps.PutString("decoder_i2of5_length2", config.decoder_i2of5_length2.ToString());
-            
-        //    barcodeProps.PutString("decoder_aztec", config.IsAztec ? "true" : "false");
-        //    barcodeProps.PutString("decoder_pdf417", config.IsPDF417 ? "true" : "false");
-        //    barcodeProps.PutString("decoder_qrcode", config.IsQRCode ? "true" : "false");
-        //    barcodeProps.PutString("decoder_datamatrix", config.IsDataMatrix ? "true" : "false");
+            barcodeProps.PutString("decoder_ean8", config.IsEAN8 ? "true" : "false");
+            barcodeProps.PutString("decoder_ean13", config.IsEAN13 ? "true" : "false");
+            barcodeProps.PutString("decoder_code39", config.IsCode39.ToString());
+            barcodeProps.PutString("decoder_code128", config.IsCode128 ? "true" : "false");
+            barcodeProps.PutString("decoder_code128_length1", config.decoder_code128_length1.ToString());
+            barcodeProps.PutString("decoder_code128_length2", config.decoder_code128_length2.ToString());
+            barcodeProps.PutString("decoder_upca", config.IsUPCA ? "true" : "false");
+            barcodeProps.PutString("decoder_upce0", config.IsUPCE0 ? "true" : "false");
+            barcodeProps.PutString("decoder_upce1", config.IsUPCE1 ? "true" : "false");
+            barcodeProps.PutString("decoder_d2of5", config.IsD2of5 ? "true" : "false");
 
-        //    // pds: put barcodeProps into barcodeConfig.  barcodeConfig is a Bundle object
-        //    barcodeConfig.PutBundle("PARAM_LIST", barcodeProps);
-        //    // pds: put barcodeConfig into profileConfig
-        //    profileConfig.PutBundle("PLUGIN_CONFIG", barcodeConfig);
-        //    Bundle appConfig = new Bundle();
-        //    appConfig.PutString("PACKAGE_NAME", Android.App.Application.Context.PackageName);      //  Associate the profile with this app
-        //    appConfig.PutStringArray("ACTIVITY_LIST", new String[] { "*" });
-        //    profileConfig.PutParcelableArray("APP_LIST", new Bundle[] { appConfig });
-        //    // pds: pass profileConfig to SendDataWedgeIntentWithExtras.  profileConfig is a Bundle object
-        //    SendDataWedgeIntentWithExtra(ACTION_DATAWEDGE_FROM_6_2, EXTRA_SET_CONFIG, profileConfig);
+            // pds: put barcodeProps into barcodeConfig.  barcodeConfig is a Bundle object
+            barcodeConfig.PutBundle("PARAM_LIST", barcodeProps);
+            // pds: put barcodeConfig into profileConfig
+            profileConfig.PutBundle("PLUGIN_CONFIG", barcodeConfig);
+            Bundle appConfig = new Bundle();
+            appConfig.PutString("PACKAGE_NAME", Android.App.Application.Context.PackageName);      //  Associate the profile with this app
+            appConfig.PutStringArray("ACTIVITY_LIST", new String[] { "*" });
+            profileConfig.PutParcelableArray("APP_LIST", new Bundle[] { appConfig });
+            // pds: pass profileConfig to SendDataWedgeIntentWithExtras.  profileConfig is a Bundle object
+            SendDataWedgeIntentWithExtra(ACTION_DATAWEDGE_FROM_6_2, EXTRA_SET_CONFIG, profileConfig);
 
-        //    // MobileApp.Logger.MethodExit(uid);
-        //}
+            // MobileApp.Logger.MethodExit(uid);
+        }
+
         //public void Set2dConfig(IScannerConfig a_config)
         //{   //
         //    //   THIS IS CALLED FROM THE MAIN PAGE VIEW MODEL =========================
@@ -291,7 +265,7 @@ namespace MauiZebraScan
         //    barcodeConfig.PutBundle("PARAM_LIST", barcodeProps);
         //    //// pds: put barcodeConfig into profileConfig
         //    profileConfig.PutBundle("PLUGIN_CONFIG", barcodeConfig);
-            
+
         //    Bundle appConfig = new Bundle();
         //    appConfig.PutString("PACKAGE_NAME", Android.App.Application.Context.PackageName);  //  Associate the profile with this app
         //    appConfig.PutStringArray("ACTIVITY_LIST", new String[] { "*" });

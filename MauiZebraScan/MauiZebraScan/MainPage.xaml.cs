@@ -1,6 +1,5 @@
 ﻿using MauiZebraScan.Interfaces;
 using MauiZebraScan.Models;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace MauiZebraScan
 {
@@ -22,7 +21,11 @@ namespace MauiZebraScan
             BcScanner.Enable();
             // set the default scanner profile. Else app uses last-active-profile.
             ConfigForAllowedBarcodes = new ZebraScannerConfig();
-            BcScanner.SetConfig(ConfigForAllowedBarcodes);
+            IScannerConfig Photos = ConfigForAllowedBarcodes.PhotosConfig();
+            // BcScanner.SetConfig(ConfigForAllowedBarcodes);
+            // the idea is that this method in Scanner_Android will set CAMERA
+            BcScanner.SetConfigFromIScannerConfig(Photos);
+
             BcScanner.OnScanDataCollected -= BcScanner_OnScanDataCollected;
             // BcScanner.OnStatusChanged -= BcScanner_OnStatusChanged;
             BcScanner.OnScanDataCollected += BcScanner_OnScanDataCollected;

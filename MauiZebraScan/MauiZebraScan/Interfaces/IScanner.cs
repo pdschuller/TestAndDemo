@@ -21,6 +21,7 @@ namespace MauiZebraScan.Interfaces
         void Disable();
         // NOTE: pds, the Set___ methods are implemented in Platform Scanner_Android.cs
         void SetConfig(IScannerConfig a_config);
+        void SetConfigFromIScannerConfig(IScannerConfig a_config);
         // void Set2dConfig(IScannerConfig a_config);
         // void SetDataMatrixConfig(IScannerConfig a_config);
         // SetConfigFromIScannerConfig

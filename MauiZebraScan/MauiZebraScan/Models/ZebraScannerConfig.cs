@@ -53,6 +53,34 @@ namespace MauiZebraScan.Models
             IsContinuous = true;
             TriggerType = TriggerType.HARD;
         }
+        public ZebraScannerConfig PhotosConfig()
+        {
+            //
+            //  THIS IS THE DEFAULT CONFIGURATION FOR THE ZEBRA SCANNER
+            //
+            IsEAN8 = true;
+            IsEAN13 = true;
+            IsCode39 = true;
+            decoder_code11_length1 = 4;
+            decoder_code11_length2 = 50;
+            IsCode128 = true;
+            decoder_code128_length1 = 1;
+            decoder_code128_length2 = 50;
+            IsUPCA = true;
+            IsUPCE0 = true;
+            IsUPCE1 = true;
+            IsD2of5 = false;
+            IsI2of5 = true;
+            IsAztec = false;
+            IsPDF417 = true;
+            IsQRCode = true;
+            IsDataMatrix = true;
+
+            // IsContinuous = true;  // pds: commented 1-28-23
+            IsContinuous = true;
+            TriggerType = TriggerType.HARD;
+            return this;
+        }
     }
 
     public enum TriggerType
