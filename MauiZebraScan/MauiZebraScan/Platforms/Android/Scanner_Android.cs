@@ -4,16 +4,10 @@ using Android.Content;
 using Android.OS;
 using MauiZebraScan.Interfaces;
 using MauiZebraScan.Models;
-// using Xamarin.Forms;
-
-// [assembly: Xamarin.Forms.Dependency(typeof(MauiZebraScan.Scanner_Android))]
-// set up Dependency Service in the main project
-// This file is on the Android platform
-[assembly: Dependency(typeof(MauiZebraScan.Scanner_Android))]
 
 namespace MauiZebraScan
 {
-    public class Scanner_Android : MauiZebraScan.Interfaces.IScanner_Android
+    public class Scanner_Android : IScanner_Android
     {
         private Context _context = null;
         private bool _bRegistered = false;
@@ -94,7 +88,7 @@ namespace MauiZebraScan
             //   THIS IS CALLED FROM THE MAIN PAGE VIEW MODEL =========================
             //
             ZebraScannerConfig config = (ZebraScannerConfig)a_config;
-            // MobileApp.Build(config) for this app  This the JS logger stuff
+            // MobileApp.Build(config) for this app << This the JS logger stuff
             //);
 
             Bundle profileConfig = new Bundle();

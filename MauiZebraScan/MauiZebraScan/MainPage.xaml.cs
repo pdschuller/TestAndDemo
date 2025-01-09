@@ -8,7 +8,7 @@ namespace MauiZebraScan
     {
         int count = 0;
         public IScanner_Android BcScanner { get; set; }
-        public ZebraScannerConfig newZebraScannerConfig { get; set; }
+        public ZebraScannerConfig ConfigForAllowedBarcodes { get; set; }
 
         public MainPage()
         {
@@ -19,17 +19,10 @@ namespace MauiZebraScan
             // BcScanner = DependencyService.Get<IScanner_Android>();
             // access Scanner_Android from the Android platform with Microsoft.Extensions.DependencyInjection
             BcScanner = MauiProgram.CreateMauiApp().Services.GetRequiredService<IScanner_Android>();
-
-
-
-
             BcScanner.Enable();
             // set the default scanner profile. Else app uses last-active-profile.
-            // ZebraScannerConfig LenConfig = new ZebraScannerConfig();
-            // that ^ has hard coded properties in it
-            newZebraScannerConfig = new ZebraScannerConfig();
-            BcScanner.SetConfig(newZebraScannerConfig);
-
+            ConfigForAllowedBarcodes = new ZebraScannerConfig();
+            BcScanner.SetConfig(ConfigForAllowedBarcodes);
             BcScanner.OnScanDataCollected -= BcScanner_OnScanDataCollected;
             // BcScanner.OnStatusChanged -= BcScanner_OnStatusChanged;
             BcScanner.OnScanDataCollected += BcScanner_OnScanDataCollected;

@@ -16,11 +16,10 @@ namespace MauiZebraScan
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
-            builder.Services.AddTransient<IScannerConfig, ZebraScannerConfig>();
+            // builder.Services.AddTransient<IScannerConfig, ZebraScannerConfig>();
             // builder.Services.AddTransient<IScanner_Android, Scanner_Android>();
 #if ANDROID
             builder.Services.AddTransient<IScannerConfig, ZebraScannerConfig>();
-
             builder.Services.AddTransient<IScanner_Android, Scanner_Android>();
 #endif
 
