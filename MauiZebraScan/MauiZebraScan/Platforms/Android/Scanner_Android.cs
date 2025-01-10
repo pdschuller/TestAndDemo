@@ -148,7 +148,7 @@ namespace MauiZebraScan
             SendDataWedgeIntentWithExtra(ACTION_DATAWEDGE_FROM_6_2, EXTRA_SET_CONFIG, profileConfig);
         }
 
-        public void SetConfigFromIScannerConfig(IScannerConfig a_config)
+        public void SetPhotoConfig(IScannerConfig a_config)
         {   //   All the properties set here are from the ^ config that is passed in
 
             ZebraScannerConfig config = (ZebraScannerConfig)a_config;
@@ -158,8 +158,8 @@ namespace MauiZebraScan
             profileConfig.PutString("PROFILE_ENABLED", _bRegistered ? "true" : "false"); //  Seems these are all strings
             profileConfig.PutString("CONFIG_MODE", "UPDATE");
             Bundle barcodeConfig = new Bundle();
-            // barcodeConfig.PutString("PLUGIN_NAME", "BARCODE"); // pds: NAME can have many values including VOICE and KEYSTROKE
-            barcodeConfig.PutString("PLUGIN_NAME", "CAMERA");
+            barcodeConfig.PutString("PLUGIN_NAME", "BARCODE"); // pds: NAME can have many values including VOICE and KEYSTROKE
+            // barcodeConfig.PutString("PLUGIN_NAME", "CAMERA");
             barcodeConfig.PutString("RESET_CONFIG", "false"); //  This is the default but never hurts to specify
             Bundle barcodeProps = new Bundle();
             barcodeProps.PutString("scanner_input_enabled", "true");
@@ -406,11 +406,15 @@ namespace MauiZebraScan
         }
         private void SendDataWedgeIntentWithExtra(String action, String extraKey, Bundle extras)
         {
-            // ulong uid = MobileApp.Logger.MethodEntry();
-
+            // SetPhotoConfig comes in here
             Intent dwIntent = new Intent();
+                        
             dwIntent.SetAction(action);
             dwIntent.PutExtra(extraKey, extras);
+            
+            // dwIntent.SetAction("com.symbol.datawedge.api.ACTION");
+            // dwIntent.PutExtra("com.symbol.datawedge.api.SCANNER_INPUT_PLUGIN", "DISABLE_PLUGIN");
+
             _context.SendBroadcast(dwIntent);
 
             // MobileApp.Logger.MethodExit(uid);
@@ -420,8 +424,13 @@ namespace MauiZebraScan
             // ulong uid = MobileApp.Logger.MethodEntry();
 
             Intent dwIntent = new Intent();
+
             dwIntent.SetAction(action);
             dwIntent.PutExtra(extraKey, extraValue);
+
+            // dwIntent.SetAction("com.symbol.datawedge.api.ACTION");
+            // dwIntent.PutExtra("com.symbol.datawedge.api.SCANNER_INPUT_PLUGIN", "DISABLE_PLUGIN");
+
             _context.SendBroadcast(dwIntent);
 
             // MobileApp.Logger.MethodExit(uid);

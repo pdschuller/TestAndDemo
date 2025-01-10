@@ -55,15 +55,13 @@ namespace MauiZebraScan.Models
         }
         public ZebraScannerConfig PhotosConfig()
         {
-            //
-            //  THIS IS THE DEFAULT CONFIGURATION FOR THE ZEBRA SCANNER
-            //
             IsEAN8 = true;
             IsEAN13 = true;
             IsCode39 = true;
             decoder_code11_length1 = 4;
             decoder_code11_length2 = 50;
-            IsCode128 = true;
+            // IsCode128 = true;
+            IsCode128 = false;
             decoder_code128_length1 = 1;
             decoder_code128_length2 = 50;
             IsUPCA = true;
