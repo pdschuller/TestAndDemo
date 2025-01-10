@@ -158,31 +158,46 @@ namespace MauiZebraScan
 
             Bundle bConfigDCP = new Bundle();
             Bundle bParamsDCP = new Bundle();
+            // POPULATE DCP BUNDLE =======================
             bParamsDCP.PutString("dcp_input_enabled", "true");
             // bParamsDCP.PutString("dcp_dock_button_on", "LEFT"); //Supported values: BOTH - Left or Right, LEFT - Left only, RIGHT - Right only
             bParamsDCP.PutString("dcp_start_in", "FULLSCREEN"); //Supported Values: FULLSCREEN, BUTTON, BUTTON_ONLY
             // bParamsDCP.PutString("dcp_highest_pos", "30"); //Supported Values:  0 - 100, Highest pos can not be greater than lowest pos
             // bParamsDCP.PutString("dcp_lowest_pos", "40"); //Supported Values: 0 - 100, Highest pos can not be greater than lowest pos
             bParamsDCP.PutString("dcp_drag_detect_time", "501"); //Supported Values: 0 - 1000
-            bParamsDCP.PutString("image_capture_enabled", "true");
-            
-            bConfigDCP.PutString("RESET_CONFIG", "false");
-
-
+            bConfigDCP.PutString("RESET_CONFIG", "true");
+            bConfigDCP.PutString("PLUGIN_NAME", "DCP");
             bConfigDCP.PutBundle("PARAM_LIST", bParamsDCP);
+            
+            // bMain.PutBundle("DCP", bConfigDCP);
 
-            bMain.PutBundle("DCP", bConfigDCP);
+            // POPULATE IMAGE_CAPTURE BUNDLE =======================
+            Bundle ImageCaptureBundle = new Bundle(); 
+            ImageCaptureBundle.PutString("PLUGIN_NAME", "IMAGE_CAPTURE"); 
+            ImageCaptureBundle.PutString("RESET_CONFIG", "true"); 
+            // Create the parameter list bundle
+            Bundle paramListBundle = new Bundle(); 
+            paramListBundle.PutString("image_capture_enabled", "true");
+            // Add the parameter list bundle to the plugin configuration bundle
+            ImageCaptureBundle.PutBundle("PARAM_LIST", paramListBundle); // Add the plugin configuration bundle to the main bundle
+            
+            //bMain.PutParcelableArray("PLUGIN_CONFIG", new Bundle[] { ImageCaptureBundle });
 
+            bMain.PutParcelableArray("PLUGIN_CONFIG", 
+                new Bundle[] { bConfigDCP, ImageCaptureBundle });
+
+            // ADD SETTINGS TO bMain Bundle =======================
             bMain.PutString("PROFILE_NAME", "Profile007");
             bMain.PutString("PROFILE_ENABLED", "true");
             bMain.PutString("CONFIG_MODE", "CREATE_IF_NOT_EXIST");
 
+            // POPULATE APP_LIST BUNDLE =======================
             Bundle appListBundle = new Bundle();
             appListBundle.PutString("PACKAGE_NAME", "com.companyname.mauizebrascan");
             appListBundle.PutStringArray("ACTIVITY_LIST", new String[] { "*" });
-
             bMain.PutParcelableArray("APP_LIST", new Bundle[] { appListBundle });
 
+            // POPULATE THE INTENT  =======================
             Intent iSetConfig = new Intent();
             iSetConfig.SetAction("com.symbol.datawedge.api.ACTION");
             iSetConfig.PutExtra("com.symbol.datawedge.api.SET_CONFIG", bMain);
