@@ -169,7 +169,7 @@ namespace MauiZebraScan
             bConfigDCP.PutString("PLUGIN_NAME", "DCP");
             bConfigDCP.PutBundle("PARAM_LIST", bParamsDCP);
             
-            // bMain.PutBundle("DCP", bConfigDCP);
+            bMain.PutBundle("DCP", bConfigDCP);
 
             // POPULATE IMAGE_CAPTURE BUNDLE =======================
             Bundle ImageCaptureBundle = new Bundle(); 
@@ -183,8 +183,8 @@ namespace MauiZebraScan
             
             //bMain.PutParcelableArray("PLUGIN_CONFIG", new Bundle[] { ImageCaptureBundle });
 
-            bMain.PutParcelableArray("PLUGIN_CONFIG", 
-                new Bundle[] { bConfigDCP, ImageCaptureBundle });
+            //bMain.PutParcelableArray("PLUGIN_CONFIG", 
+            //    new Bundle[] { bConfigDCP, ImageCaptureBundle });
 
             // ADD SETTINGS TO bMain Bundle =======================
             bMain.PutString("PROFILE_NAME", "Profile007");
