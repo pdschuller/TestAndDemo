@@ -17,7 +17,8 @@ namespace MauiZebraScan.Interfaces
         // event EventHandler<hard>
         void Read();
         void Enable();
-        // void Enable2d();
+        // enable DCP
+
         void Disable();
         // NOTE: pds, the Set___ methods are implemented in Platform Scanner_Android.cs
         void SetConfig(IScannerConfig a_config);

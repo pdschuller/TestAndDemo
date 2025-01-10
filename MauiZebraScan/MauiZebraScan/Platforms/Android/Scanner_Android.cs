@@ -15,7 +15,7 @@ namespace MauiZebraScan
         private static string ACTION_DATAWEDGE_FROM_6_2 = "com.symbol.datawedge.api.ACTION";
         private static string EXTRA_CREATE_PROFILE = "com.symbol.datawedge.api.CREATE_PROFILE";
         private static string EXTRA_SET_CONFIG = "com.symbol.datawedge.api.SET_CONFIG";
-        private static string EXTRA_PROFILE_NAME = "Wms App Andr Profile";
+        private static string EXTRA_PROFILE_NAME = "Profile007";
 
         public Scanner_Android()
         {
@@ -151,45 +151,53 @@ namespace MauiZebraScan
         public void SetPhotoConfig(IScannerConfig a_config)
         {   
             ZebraScannerConfig config = (ZebraScannerConfig)a_config;
-
-            Bundle profileConfig = new Bundle();
-            profileConfig.PutString("PROFILE_NAME", "pdsTakePhoto");
-            // profileConfig.PutString("PROFILE_ENABLED", _bRegistered ? "true" : "false"); //  Seems these are all strings
-            profileConfig.PutString("PROFILE_ENABLED", "true");
-            // profileConfig.PutString("CONFIG_MODE", "UPDATE");
-            profileConfig.PutString("CONFIG_MODE", "CREATE");  // no change
-            Bundle barcodeConfig = new Bundle();
-            // pds: NAME can have many values including VOICE and KEYSTROKE, DCP
-            // barcodeConfig.PutString("PLUGIN_NAME", "BARCODE"); 
-            barcodeConfig.PutString("PLUGIN_NAME", "DCP");  // a Bundle witin the framework
-            // barcodeConfig.PutString("PLUGIN_NAME", "CAMERA");
-            barcodeConfig.PutString("RESET_CONFIG", "true"); //  This is the default but never hurts to specify
-            Bundle barcodeProps = new Bundle();
-            barcodeProps.PutString("scanner_input_enabled", "true");
-            barcodeProps.PutString("scanner_selection", "auto"); //  Could also specify a number here, the id returned from ENUMERATE_SCANNERS.
-
             // do PutString for DCP plugin. Values from here https://techdocs.zebra.com/datawedge/latest/guide/api/setconfig/#dcputilitiesparameters
-            barcodeProps.PutString("dcp_input_enabled", "true");
-            barcodeProps.PutString("dcp_dock_button_on", "LEFT");
-            barcodeProps.PutString("dcp_start_in", "BUTTON");
-            barcodeProps.PutString("dcp_highest_pos", "10");
-            barcodeProps.PutString("dcp_lowest_pos", "90");
-            barcodeProps.PutString("dcp_timeout", "50");
-            barcodeProps.PutString("dcp_drag_detect_time", "50");
+            // copying in from Set DCP input configuration here https://techdocs.zebra.com/datawedge/11-0/guide/api/setconfig/
+            //          search for Set DCP input configuration
+            Bundle bMain = new Bundle();
 
-            // pds: put barcodeProps into barcodeConfig.  barcodeConfig is a Bundle object
-            barcodeConfig.PutBundle("PARAM_LIST", barcodeProps);
-            // pds: put barcodeConfig into profileConfig
-            profileConfig.PutBundle("PLUGIN_CONFIG", barcodeConfig);
-            Bundle appConfig = new Bundle();
-            appConfig.PutString("PACKAGE_NAME", Android.App.Application.Context.PackageName);      //  Associate the profile with this app
-            appConfig.PutStringArray("ACTIVITY_LIST", new String[] { "*" });
-            profileConfig.PutParcelableArray("APP_LIST", new Bundle[] { appConfig });
+            Bundle bConfigDCP = new Bundle();
+            Bundle bParamsDCP = new Bundle();
+            bParamsDCP.PutString("dcp_input_enabled", "true");
+            bParamsDCP.PutString("dcp_dock_button_on", "LEFT"); //Supported values: BOTH - Left or Right, LEFT - Left only, RIGHT - Right only
+            bParamsDCP.PutString("dcp_start_in", "FULLSCREEN"); //Supported Values: FULLSCREEN, BUTTON, BUTTON_ONLY
+            bParamsDCP.PutString("dcp_highest_pos", "30"); //Supported Values:  0 - 100, Highest pos can not be greater than lowest pos
+            bParamsDCP.PutString("dcp_lowest_pos", "40"); //Supported Values: 0 - 100, Highest pos can not be greater than lowest pos
+            bParamsDCP.PutString("dcp_drag_detect_time", "501"); //Supported Values: 0 - 1000
+            bConfigDCP.PutString("RESET_CONFIG", "false");
+
+
+            bConfigDCP.PutBundle("PARAM_LIST", bParamsDCP);
+
+            bMain.PutBundle("DCP", bConfigDCP);
+
+            bMain.PutString("PROFILE_NAME", "Profile007");
+            bMain.PutString("PROFILE_ENABLED", "true");
+            bMain.PutString("CONFIG_MODE", "CREATE_IF_NOT_EXIST");
+
+
+            Bundle appListBundle = new Bundle();
+            appListBundle.PutString("PACKAGE_NAME", "com.companyname.mauizebrascan");
+            appListBundle.PutStringArray("ACTIVITY_LIST", new String[] { "*" });
+
+
+            bMain.PutParcelableArray("APP_LIST", new Bundle[] { appListBundle });
+
+
+            Intent iSetConfig = new Intent();
+            iSetConfig.SetAction("com.symbol.datawedge.api.ACTION");
+            iSetConfig.PutExtra("com.symbol.datawedge.api.SET_CONFIG", bMain);
+            iSetConfig.PutExtra("SEND_RESULT", "LAST_RESULT");
+            iSetConfig.PutExtra("COMMAND_IDENTIFIER", "INTENT_API");
+            //SetConfig [End]
+
+            _context.SendBroadcast(iSetConfig);
+
             // pds: pass profileConfig to SendDataWedgeIntentWithExtras.
             // profileConfig is a Bundle object
             // EXTRA_SET_CONFIG = "com.symbol.datawedge.api.SET_CONFIG";
             // ACTION_DATAWEDGE_FROM_6_2 = "com.symbol.datawedge.api.ACTION";
-            SendDataWedgeIntentWithExtra(ACTION_DATAWEDGE_FROM_6_2, EXTRA_SET_CONFIG, profileConfig);
+            // SendDataWedgeIntentWithExtra(ACTION_DATAWEDGE_FROM_6_2, EXTRA_SET_CONFIG, profileConfig);
         }
 
         //public void Set2dConfig(IScannerConfig a_config)

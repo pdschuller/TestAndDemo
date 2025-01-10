@@ -23,6 +23,8 @@ namespace MauiZebraScan
             // BcScanner.SetConfig(ConfigForAllowedBarcodes);
             // the idea is that this method in Scanner_Android will set CAMERA
             BcScanner.SetPhotoConfig(Photos);
+            // display the DCP button
+            
 
             BcScanner.OnScanDataCollected -= BcScanner_OnScanDataCollected;
             // BcScanner.OnStatusChanged -= BcScanner_OnStatusChanged;
