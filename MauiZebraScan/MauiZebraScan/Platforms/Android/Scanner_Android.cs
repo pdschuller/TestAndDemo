@@ -159,11 +159,13 @@ namespace MauiZebraScan
             Bundle bConfigDCP = new Bundle();
             Bundle bParamsDCP = new Bundle();
             bParamsDCP.PutString("dcp_input_enabled", "true");
-            bParamsDCP.PutString("dcp_dock_button_on", "LEFT"); //Supported values: BOTH - Left or Right, LEFT - Left only, RIGHT - Right only
+            // bParamsDCP.PutString("dcp_dock_button_on", "LEFT"); //Supported values: BOTH - Left or Right, LEFT - Left only, RIGHT - Right only
             bParamsDCP.PutString("dcp_start_in", "FULLSCREEN"); //Supported Values: FULLSCREEN, BUTTON, BUTTON_ONLY
-            bParamsDCP.PutString("dcp_highest_pos", "30"); //Supported Values:  0 - 100, Highest pos can not be greater than lowest pos
-            bParamsDCP.PutString("dcp_lowest_pos", "40"); //Supported Values: 0 - 100, Highest pos can not be greater than lowest pos
+            // bParamsDCP.PutString("dcp_highest_pos", "30"); //Supported Values:  0 - 100, Highest pos can not be greater than lowest pos
+            // bParamsDCP.PutString("dcp_lowest_pos", "40"); //Supported Values: 0 - 100, Highest pos can not be greater than lowest pos
             bParamsDCP.PutString("dcp_drag_detect_time", "501"); //Supported Values: 0 - 1000
+            bParamsDCP.PutString("image_capture_enabled", "true");
+            
             bConfigDCP.PutString("RESET_CONFIG", "false");
 
 
@@ -175,14 +177,11 @@ namespace MauiZebraScan
             bMain.PutString("PROFILE_ENABLED", "true");
             bMain.PutString("CONFIG_MODE", "CREATE_IF_NOT_EXIST");
 
-
             Bundle appListBundle = new Bundle();
             appListBundle.PutString("PACKAGE_NAME", "com.companyname.mauizebrascan");
             appListBundle.PutStringArray("ACTIVITY_LIST", new String[] { "*" });
 
-
             bMain.PutParcelableArray("APP_LIST", new Bundle[] { appListBundle });
-
 
             Intent iSetConfig = new Intent();
             iSetConfig.SetAction("com.symbol.datawedge.api.ACTION");
