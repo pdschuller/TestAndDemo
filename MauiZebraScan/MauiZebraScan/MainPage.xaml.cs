@@ -14,9 +14,7 @@ namespace MauiZebraScan
             InitializeComponent();
 
             // IScanner_Android has methods Enable, SetConfig, Disable, etc.
-            // BcScanner = DependencyService.Get<MauiZebraScan.Scanner_Android>();
-            // BcScanner = DependencyService.Get<IScanner_Android>();
-            // access Scanner_Android from the Android platform with Microsoft.Extensions.DependencyInjection
+            // next access Scanner_Android from the Android platform
             BcScanner = MauiProgram.CreateMauiApp().Services.GetRequiredService<IScanner_Android>();
             BcScanner.Enable();
             // set the default scanner profile. Else app uses last-active-profile.

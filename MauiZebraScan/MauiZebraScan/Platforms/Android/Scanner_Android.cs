@@ -149,44 +149,33 @@ namespace MauiZebraScan
         }
 
         public void SetPhotoConfig(IScannerConfig a_config)
-        {   //   All the properties set here are from the ^ config that is passed in
-
+        {   
             ZebraScannerConfig config = (ZebraScannerConfig)a_config;
 
             Bundle profileConfig = new Bundle();
-            profileConfig.PutString("PROFILE_NAME", EXTRA_PROFILE_NAME);
-            profileConfig.PutString("PROFILE_ENABLED", _bRegistered ? "true" : "false"); //  Seems these are all strings
-            profileConfig.PutString("CONFIG_MODE", "UPDATE");
+            profileConfig.PutString("PROFILE_NAME", "pdsTakePhoto");
+            // profileConfig.PutString("PROFILE_ENABLED", _bRegistered ? "true" : "false"); //  Seems these are all strings
+            profileConfig.PutString("PROFILE_ENABLED", "true");
+            // profileConfig.PutString("CONFIG_MODE", "UPDATE");
+            profileConfig.PutString("CONFIG_MODE", "CREATE");  // no change
             Bundle barcodeConfig = new Bundle();
-            barcodeConfig.PutString("PLUGIN_NAME", "BARCODE"); // pds: NAME can have many values including VOICE and KEYSTROKE
+            // pds: NAME can have many values including VOICE and KEYSTROKE, DCP
+            // barcodeConfig.PutString("PLUGIN_NAME", "BARCODE"); 
+            barcodeConfig.PutString("PLUGIN_NAME", "DCP");  // a Bundle witin the framework
             // barcodeConfig.PutString("PLUGIN_NAME", "CAMERA");
-            barcodeConfig.PutString("RESET_CONFIG", "false"); //  This is the default but never hurts to specify
+            barcodeConfig.PutString("RESET_CONFIG", "true"); //  This is the default but never hurts to specify
             Bundle barcodeProps = new Bundle();
             barcodeProps.PutString("scanner_input_enabled", "true");
             barcodeProps.PutString("scanner_selection", "auto"); //  Could also specify a number here, the id returned from ENUMERATE_SCANNERS.
-                                                                 //  Do NOT use "Auto" here (with a capital 'A'), it must be lower case.
-            // **********************************************************************************************
-            //
-            // pds: even though we use strings here, these are properties in the built in Zebra object
-            //      the have to exist in file: ZebraScannerConfig.  The values set there are the defaults FOR THIS APP
-            //  
-            //    This method sets all the properties based on the Config file that is passed in
-            //
-            //      NOTE: a min length (length1) of 4 will include BCs with 4 digits
-            //      The Zebra documentation on these properties is at https://techdocs.zebra.com/datawedge/11-0/guide/decoders/
-            //
-            // **********************************************************************************************
 
-            barcodeProps.PutString("decoder_ean8", config.IsEAN8 ? "true" : "false");
-            barcodeProps.PutString("decoder_ean13", config.IsEAN13 ? "true" : "false");
-            barcodeProps.PutString("decoder_code39", config.IsCode39.ToString());
-            barcodeProps.PutString("decoder_code128", config.IsCode128 ? "true" : "false");
-            barcodeProps.PutString("decoder_code128_length1", config.decoder_code128_length1.ToString());
-            barcodeProps.PutString("decoder_code128_length2", config.decoder_code128_length2.ToString());
-            barcodeProps.PutString("decoder_upca", config.IsUPCA ? "true" : "false");
-            barcodeProps.PutString("decoder_upce0", config.IsUPCE0 ? "true" : "false");
-            barcodeProps.PutString("decoder_upce1", config.IsUPCE1 ? "true" : "false");
-            barcodeProps.PutString("decoder_d2of5", config.IsD2of5 ? "true" : "false");
+            // do PutString for DCP plugin. Values from here https://techdocs.zebra.com/datawedge/latest/guide/api/setconfig/#dcputilitiesparameters
+            barcodeProps.PutString("dcp_input_enabled", "true");
+            barcodeProps.PutString("dcp_dock_button_on", "LEFT");
+            barcodeProps.PutString("dcp_start_in", "BUTTON");
+            barcodeProps.PutString("dcp_highest_pos", "10");
+            barcodeProps.PutString("dcp_lowest_pos", "90");
+            barcodeProps.PutString("dcp_timeout", "50");
+            barcodeProps.PutString("dcp_drag_detect_time", "50");
 
             // pds: put barcodeProps into barcodeConfig.  barcodeConfig is a Bundle object
             barcodeConfig.PutBundle("PARAM_LIST", barcodeProps);
@@ -196,10 +185,11 @@ namespace MauiZebraScan
             appConfig.PutString("PACKAGE_NAME", Android.App.Application.Context.PackageName);      //  Associate the profile with this app
             appConfig.PutStringArray("ACTIVITY_LIST", new String[] { "*" });
             profileConfig.PutParcelableArray("APP_LIST", new Bundle[] { appConfig });
-            // pds: pass profileConfig to SendDataWedgeIntentWithExtras.  profileConfig is a Bundle object
+            // pds: pass profileConfig to SendDataWedgeIntentWithExtras.
+            // profileConfig is a Bundle object
+            // EXTRA_SET_CONFIG = "com.symbol.datawedge.api.SET_CONFIG";
+            // ACTION_DATAWEDGE_FROM_6_2 = "com.symbol.datawedge.api.ACTION";
             SendDataWedgeIntentWithExtra(ACTION_DATAWEDGE_FROM_6_2, EXTRA_SET_CONFIG, profileConfig);
-
-            // MobileApp.Logger.MethodExit(uid);
         }
 
         //public void Set2dConfig(IScannerConfig a_config)
