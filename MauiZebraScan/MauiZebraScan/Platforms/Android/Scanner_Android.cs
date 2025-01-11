@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -154,59 +155,39 @@ namespace MauiZebraScan
             // do PutString for DCP plugin. Values from here https://techdocs.zebra.com/datawedge/latest/guide/api/setconfig/#dcputilitiesparameters
             // copying in from Set DCP input configuration here https://techdocs.zebra.com/datawedge/11-0/guide/api/setconfig/
             //          search for Set DCP input configuration
-            Bundle bMain = new Bundle();
 
-            Bundle bConfigDCP = new Bundle();
-            Bundle bParamsDCP = new Bundle();
-            // POPULATE DCP BUNDLE =======================
-            bParamsDCP.PutString("dcp_input_enabled", "true");
-            // bParamsDCP.PutString("dcp_dock_button_on", "LEFT"); //Supported values: BOTH - Left or Right, LEFT - Left only, RIGHT - Right only
-            bParamsDCP.PutString("dcp_start_in", "FULLSCREEN"); //Supported Values: FULLSCREEN, BUTTON, BUTTON_ONLY
-            // bParamsDCP.PutString("dcp_highest_pos", "30"); //Supported Values:  0 - 100, Highest pos can not be greater than lowest pos
-            // bParamsDCP.PutString("dcp_lowest_pos", "40"); //Supported Values: 0 - 100, Highest pos can not be greater than lowest pos
-            bParamsDCP.PutString("dcp_drag_detect_time", "501"); //Supported Values: 0 - 1000
-            bConfigDCP.PutString("RESET_CONFIG", "true");
-            bConfigDCP.PutString("PLUGIN_NAME", "DCP");
-            bConfigDCP.PutBundle("PARAM_LIST", bParamsDCP);
-            
-            // bMain.PutBundle("DCP", bConfigDCP);
+            // the following is the new block from here https://developer.zebra.com/blog/datawedge-free-form-image-capture#:~:text=Scroll%20down%20to%20the%20%27Image%20Capture%27%20section%20of,Select%20%27Decode%20And%20Highlight%20Barcodes%27%20to%20return%20data.
+            //       SEARCH FOR  Coding and Free-Form Image Capture: Configuring DataWedge
+            Intent i = new Intent();
+            i.PutExtra("com.symbol.datawedge.api.SWITCH_DATACAPTURE", "WORKFLOW");
+            Bundle bWorkflow = new Bundle();
+            bWorkflow.PutString("workflow_name", "free_form_capture");
+            bWorkflow.PutString("workflow_input_source", "2");
 
-            // POPULATE IMAGE_CAPTURE BUNDLE =======================
-            Bundle ImageCaptureBundle = new Bundle(); 
-            ImageCaptureBundle.PutString("PLUGIN_NAME", "IMAGE_CAPTURE"); 
-            ImageCaptureBundle.PutString("RESET_CONFIG", "true"); 
-            // Create the parameter list bundle
-            Bundle paramListBundle = new Bundle(); 
-            paramListBundle.PutString("image_capture_enabled", "true");
-            // Add the parameter list bundle to the plugin configuration bundle
-            ImageCaptureBundle.PutBundle("PARAM_LIST", paramListBundle); // Add the plugin configuration bundle to the main bundle
-            
-            bMain.PutParcelableArray("PLUGIN_CONFIG", new Bundle[] { ImageCaptureBundle });
-            // bMain.PutBundle("IMAGE_CAPTURE", ImageCaptureBundle);
+            bWorkflow.PutString("PROFILE_NAME", "Profile007");
+            bWorkflow.PutString("PROFILE_ENABLED", "true");
+            // OVERWRITE resets the profile then writes this config
+            bWorkflow.PutString("CONFIG_MODE", "OVERWRITE");
 
-            //bMain.PutParcelableArray("PLUGIN_CONFIG", 
-            //    new Bundle[] { bConfigDCP, ImageCaptureBundle });
+            Bundle bWfParams = new Bundle();
+            bWfParams.PutString("module", "BarcodeTrackerModule");
+                Bundle moduleContainerDecoderModule = new Bundle();
+                moduleContainerDecoderModule.PutString("session_timeout", "16000");
+                moduleContainerDecoderModule.PutString("illumination", "off");
+                moduleContainerDecoderModule.PutString("decode_and_highlight_barcodes", "1");
+                bWfParams.PutBundle("module_params", moduleContainerDecoderModule);
+            //  Feedback params omitted from this code sample
+            // ORIGINALLY ArrayList<Bundle> paramSetList = new ArrayList<>();
+            System.Collections.Generic.IList<Android.OS.IParcelable> paramSetList 
+                = new System.Collections.Generic.List<Android.OS.IParcelable>();
 
-            // ADD SETTINGS TO bMain Bundle =======================
-            bMain.PutString("PROFILE_NAME", "Profile007");
-            bMain.PutString("PROFILE_ENABLED", "true");
-            bMain.PutString("CONFIG_MODE", "UPDATE");
+            paramSetList.Add(bWfParams);
 
-            // POPULATE APP_LIST BUNDLE =======================
-            Bundle appListBundle = new Bundle();
-            appListBundle.PutString("PACKAGE_NAME", "com.companyname.mauizebrascan");
-            appListBundle.PutStringArray("ACTIVITY_LIST", new String[] { "*" });
-            bMain.PutParcelableArray("APP_LIST", new Bundle[] { appListBundle });
+            bWorkflow.PutParcelableArrayList("workflow_params", paramSetList);
+            i.PutExtra("PARAM_LIST", bWorkflow);
+            // sendBroadcast(i);
 
-            // POPULATE THE INTENT  =======================
-            Intent iSetConfig = new Intent();
-            iSetConfig.SetAction("com.symbol.datawedge.api.ACTION");
-            iSetConfig.PutExtra("com.symbol.datawedge.api.SET_CONFIG", bMain);
-            // iSetConfig.PutExtra("SEND_RESULT", "LAST_RESULT");
-            // iSetConfig.PutExtra("COMMAND_IDENTIFIER", "INTENT_API");
-            //SetConfig [End]
-
-            _context.SendBroadcast(iSetConfig);
+            _context.SendBroadcast(i);
 
             // pds: pass profileConfig to SendDataWedgeIntentWithExtras.
             // profileConfig is a Bundle object
