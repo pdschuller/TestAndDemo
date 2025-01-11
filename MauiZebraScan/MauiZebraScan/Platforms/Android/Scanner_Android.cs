@@ -169,7 +169,7 @@ namespace MauiZebraScan
             bConfigDCP.PutString("PLUGIN_NAME", "DCP");
             bConfigDCP.PutBundle("PARAM_LIST", bParamsDCP);
             
-            bMain.PutBundle("DCP", bConfigDCP);
+            // bMain.PutBundle("DCP", bConfigDCP);
 
             // POPULATE IMAGE_CAPTURE BUNDLE =======================
             Bundle ImageCaptureBundle = new Bundle(); 
@@ -181,7 +181,8 @@ namespace MauiZebraScan
             // Add the parameter list bundle to the plugin configuration bundle
             ImageCaptureBundle.PutBundle("PARAM_LIST", paramListBundle); // Add the plugin configuration bundle to the main bundle
             
-            //bMain.PutParcelableArray("PLUGIN_CONFIG", new Bundle[] { ImageCaptureBundle });
+            bMain.PutParcelableArray("PLUGIN_CONFIG", new Bundle[] { ImageCaptureBundle });
+            // bMain.PutBundle("IMAGE_CAPTURE", ImageCaptureBundle);
 
             //bMain.PutParcelableArray("PLUGIN_CONFIG", 
             //    new Bundle[] { bConfigDCP, ImageCaptureBundle });
@@ -189,7 +190,7 @@ namespace MauiZebraScan
             // ADD SETTINGS TO bMain Bundle =======================
             bMain.PutString("PROFILE_NAME", "Profile007");
             bMain.PutString("PROFILE_ENABLED", "true");
-            bMain.PutString("CONFIG_MODE", "CREATE_IF_NOT_EXIST");
+            bMain.PutString("CONFIG_MODE", "UPDATE");
 
             // POPULATE APP_LIST BUNDLE =======================
             Bundle appListBundle = new Bundle();
@@ -201,8 +202,8 @@ namespace MauiZebraScan
             Intent iSetConfig = new Intent();
             iSetConfig.SetAction("com.symbol.datawedge.api.ACTION");
             iSetConfig.PutExtra("com.symbol.datawedge.api.SET_CONFIG", bMain);
-            iSetConfig.PutExtra("SEND_RESULT", "LAST_RESULT");
-            iSetConfig.PutExtra("COMMAND_IDENTIFIER", "INTENT_API");
+            // iSetConfig.PutExtra("SEND_RESULT", "LAST_RESULT");
+            // iSetConfig.PutExtra("COMMAND_IDENTIFIER", "INTENT_API");
             //SetConfig [End]
 
             _context.SendBroadcast(iSetConfig);
